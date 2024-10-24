@@ -1,5 +1,5 @@
 export const environment = {
-    production : false,
-    apiUrl: 'https://cdn.builder.io/api/v2/content/',
-    builderAPI : '25324592541e4b09b9ff0a341256de6b'
-};
+    production: false,
+    apiUrl: process.env['NG_APP_API_URL'] || 'https://cdn.builder.io/api/v2/content/', // Default value if not provided
+    builderAPI: process.env['NG_APP_BUILDER_API'] || ''
+};  
