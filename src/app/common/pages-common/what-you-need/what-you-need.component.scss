@@ -1,0 +1,79 @@
+@import "../../../../assets/styles/guidelines.scss";
+
+.section-whatYouNeed{
+    padding: 48px 0;
+    width: 100%;
+    display: block;
+    
+    .whatYouNeed-wrap{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 96px;
+        border-radius: 16px;
+        overflow: hidden;
+    }
+    .whatYouNeedTxt{
+        width: 50.5%;
+        
+        .section-subtitle{
+            margin: 0 0 48px;
+        }
+        .whatYouNeedItems{
+            width: 100%;
+            display: block;
+        }
+        .whatYouNeed-item{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            margin: 0 0 32px;
+
+            &:last-child{
+                margin-bottom: 0;
+            }
+            .whatYouNeed-icons{
+                height: 64px;
+                width: 64px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                overflow: hidden;
+                margin: 0 24px 0 0;
+                background-color: $ctPrimary;
+                color: $white;
+
+                img{
+                    max-height: 40px;
+                    width: auto;
+                    margin: auto;
+                }
+            }
+            .whatYouNeed-name{
+                font-size: 17px;
+                line-height: 22px;
+                font-weight: 700;
+                color: $black;
+            }
+        }
+    }
+    .whatYouNeedImg{
+        width: 49.5%;
+        padding: 0 0 0 96px;
+
+        .thumbBlock{
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .whatYouNeed-thumb{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+}

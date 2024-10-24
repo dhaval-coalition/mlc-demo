@@ -1,0 +1,79 @@
+@import "../../../../assets/styles/guidelines.scss";
+
+.section-aboutWeDifferent{
+    display: block;
+    width: 100%;   
+    margin: 48px 0;
+
+    .section-head{
+        text-align: center;
+        margin-bottom: 64px;
+        
+        .section-subtitle{
+            @include heading40;
+            letter-spacing: -0.8px;
+            margin: 0 auto;
+        }
+    }
+    .weDifferentItemsBlock{
+        margin: 0 auto;
+        width: 100%;
+        max-width: 1116px;
+    }
+    .weDifferentItems{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: center;
+        width: auto;
+        margin: 0 -12px;
+        gap: 64px 0;
+
+        .weDifferent-item{
+            margin: 0;
+            width: 33.33%;
+            display: inline-block;
+            float: none;
+            text-align: center;
+            padding: 0 12px;
+            
+            .weDifferent-icons{
+                height: 80px;
+                width: 80px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                overflow: hidden;
+                margin: 0 auto 24px;
+                background-color: transparent;
+                color: $white;
+
+                .weDifferent-thumb{
+                    max-height: 49px;
+                    width: auto;
+                    margin: auto;
+                }
+            }
+            .weDifferent-body{
+                display: block;
+                margin: 24px 0 0;
+            }
+            .weDifferent-title{
+                font-size: 17px;
+                line-height: 22px;
+                font-weight: 700;
+                color: $black;
+                margin: 0 0 16px;
+            }
+        }
+    }
+    .bottomBtnBlock{
+        text-align: center;
+        margin: 48px auto 0;
+
+        .btn{
+            min-width: 354px;
+        }
+    }
+}

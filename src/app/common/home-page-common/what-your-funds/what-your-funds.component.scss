@@ -1,0 +1,76 @@
+@import "../../../../assets/styles/guidelines.scss";
+
+.section-whatYourFunds{
+    padding: 48px 0;
+    width: 100%;
+    display: block;
+
+    .whatYourFunds-wrap{
+        width: 100%;
+        padding: 96px;
+        border-radius: 16px;
+        overflow: hidden;
+
+        .whatYourFunds-title{
+            margin: 0 0 64px;
+            color: $black;
+            text-align: center;
+        }
+        .funds-items{
+            width: auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            justify-content: center;
+            margin: 0 -15px;
+
+            .funds-body{
+                padding: 0 15px;
+                width: 16.6666667%;
+                text-align: center;
+            }
+            .funds-icons{
+                height: 80px;
+                width: 80px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                overflow: hidden;
+                margin: 0 auto 24px;
+                background-color: $ctPrimary;
+                color: $white;
+
+                img{
+                    max-height: 49px;
+                    width: auto;
+                    margin: auto;
+                }
+            }
+            .funds-name{
+                font-size: 17px;
+                line-height: 22px;
+                font-weight: 700;
+                color: $black;
+            }
+        }
+        .bottomContent{
+            margin: 64px 0 0;
+            width: 100%;
+            display: block;
+            text-align: center;
+
+            .section-bottomTitle{
+                @include text20;
+                font-weight: 700;
+                margin: 0 0 32px;
+                color: $black;
+            }
+        }
+        .btnBlock{
+            .btn{
+                min-width: 354px;
+            }
+        }
+    }
+}

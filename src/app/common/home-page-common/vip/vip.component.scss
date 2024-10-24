@@ -1,0 +1,60 @@
+@import "../../../../assets/styles/guidelines.scss";
+
+.section-vipBlock{
+    padding: 48px 0;
+    width: 100%;
+    display: block;    
+
+    .section-head{
+        margin: 0 auto 64px;
+    }
+    .section-title{
+        margin: 0 0 8px;
+        text-align: center;
+    }
+    .vipBlock-wrap{
+        margin: 0 auto;
+        width: 100%;
+        max-width: 1116px;
+    }
+    .vipBlockItems{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: center;
+        width: auto;
+        margin: 0 -15px;
+        gap: 15px 0;
+
+        .vipBlock-item{
+            margin: 0;
+            width: 25%;
+            display: inline-block;
+            float: none;
+            text-align: center;
+            padding: 0 15px;
+            
+            .vipBlock-thumb{
+                width: auto;
+                max-height: 80px;
+                margin: 0 auto;
+                display: block;
+            }
+            .vipBlock-body{
+                display: block;
+                margin: 24px 0 0;
+            }
+            .vipBlock-title{
+                font-size: 17px;
+                line-height: 22px;
+                font-weight: 700;
+                color: $black;
+                margin: 0 0 16px;
+                padding: 0 18px;
+            }
+            .vipBlock-description{
+                line-height: 28px;
+            }
+        }
+    }
+}

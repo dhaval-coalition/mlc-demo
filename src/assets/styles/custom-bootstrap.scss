@@ -1,0 +1,25 @@
+// Import Bootstrap functions
+@import "bootstrap/scss/functions";
+
+// Override the primary color
+$primary: $ctPrimary;
+$secondary: $ctSecondary;
+$btn-padding-x: 1.25rem;
+$btn-padding-y: 0.75rem;
+$accordion-border-radius: 12px;
+$accordion-body-padding-x: 24px;
+$accordion-body-padding-y: 20px;
+
+// Override the container width
+// $container-sm: 540px;   // Small devices
+// $container-md: 720px;   // Medium devices
+// $container-lg: 960px;   // Large devices
+// $container-xl: 1140px;  // Extra large devices
+// $container-xxl: 1320px; // Extra extra large devices
+
+// Override the body text color
+$body-color: $gray700;
+
+// Import Bootstrap variables and the rest of Bootstrap
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/bootstrap";

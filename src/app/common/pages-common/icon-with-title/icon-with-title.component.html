@@ -1,0 +1,16 @@
+<section class="section-iconWithTitle">
+    <div class="container">
+        <div class="iconWithTitleItemsBlock" *ngIf="iconWithTitleItems && iconWithTitleItems.length > 0">
+            <div class="iconWithTitleItems">
+                <div class="iconWithTitle-item" *ngFor="let item of iconWithTitleItems">
+                    <div class='iconWithTitle-icons'>
+                        <img class='iconWithTitle-thumb' [src]='item.icon' alt='' />
+                    </div>
+                    <div class="iconWithTitle-body">
+                        <div class="iconWithTitle-title" *ngIf='item.itemName'>{{item.itemName}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

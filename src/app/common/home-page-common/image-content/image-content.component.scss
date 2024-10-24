@@ -1,0 +1,46 @@
+@import "../../../../assets/styles/guidelines.scss";
+
+.section-imageContentBlock{
+    padding: 48px 0;
+    width: 100%;
+    display: block;
+    
+    .imageContentBlock-wrap{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 96px;
+        border-radius: 16px;
+        overflow: hidden;
+
+        .imageContentImg{
+            width: 49.5%;
+            padding: 0 96px 0 0;
+
+            .thumbBlock{
+                border-radius: 8px;
+                overflow: hidden;
+            }
+            .imageContent-thumb{
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+        .imageContentTxt{
+            width: 50.5%;
+
+            .section-description{
+                line-height: 28px;
+            }
+            h2,h3,h4,h5,h6{
+                margin-bottom: 24px;
+            }
+        }
+        .btnBlock{
+            margin: 32px 0 0;
+        }
+    }
+}

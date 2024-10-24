@@ -1,0 +1,33 @@
+<section class="section-tableBlock" [ngStyle]="{'backgroundColor':bgColor}">
+    <div class="container">
+        <div class="section-head" *ngIf="sectionTitle">
+            <h2 class='section-subtitle' *ngIf='sectionTitle' [innerHTML]="sectionTitle"></h2>
+        </div>
+        <div class="common-table" [ngClass]="{'text-center': alignCenter, 'text-small': textSmall, 'bgColor-alternate': alternateBgChange}">
+            <table>
+                <thead>
+                    <tr>
+                        <th *ngFor="let header of tableHeaders">{{ header.header }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of tableRows">
+                        <td *ngFor="let column of row.columns">
+                            <div class="section-description" *ngIf="column.columnValue" [innerHTML]="column.columnValue">
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>  
+        <div class="tableBlockBottom" *ngIf="sectionDescription || buttonStyle.text.length > 0">
+            <div class="section-description" *ngIf="!isDescriptionEmpty(sectionDescription)" [innerHTML]="sectionDescription">
+            </div>
+            <div class='btnBlock' *ngIf='buttonStyle && buttonStyle.text.length > 0'>
+                <a [ngClass]="['btn btn-' + (buttonStyle?.variant || 'secondary')]" [href]="buttonStyle?.url || '#'">
+                    {{buttonStyle?.text}}
+                </a>                    
+            </div>      
+        </div> 
+    </div>
+</section>

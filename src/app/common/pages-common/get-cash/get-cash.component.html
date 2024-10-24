@@ -1,0 +1,23 @@
+<div class='getCash'>
+    <div class="getCash-wrap">
+        <h3>How much are you looking for?</h3>
+        <form class='form-getcash'>
+            <div class='inputField-wrap'>
+                <input class="form-control form-control-lg" type="text" placeholder="Amount Needed">
+            </div>
+            <div class='inputField-wrap'>
+                <select class="form-select form-select-lg">
+                    <option value="" selected>Pick Your State</option>
+                    <option *ngFor="let state of statesList" [value]="state.name">{{ state.name }}</option>
+                </select>
+            </div>
+            <div class='inputField-wrap'>
+                <input class="form-control form-control-lg" type="email" placeholder="Enter Email Address">
+            </div>
+            <button class='btn btn-secondary' type='button'>Apply Now</button>
+        </form>
+        <div class='getCash-note'>
+            <p>Checking how much you qualify for, will NOT affect your credit score.</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<section class="section-vipCanBlock">
+    <div class="container">
+        <div class="vipCanBlock-wrap">
+            <div class="vipCanImg" *ngIf="bannerImage && bannerImage.length > 0">
+                <div class="thumbBlock">
+                    <img class='vipCan-thumb' [src]="bannerImage" alt='' />
+                </div>
+            </div>
+            <div class="vipCanTxt">
+                <h2 class='section-subtitle' *ngIf='sectionTitle'>{{sectionTitle}}</h2>
+                <ng-container *ngIf="vipItems && vipItems.length > 0">
+                    <div class='vipCanItems' *ngFor="let item of vipItems">
+                        <div class='vipCanIcon' *ngIf="item.icon">
+                            <img class='vipCanIcon-thumb' [src]='item.icon' alt='' />
+                        </div>
+                        <div class="vipCanContent">
+                            <h3 class='section-subtitle' *ngIf='item.itemName'>{{item.itemName}}</h3>
+                            <div class="section-description" [innerHTML]="item.itemDescription"></div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</section>

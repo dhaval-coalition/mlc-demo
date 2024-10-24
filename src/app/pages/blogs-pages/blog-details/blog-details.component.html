@@ -1,0 +1,92 @@
+<div class='blogDetail-wrap' *ngIf="blogPost">
+  <div class="blog-details-header">
+    <builder-component name="blog-detail-hero-banner"></builder-component>
+    <div class="container">
+      <div class="blogpost-container">
+        <span class='commonBadge badge text-bg-secondary' *ngIf="blogPost.badge && blogPost.badge.length > 0">{{blogPost.badge}}</span>
+        
+        <h1 class='blogPost-title'>{{blogPost.title}}</h1>
+        <div class='blogPost-date' *ngIf="blogPost.date && blogPost.date.length > 0">
+          {{blogPost.date | date: 'MMM dd, yyyy'}}
+        </div>
+        <div class="blogPost-image" *ngIf="blogPost.thumbnail && blogPost.thumbnail.length > 0">
+          <img class='blogPost-thumb' [src]="blogPost.thumbnail" alt='' />
+        </div>    
+      </div>  
+    </div>
+  </div>
+  <div class="blog-details-content">
+    <div class="container">
+      <div class="blogpost-container">
+        <div class='section-description' [innerHTML]="blogPost.description"></div>
+        <div class="blogPost-bottom">
+          <div class="blogPost-share">
+            <span class='label-share'>Share</span>
+            <div class="share-icons">
+              
+              <!-- Facebook Share -->
+              <div class="shareIcon-item">
+                <a [href]="'https://www.facebook.com/sharer/sharer.php?u=' + getEncodedURL()" target="_blank" rel="noopener noreferrer">
+                  <img class='shareIcon-thumb' src="https://cdn.builder.io/api/v1/image/assets%2F25324592541e4b09b9ff0a341256de6b%2F7c1d8af4b0b445db8cec20fae524f10f" alt='Facebook Share' />
+                </a>
+              </div>
+              
+              <!-- X (Twitter) Share -->
+              <div class="shareIcon-item">
+                <a [href]="'https://twitter.com/intent/tweet?url=' + getEncodedURL() + '&text=' + getEncodedTitle()" target="_blank" rel="noopener noreferrer">
+                  <img class='shareIcon-thumb' src="https://cdn.builder.io/api/v1/image/assets%2F25324592541e4b09b9ff0a341256de6b%2F15a0c4cf8b73459aaeba90b8f7c86bbe" alt='Twitter Share' />
+                </a>
+              </div>
+              
+              <!-- Pinterest Share -->
+              <div class="shareIcon-item">
+                <a [href]="'https://pinterest.com/pin/create/button/?url=' + getEncodedURL() + '&description=' + getEncodedTitle()" target="_blank" rel="noopener noreferrer">
+                  <img class='shareIcon-thumb' src="https://cdn.builder.io/api/v1/image/assets%2F25324592541e4b09b9ff0a341256de6b%2Fe3a1edae9db64bd985e002114d7bcf63" alt='Pinterest Share' />
+                </a>
+              </div>
+          
+              <!-- LinkedIn Share -->
+              <div class="shareIcon-item">
+                <a [href]="'https://www.linkedin.com/shareArticle?mini=true&url=' + getEncodedURL() + '&title=' + getEncodedTitle()" target="_blank" rel="noopener noreferrer">
+                  <img class='shareIcon-thumb' src="https://cdn.builder.io/api/v1/image/assets%2F25324592541e4b09b9ff0a341256de6b%2Fbfa45a15626544cbbfa8fd11e6702d05" alt='LinkedIn Share' />
+                </a>
+              </div>
+          
+              <!-- Email Share -->
+              <div class="shareIcon-item">
+                <a [href]="'mailto:?subject=' + getEncodedTitle() + '&body=' + getEncodedURL()" target="_blank" rel="noopener noreferrer">
+                  <img class='shareIcon-thumb' src="https://cdn.builder.io/api/v1/image/assets%2F25324592541e4b09b9ff0a341256de6b%2Fdd034b34f9404c89b9b11047b1f49209" alt='Email Share' />
+                </a>
+              </div>
+          
+              <!-- Print Option -->
+              <div class="shareIcon-item">
+                <a href="javascript:void(0)" (click)="printPage()">
+                  <img class='shareIcon-thumb' src="https://cdn.builder.io/api/v1/image/assets%2F25324592541e4b09b9ff0a341256de6b%2F923740bdbc64403d926f59777e5c38a3" alt='Print' />
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="blogPost-authorInfo" *ngIf="blogPost.authorInfo && (blogPost.authorInfo.authorName || blogPost.authorInfo.authorImage || blogPost.authorInfo.authorDescription)">
+            <div class="authorThumbBlock" *ngIf="blogPost.authorInfo.authorName || blogPost.authorInfo.authorImage">
+              <div class='author-img' *ngIf="blogPost.authorInfo.authorImage">
+                <img class='author-thumb' [src]="blogPost.authorInfo.authorImage" alt='' />
+              </div>
+              <div class='author-name' *ngIf="blogPost.authorInfo.authorName">
+                {{blogPost.authorInfo.authorName}}
+              </div>
+            </div>
+            <div class="author-description" *ngIf="blogPost.authorInfo.authorDescription">
+              <div class='section-description' [innerHTML]="blogPost.authorInfo.authorDescription"></div>
+            </div>
+          </div>  
+          <div class="blogPost-note">
+            <p>The information provided is for informational purposes only and is not a substitute for professional financial advice. You should consult a credit counseling professional concerning the information provided and what should work best in your financial situation. And any action on your part in response to the information provided is at your discretion.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

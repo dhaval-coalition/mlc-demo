@@ -1,0 +1,21 @@
+
+<section class="section-howItWorks">
+    <div class="container">
+        <div class="section-head">
+            <h2 class='section-subtitle' *ngIf='sectionTitle'>{{sectionTitle}}</h2>
+            <div class="section-description" *ngIf="sectionDescription" [innerHTML]="sectionDescription">
+            </div>
+        </div>
+        <div class="howItWorksItemsBlock" *ngIf="howItWorkItems && howItWorkItems.length > 0">
+            <div class="howItWorksItems">
+                <div class="howItWorks-item" *ngFor="let item of howItWorkItems">
+                    <img class='howItWorks-thumb' [src]='item.icon' alt='' />
+                    <div class="howItWorks-body">
+                        <div class="howItWorks-title">{{item.itemName}}</div>
+                        <div class="howItWorks-description">{{item.itemDescription}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

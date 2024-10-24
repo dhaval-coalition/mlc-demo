@@ -1,0 +1,9 @@
+<section class='section-blogTopContent' *ngIf='sectionTitle || sectionDescription'>
+    <div class="container">
+        <div class="section-head">
+            <h2 class='section-subtitle' *ngIf='sectionTitle'>{{sectionTitle}}</h2>
+            <div class="section-description" *ngIf="sectionDescription" [innerHTML]="sectionDescription">
+            </div>
+        </div>
+    </div>
+</section>

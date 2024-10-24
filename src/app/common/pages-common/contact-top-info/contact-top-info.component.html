@@ -1,0 +1,27 @@
+<section class="section-contactTopinfo">
+    <div class="container">
+        <div class="contactTopinfo-wrap">
+            <h2 class='section-title' *ngIf='sectionTitle'>{{sectionTitle}}</h2>
+            <div class="section-description" *ngIf="contactAddress" [innerHTML]="contactAddress">
+            </div>
+            <a *ngIf="phone" [href]="'tel:' + phone">{{phone}}</a>
+            <br/>
+            <a *ngIf="mail" [href]="'mailto:' + mail">{{mail}}</a>
+            <div class='btnBlock' *ngIf='buttonStyle && buttonStyle.text.length > 0'>
+                <a [ngClass]="['btn btn-' + (buttonStyle?.variant || 'secondary')]" [href]="buttonStyle?.url || '#'">
+                    {{buttonStyle?.text}}
+                </a>                    
+            </div>
+            <div class="contact-card" *ngIf="contactCard && contactCard.cardItems?.length > 0">
+                <div class="contactCard-item" *ngFor="let item of contactCard.cardItems">
+                    <div class="contactCardItem-wrap">
+                        <h4 class='contactCard-title' *ngIf="item.title">{{item.title}}</h4>
+                        <a class='contactCard-text' *ngIf="item.text && item.url" [href]='item.url'>{{item.text}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-description bottomDescription" *ngIf="bottomDescription" [innerHTML]="bottomDescription">
+        </div>
+    </div>
+</section>

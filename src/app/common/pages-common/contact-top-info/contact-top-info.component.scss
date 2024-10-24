@@ -1,0 +1,69 @@
+@import "../../../../assets/styles/guidelines.scss";
+
+.section-contactTopinfo{
+    margin: 48px 0 0;
+    width: 100%;
+    display: block;
+    
+    .contactTopinfo-wrap{
+        text-align: center;
+        margin: 0 auto;
+    }
+    .section-title{
+        margin: 0 0 15px;
+    }
+    .section-description{
+        p{
+            &:last-child{
+                margin-bottom: 0;
+            }
+        }
+        &.bottomDescription{
+            margin: 0 0 30px;
+        }
+    }
+    .btnBlock{
+        text-align: center;
+        margin: 30px auto 60px;
+    }
+    .contact-card{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 50px;
+        gap: 20px;
+
+        .contactCard-item{
+            width: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            border: 1px solid $gray100;
+            border-radius: 6px;
+            padding: 15px 20px; 
+            box-shadow: inset 0 0 18px 0 rgba($gray100, 0.50);
+            @include ct_transition;
+
+            &:hover{
+                transform: translateY(-1px);
+            }
+        }
+        .contactCardItem-wrap{
+            text-align: center;
+            display: block;
+            width: 100%;
+        }
+        .contactCard-title{
+            @include heading22;
+            line-height: normal;
+            margin: 0 0 6px;
+        }
+        .contactCard-text{
+            @include text18;
+            line-height: normal;
+            margin: 0 auto;
+        }
+    }
+}

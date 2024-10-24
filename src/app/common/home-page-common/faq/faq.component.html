@@ -1,0 +1,46 @@
+<section class="section-faqBlock" [ngStyle]="{'backgroundColor':bgColor}">
+    <div class="container">
+        <div class="section-head" *ngIf="sectionTitle || sectionDescription">
+            <h2 class='section-subtitle' *ngIf='sectionTitle'>{{sectionTitle}}</h2>
+            <div class="section-description" *ngIf="sectionDescription" [innerHTML]="sectionDescription">
+            </div>
+        </div>
+        <div class="faqIcon-wrap" *ngIf="faqObject.faqIcons && faqObject.faqIcons.length > 0">
+            <div class="faqIcons">
+                <div class="faqIconItem" *ngFor="let item of faqObject.faqIcons">
+                    <div class='faqIconWrap' [ngStyle]="{'backgroundColor':faqObject.iconsBgColor}">
+                        <img class='faqIcon-thumb' [src]='item.itemsImage' alt='' />
+                    </div>
+                    <h5 class='faqIcon-name' *ngIf='item.itemName'>{{item.itemName}}</h5>
+                </div>
+            </div>
+        </div>
+        <div class="faqAccordionBlock">
+            <div class='faqAccordion' *ngIf='faqAccordionObject'>
+                <h2 class='faqAccordion-title' *ngIf='faqAccordionObject.accordionBlockTitle'>{{faqAccordionObject.accordionBlockTitle}}</h2>
+                <div class="accordionitems-wrap" ngbAccordion [closeOthers]="true" *ngIf="faqAccordionObject.faqItems && faqAccordionObject.faqItems.length > 0">
+                    <ng-container *ngFor='let item of faqAccordionObject.faqItems'>
+                        <div class='accordion-item' ngbAccordionItem>
+                            <div ngbAccordionHeader>
+                                <button ngbAccordionButton>Q. {{item.faqQue}}</button>
+                            </div>
+                            <div ngbAccordionCollapse>
+                                <div ngbAccordionBody>
+                                    <ng-template>
+                                        <div [innerHTML]="item.faqAns"></div>
+                                    </ng-template>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+            <div class='btnBlock' *ngIf='buttonStyle && buttonStyle.text.length > 0'>
+                <a [ngClass]="['btn btn-' + (buttonStyle?.variant || 'secondary')]" [href]="buttonStyle?.url || '#'">
+                    {{buttonStyle?.text}}
+                </a>                    
+            </div>
+            <div class="section-description" *ngIf="faqAccordionObject?.disclosuresDescription" [innerHTML]="faqAccordionObject.disclosuresDescription"></div>
+        </div>
+    </div>
+</section>

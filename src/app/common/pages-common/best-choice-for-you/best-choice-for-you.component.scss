@@ -1,0 +1,81 @@
+@import "../../../../assets/styles/guidelines.scss";
+
+.section-bestChoice{
+    display: block;
+    width: 100%;   
+    padding: 96px 0; 
+    margin: 48px 0;
+
+    .section-head{
+        text-align: center;
+        margin-bottom: 52px;
+        max-width: 750px;
+        
+        .section-subtitle{
+            margin: 0 auto 24px;
+            max-width: 635px;
+        }
+    }
+    .bestChoiceItemsBlock{
+        margin: 0 auto;
+        width: 100%;
+        max-width: 1116px;
+    }
+    .bestChoiceItems{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: center;
+        width: auto;
+        margin: 0 -15px;
+        gap: 64px 0;
+
+        .bestChoice-item{
+            margin: 0;
+            width: 33.33%;
+            display: inline-block;
+            float: none;
+            text-align: center;
+            padding: 0 15px;
+            
+            .bestChoice-icons{
+                height: 80px;
+                width: 80px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                overflow: hidden;
+                margin: 0 auto 24px;
+                background-color: transparent;
+                color: $white;
+
+                .bestChoice-thumb{
+                    max-height: 49px;
+                    width: auto;
+                    margin: auto;
+                }
+            }
+            .bestChoice-body{
+                display: block;
+                margin: 24px 0 0;
+            }
+            .bestChoice-title{
+                font-size: 17px;
+                line-height: 22px;
+                font-weight: 700;
+                color: $black;
+                margin: 0 0 16px;
+            }
+            .bestChoice-description{
+                line-height: 28px;
+
+                p{
+                    &:last-child{
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+}

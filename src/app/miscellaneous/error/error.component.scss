@@ -1,0 +1,18 @@
+.misc-wrapper {
+    display: flex;
+    flex-basis: 100%;
+    min-height: 80vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  
+    .misc-inner {
+      position: relative;
+      max-width: 750px;
+  
+      .custom-btn {
+        position: absolute;
+        right: 40%;
+      }
+    }
+  }

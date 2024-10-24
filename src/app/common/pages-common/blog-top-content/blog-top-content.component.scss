@@ -1,0 +1,13 @@
+@import "../../../../assets/styles/guidelines.scss";
+
+.section-blogTopContent{
+    margin: 48px 0;
+    width: 100%;
+    display: block;
+
+    .section-head{
+        .section-subtitle{
+            margin-bottom: 24px;
+        }
+    }
+}

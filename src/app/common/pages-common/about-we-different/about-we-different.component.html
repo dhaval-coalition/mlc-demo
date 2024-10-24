@@ -1,0 +1,24 @@
+<section class="section-aboutWeDifferent">
+    <div class="container">
+        <div class="section-head">
+            <h2 class='section-subtitle' *ngIf='sectionTitle'>{{sectionTitle}}</h2>
+        </div>
+        <div class="weDifferentItemsBlock" *ngIf="weDifferentItems && weDifferentItems.length > 0">
+            <div class="weDifferentItems">
+                <div class="weDifferent-item" *ngFor="let item of weDifferentItems">
+                    <div class='weDifferent-icons' [ngStyle]="{'backgroundColor':item.iconBackgroundColor}">
+                        <img class='weDifferent-thumb' [src]='item.icon' alt='' />
+                    </div>
+                    <div class="weDifferent-body">
+                        <div class="weDifferent-title" *ngIf='item.itemName'>{{item.itemName}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='bottomBtnBlock' *ngIf='buttonStyle && buttonStyle.text.length > 0'>
+            <a [ngClass]="['btn btn-' + (buttonStyle?.variant || 'secondary')]" [href]="buttonStyle?.url || '#'">
+                {{buttonStyle?.text}}
+            </a>                    
+        </div>
+    </div>
+</section>

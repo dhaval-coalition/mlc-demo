@@ -1,0 +1,31 @@
+<section class="section-loansHeroBanner" [ngStyle]="{'backgroundColor':bgColor}">
+    <div class="container">
+        <div class="loansHeroBanner-wrap">
+            <div class="loansHero-content">
+                <h1 class='section-title'>{{sectionTitle}}</h1>
+                <div class="section-description" *ngIf="sectionDescription" [innerHTML]="sectionDescription">
+                </div>
+                <div class="loansHero-storeLocator">
+                    <div class='inputField-wrap' *ngIf="heroFormFields">
+                        <select class="form-select form-select-lg">
+                            <option value="" selected>Pick Your State</option>
+                            <option *ngFor="let state of statesList" [value]="state.name">{{ state.name }}</option>
+                        </select>
+                    </div>
+                    <div class='btnBlock' *ngIf='buttonStyle && buttonStyle.text.length > 0'>
+                        <a [ngClass]="[
+                                'btn', 
+                                'btn-' + (buttonStyle?.variant || 'secondary'),
+                                'btn-width-' + (buttonStyle?.width || 'large')]" 
+                            [href]="buttonStyle?.url || '#'">
+                            {{buttonStyle?.text}}
+                        </a>                    
+                    </div>
+                </div>
+            </div>
+            <div class="loansHero-image" *ngIf="loansHeroThumb && loansHeroThumb.length > 0">
+                <img class='loansHero-thumb' [src]='loansHeroThumb' alt='' />
+            </div>
+        </div>
+    </div>
+</section>

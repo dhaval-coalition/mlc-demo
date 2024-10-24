@@ -1,0 +1,65 @@
+@import "../../../../assets/styles/guidelines.scss";
+
+.section-reviews{
+    display: block;
+    width: 100%;   
+    padding: 48px 0; 
+
+    .section-head{
+        text-align: center;
+        margin-bottom: 52px;
+        
+        .section-subtitle{
+            margin: 0 0 24px;
+        }
+    }
+    .review-logo{
+        text-align: center;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 64px;
+        margin: 0 0 64px;
+    }
+    .reviewBulletBlock{
+        max-width: 940px;
+        width: 100%;
+        margin: 0 auto;
+    }
+    .review-bullet{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: center;
+        width: auto;
+        margin: 0 -15px;
+        gap: 48px 0;
+
+        .bullet-item{
+            margin: 0;
+            width: 33.33%;
+            display: inline-block;
+            float: none;
+            text-align: center;
+            padding: 0 15px;
+
+            .service-thumb{
+                width: auto;
+                max-height: 80px;
+                margin: 0 auto;
+                display: block;
+            }
+            .bullet-title{
+                display: block;
+                font-weight: 700;
+                width: 100%;
+                clear: left;
+                text-align: center;
+                padding: 24px 0 0;
+                color: $black;
+            }
+        }
+    }
+}

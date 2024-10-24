@@ -1,0 +1,41 @@
+@import "../../../../assets/styles/guidelines.scss";
+
+.section-reviewWidget{
+    padding: 82px 0 0;
+    margin: 0 0 48px;
+    width: 100%;
+    display: block;
+
+    .reviewWidget-wrap{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        max-width: 1036px;
+        margin: 0 auto;
+    }
+    .reviewWidgetLogos{
+        width: 100%;
+        display: block;
+
+        ul{
+            margin: 0 auto;
+            padding: 0;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 120px;
+
+            > li{
+                display: block;
+                text-align: center;
+            }
+        }
+        .reviewWidget-logo{
+            display: block;
+            margin: auto;
+            text-align: center;
+        }
+    }
+}

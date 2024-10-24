@@ -1,0 +1,31 @@
+<section class="section-faqAndQA">
+    <div class="container">
+        <div class="faqAndQA-wrap">
+            <h2 class='section-subtitle' *ngIf='sectionTitle'>{{sectionTitle}}</h2>
+            <div class='faqAccordion' *ngIf='faqAccordionObject'>
+                <h2 class='faqAccordion-title' *ngIf='faqAccordionObject.accordionBlockTitle'>{{faqAccordionObject.accordionBlockTitle}}</h2>
+                <div class="accordionitems-wrap" ngbAccordion [closeOthers]="true" *ngIf="faqAccordionObject.faqItems && faqAccordionObject.faqItems.length > 0">
+                    <ng-container *ngFor='let item of faqAccordionObject.faqItems'>
+                        <div class='accordion-item' ngbAccordionItem>
+                            <div ngbAccordionHeader>
+                                <button ngbAccordionButton>Q. {{item.faqQue}}</button>
+                            </div>
+                            <div ngbAccordionCollapse>
+                                <div ngbAccordionBody>
+                                    <ng-template>
+                                        <div [innerHTML]="item.faqAns"></div>
+                                    </ng-template>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+            <div class='btnBlock' *ngIf='buttonStyle && buttonStyle.text.length > 0'>
+                <a [ngClass]="['btn btn-' + (buttonStyle?.variant || 'secondary'), 'btn-width-' + (buttonStyle?.width || 'large')]" [href]="buttonStyle?.url || '#'">
+                    {{buttonStyle?.text}}
+                </a>                    
+            </div>
+        </div>
+    </div>
+</section>

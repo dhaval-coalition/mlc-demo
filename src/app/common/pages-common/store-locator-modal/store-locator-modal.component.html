@@ -1,0 +1,38 @@
+<div class='common-modelWrapper'>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Find a Store Near You</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="storeModalClose()"></button>
+    </div>
+    <div class="modal-body">
+        <div class="store-locator">
+            <div class="search-form">
+                <div class="inputField-wrap searchInput-wrap">
+                    <input class='form-control form-control-lg' type="text" [(ngModel)]="searchZip" placeholder="Enter Zip Code" (keydown.enter)="onEnterKey()" />
+                    <button class='btn btn-primary' (click)="filterStores()">Search</button>
+                </div>
+            </div>          
+            <ngb-alert class='alert alert-danger show fade alert-dismissible' *ngIf="errorMessage" type="danger" (closed)="closeAlert()">
+                {{errorMessage}}
+            </ngb-alert>
+            <div class="googleMap-wrapper">
+                <google-map
+                    class='googleMap'
+                    height="100%"
+                    width="100%"
+                    [center]="center"
+                    [zoom]="zoom"
+                >
+                    <map-marker
+                        *ngFor="let store of filteredStores"
+                        [position]="{ lat: store.lat, lng: store.lng }"
+                        [label]="store.name"
+                    >
+                    </map-marker>
+                </google-map>
+            </div>          
+        </div>        
+    </div>
+    <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-outline-primary" (click)="storeModalClose()">Close</button>
+    </div> -->
+</div>

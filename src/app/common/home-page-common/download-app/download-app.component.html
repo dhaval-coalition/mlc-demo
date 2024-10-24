@@ -1,0 +1,24 @@
+
+<section class="section-downloadApp">
+    <div class="container">
+        <div class="downloadApp-wrap" [ngStyle]="{'backgroundColor':bgColor}">
+            <div class="downloadApp-image" [ngStyle]="{'color':circleBgColor}">
+                <div class="downloadAppImg-wrap">
+                    <img class='downloadApp-thumb thumb-1' *ngIf="thumbImage1" [src]='thumbImage1' alt='' />
+                    <img class='downloadApp-thumb thumb-2' *ngIf="thumbImage2" [src]='thumbImage2' alt='' />
+                </div>
+            </div>
+            <div class="downloadApp-content">
+                <div class="section-description" *ngIf="sectionDescription" [innerHTML]="sectionDescription"></div>
+                <div class="downloadAppIcons">
+                    <a class='downloadApp-link' target='_blank' [href]="thumbIcon1Url">
+                        <img class='downloadApp-icon' *ngIf="thumbIcon1" [src]='thumbIcon1' alt='' />
+                    </a>
+                    <a class='downloadApp-link' target='_blank' [href]="thumbIcon2Url">
+                        <img class='downloadApp-icon' *ngIf="thumbIcon2" [src]='thumbIcon2' alt='' />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

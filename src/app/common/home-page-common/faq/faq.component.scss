@@ -1,0 +1,80 @@
+@import "../../../../assets/styles/guidelines.scss";
+
+.section-faqBlock{
+    padding: 48px 0 96px;
+    margin: 48px 0 0;
+    width: 100%;
+    display: block;
+
+    .section-head{
+        margin: 0 auto 64px;
+    }
+    .section-title{
+        margin: 0 0 8px;
+    }
+    .faqIcon-wrap{
+        display: block;
+        margin: 0 auto 64px;
+        max-width: 792px;
+    }
+    .faqIcons{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+        width: auto;
+        gap: 30px 0;
+        margin: 0 -15px;
+
+        .faqIconItem{
+            padding: 0 15px;
+            display: inline-block;
+            width: 33.33%;
+        }
+        .faqIconWrap{
+            height: 80px;
+            width: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            border-radius: 50%;
+            overflow: hidden;
+
+            .faqIcon-thumb{
+                width: auto;
+                height: auto;
+                max-height: 48px;
+            }
+        }
+        .faqIcon-name{
+            @include text17;
+            font-weight: 700;
+            margin: 0;
+        }
+    }
+    .faqAccordionBlock{
+        .section-description{
+            @include text12;
+
+            p{
+                &:last-child{
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+    .faqAccordion-title{
+        @include text20;
+        margin: 0 auto 64px;
+        text-align: center;
+    }
+    .btnBlock{
+        text-align: center;
+        margin: 0 auto 96px;
+
+        .btn{
+            min-width: 354px;
+        }
+    }
+}

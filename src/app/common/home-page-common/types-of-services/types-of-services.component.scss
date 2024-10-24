@@ -1,0 +1,82 @@
+@import "../../../../assets/styles/guidelines.scss";
+
+.section-typesOfServices{
+    margin: 48px 0;
+    padding: 96px 0;
+    width: 100%;
+    display: block;    
+
+    &.default-bg-class{
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .typesOfServices-inner{
+        max-width: 1116px;
+        margin: 0 auto;
+        width: 100%;
+    }
+    .section-title{
+        margin: 0 0 64px;
+        text-align: center;
+    }
+    .weServeItemsList{
+        width: 100%;
+    }
+    .typesOfServices-wrap{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 64px 0;
+        width: 100%;
+    }
+    .typesOfServices-row{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+    .typesOfServices-content{
+        width: calc(100% - 450px);
+        max-width: 546px;
+
+        .section-description{
+            margin: 0 0 32px;
+        }
+        h2,h3,h4,h5,h6{
+            margin-bottom: 24px;
+        }
+        h2{
+            @include heading32;
+        }
+        h3{
+            @include text28;
+        }
+    }
+    .typesOfServices-image{
+        height: auto;
+        width: 450px;
+        border-radius: 8px;
+        overflow: hidden;
+
+        .typesOfServices-thumb{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+    .btnBlock{
+        margin: 24px 0 0;
+
+        .btn{
+            min-width: 1px;
+        }
+    }
+    .bottomBtnBlock{
+        text-align: center;
+        margin: 64px auto 0;
+
+        .btn{
+            min-width: 354px;
+        }
+    }
+}

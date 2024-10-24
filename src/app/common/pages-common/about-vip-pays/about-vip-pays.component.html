@@ -1,0 +1,38 @@
+<section class="section-vipPays">
+    <div class="container">
+        <div class="section-head">
+            <h2 class='section-subtitle' *ngIf='sectionTitle'>{{sectionTitle}}</h2>
+            <div class="section-description" *ngIf="sectionDescription" [innerHTML]="sectionDescription">
+            </div>
+        </div>
+        <div class='vipPaysItems-block' *ngIf="vipPaysItems && vipPaysItems.length > 0">
+            <ng-container *ngFor="let item of vipPaysItems">
+                <div class="vipPays-item" [ngStyle]="{'backgroundColor':item.itemBackgroundColor}">
+                    <div class="vipPaysItem-wrap">
+                        <div class="vipPaysItem-left">
+                            <div class="vipPaysItemVideo" *ngIf="item.videoOptions?.aboutVideo">
+                                <iframe
+                                    [src]="getSafeVideoUrl({
+                                        aboutVideo: item.videoOptions?.aboutVideo ?? '',
+                                        autoplay: item.videoOptions?.autoplay ?? false,
+                                        loop: item.videoOptions?.loop ?? false,
+                                        muted: item.videoOptions?.muted ?? true,
+                                        controls: item.videoOptions?.controls ?? true
+                                    })"
+                                    [attr.allow]="item.videoOptions?.autoplay ? 'autoplay' : null"
+                                    frameborder="0"
+                                    allowfullscreen
+                                    width="100%"
+                                    height="450"
+                                ></iframe>
+                            </div>
+                        </div>
+                        <div class="vipPaysItem-right">
+                            <div class="section-description" *ngIf="item.itemDescription" [innerHTML]="item.itemDescription"></div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,78 @@
+@import "../../../../assets/styles/guidelines.scss";
+
+.section-vipCanBlock{
+    padding: 48px 0;
+    width: 100%;
+    display: block;
+    
+    .vipCanBlock-wrap{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 1116px;
+
+        .vipCanImg{
+            width: 51%;
+            display: inline-block;
+            padding: 0 117px 0 0;
+
+            .thumbBlock{
+                border-radius: 8px;
+                overflow: hidden;
+            }
+            .vipCan-thumb{
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+        .vipCanTxt{
+            width: 49%;
+            display: inline-block;
+
+            .section-subtitle{
+                margin: 0 0 48px;
+            }
+            .vipCanItems{
+                display: flex;
+                flex-wrap: wrap;
+                align-items: flex-start;
+                width: 100%;
+                margin: 0 0 32px;
+
+                &:last-child{
+                    margin-bottom: 0;
+                }
+                .vipCanIcon{
+                    height: 80px;
+                    width: 80px;
+                    display: inline-block;
+
+                    .vipCanIcon-thumb{
+                        width: auto;
+                        max-height: 80px;
+                        object-fit: cover;
+                    }
+                }
+                .vipCanContent{
+                    width: calc(100% - 80px);
+                    display: inline-block;
+                    padding: 0 0 0 24px;
+
+                    .section-subtitle{
+                        @include text17;
+                        margin: 0 0 16px;
+                    }
+                    .section-description{
+                        h2,h3,h4,h5,h6{
+                            margin-bottom: 16px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,45 @@
+<section class="section-accordionLocations">
+    <div class="container">
+        <div class="accordionLocations-wrap">
+            <h2 class='section-subtitle' *ngIf='sectionTitle'>{{sectionTitle}}</h2>
+            <div class='storeAccordion'>
+                <div class="accordionitems-wrap" ngbAccordion [closeOthers]="true" *ngIf="store && store.length > 0">
+                    <ng-container *ngFor='let item of store'>
+                        <div class='accordion-item' ngbAccordionItem>
+                            <div ngbAccordionHeader>
+                                <button ngbAccordionButton>{{item.storeQue}}</button>
+                            </div>
+                            <div ngbAccordionCollapse>
+                                <div ngbAccordionBody>
+                                    <ng-template>
+                                        <div class="accordionBody-col-content">
+                                            <div class="accordionBody-col-1">
+                                                <div class='content-title' *ngIf="item.storeHoursSettingObject.contentTitle1">{{item.storeHoursSettingObject.contentTitle1}}</div>
+                                                <div class='storeLocation-timing' *ngFor='let storeItem of item.storeHoursSettingObject.storeHours'>
+                                                    <span class='info-label'>{{storeItem.storeHoursWeek}}</span>
+                                                    <span class='info-value'>{{storeItem.storeHoursTime}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="accordionBody-col-2" *ngIf="item.locationSettingObject">
+                                                <div class='content-title' *ngIf="item.locationSettingObject.contentTitle2">{{item.locationSettingObject.contentTitle2}}</div>
+                                                <div [innerHTML]="item.locationSettingObject.storeAddress"></div>
+                                                <div class='btnBlock' *ngIf='item.locationSettingObject.buttonStyle && item.locationSettingObject.buttonStyle.text.length > 0'>
+                                                    <a [ngClass]="['btn btn-' + (item.locationSettingObject.buttonStyle.variant)]" [href]="item.locationSettingObject.buttonStyle.url || '#'">
+                                                        {{item.locationSettingObject.buttonStyle.text}}
+                                                    </a>                    
+                                                </div>
+                                            </div>
+                                            <div class="accordionBody-col-3" *ngIf="item.mapSettingObject">
+                                                <div class='googleMapEmbedBlock' [innerHTML]="sanitizeHtml(item.mapSettingObject.mapEmbedCode)"></div>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

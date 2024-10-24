@@ -1,0 +1,18 @@
+<section class="section-aboutReview">
+    <div class="container">
+        <div class="section-head">
+            <h2 class='section-subtitle' *ngIf='sectionTitle'>{{sectionTitle}}</h2>
+        </div>
+        <!-- <div class="aboutReview-widget">
+
+        </div> -->
+        <div class="aboutReview-bottom" *ngIf="sectionBottomTitle || buttonStyle">
+            <h3 class='section-bottomTitle' *ngIf="sectionBottomTitle && sectionBottomTitle.length > 0">{{sectionBottomTitle}}</h3>
+            <div class='bottomBtnBlock' *ngIf='buttonStyle && buttonStyle.text.length > 0'>
+                <a [ngClass]="['btn btn-' + (buttonStyle?.variant || 'secondary')]" [href]="buttonStyle?.url || '#'">
+                    {{buttonStyle?.text}}
+                </a>                    
+            </div>
+        </div>
+    </div>
+</section>

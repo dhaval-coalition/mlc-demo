@@ -1,0 +1,13 @@
+<section class="section-reviewWidget" [ngStyle]="{'backgroundColor:': bgColor}">
+    <div class="container">
+        <div class="reviewWidget-wrap">
+            <div class="reviewWidgetLogos" *ngIf="logoItems && logoItems.length > 0">
+                <ul>
+                    <li *ngFor="let item of logoItems">
+                        <img class='reviewWidget-logo' [src]='item.logo' alt='' />
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,38 @@
+<section class="section-informationHub">
+    <div class="container">
+        <div class="section-head">
+            <h2 class='section-subtitle' *ngIf='sectionTitle'>{{sectionTitle}}</h2>
+            <div class="section-description" *ngIf="sectionDescription" [innerHTML]="sectionDescription">
+            </div>
+        </div>
+        <div class="informationHubItems" *ngIf="informationItems && informationItems.length > 0">
+            <owl-carousel-o class="custom-owlCarousel" #owlCarousel [options]="carouselCustomOptions">
+                <ng-container *ngFor="let item of informationItems">
+                    <ng-template carouselSlide>
+                        <div class="informationHub-item">
+                            <div class="informationHub-card">
+                                <div class="informationHub-image">
+                                    <img class='informationHub-thumb' [src]='item.image' alt=''  />
+                                    <span [ngClass]="['commonBadge badge text-bg-' + (item.badge?.variant || 'secondary')]">
+                                        {{item.badge?.text}}
+                                    </span>  
+                                </div>
+                                <div class="informationHub-body">
+                                    <h4>{{item.itemName}}</h4>
+                                    <div class="publishedDate">{{item.itemDate | date: 'MMM dd, yyyy' }}</div>
+                                    <div class="informationHub-description"[innerHTML]="item.itemDescription"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ng-container>
+            </owl-carousel-o>
+            <div class="ct-arrow ct-left-arrow" (click)="goPrev()">
+                <i class="icon bi bi-chevron-left"></i>
+            </div>
+            <div class="ct-arrow ct-right-arrow" (click)="goNext()">
+                <i class="icon bi bi-chevron-right"></i>
+            </div>
+        </div>
+    </div>
+</section>

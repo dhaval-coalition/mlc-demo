@@ -1,0 +1,108 @@
+@import "../../../../assets/styles/guidelines.scss";
+
+.section-informationHub{
+    @include ctArrow;
+    display: block;
+    width: 100%;   
+    padding: 48px 0; 
+
+    .section-head{
+        text-align: center;
+        margin-bottom: 64px;
+        
+        .section-subtitle{
+            margin: 0 0 24px;
+        }
+    }
+    .ct-arrow{
+        background-color: $blue50;
+        color: $black;
+
+        &.ct-left-arrow{
+            left: -84px;
+        }
+        &.ct-right-arrow{
+            right: -84px;
+        }
+    }
+    .informationHubItems{
+        display: block;
+        width: 100%;
+        margin: 0 auto;
+        position: relative;
+        max-width: 1146px;
+
+        .custom-owlCarousel{
+            display: block;
+            width: auto;
+            margin: 0 -12px;
+        }
+        .informationHub-item{
+            display: block;
+            width: 100%;
+            padding: 5px 12px;
+        }
+        .informationHub-card{
+            background-color: $white;
+            border-radius: 8px;
+            overflow: hidden;
+            @include ct_boxShadow01;
+
+            &:hover{
+                .informationHub-image{
+                    .informationHub-thumb{
+                        transform: scale(1.1);
+                    }
+                }
+            }
+        }
+        .informationHub-image{
+            display: block;
+            margin: 0 auto;
+            height: 224px;
+            width: 100%;
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+
+            .informationHub-thumb{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                @include ct_transition;
+            }
+        }
+        .informationHub-body{
+            display: block;
+            padding: 24px;
+            text-align: left;
+
+            h4{
+                @include text20;
+                margin: 0 0 8px;
+            }
+        }
+        .publishedDate{
+            @include text14;
+            color: $ctNeutral;
+            margin: 0 0 16px;
+            display: block;
+            width: 100%;
+        }
+        .informationHub-description{
+            display: block;
+            display: -webkit-box;
+            line-clamp: 2;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            -webkit-box-orient: vertical;
+
+            p{
+                &:last-child{
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}

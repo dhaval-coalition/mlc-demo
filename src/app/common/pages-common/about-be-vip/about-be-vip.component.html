@@ -1,0 +1,22 @@
+<section class="section-beVip" 
+    [class.default-bg-class]="isWhiteBgColor()"
+    [ngStyle]="{'backgroundColor':backgroundColor}">
+    <div class="container">
+        <div class="section-head" *ngIf='sectionTitle'>
+            <h2 class='section-subtitle' *ngIf='sectionTitle'>{{sectionTitle}}</h2>
+        </div>
+        <div class="beVipItemsBlock" *ngIf="beVipItems && beVipItems.length > 0">
+            <div class="beVipItems">
+                <div class="beVip-item" *ngFor="let item of beVipItems">
+                    <div class='beVip-icons'>
+                        <img class='beVip-thumb' [src]='item.icon' alt='' />
+                    </div>
+                    <div class="beVip-body">
+                        <div class="beVip-title" *ngIf='item.itemName'>{{item.itemName}}</div>
+                        <div class="beVip-description" *ngIf="item.itemDescription" [innerHTML]="item.itemDescription"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

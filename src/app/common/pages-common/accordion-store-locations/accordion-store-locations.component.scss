@@ -1,0 +1,112 @@
+@import "../../../../assets/styles/guidelines.scss";
+
+.section-accordionLocations{
+    margin: 48px 0;
+    width: 100%;
+    display: block;
+    
+    .section-subtitle{
+        margin: 0 0 40px;
+    }
+    .accordionLocations-wrap{
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 1116px;
+    }
+    .btnBlock{
+        text-align: left;
+        margin: 32px auto 0;
+
+        .btn{
+            min-width: 176px;
+        }
+    }
+    .accordionBody-col-content{
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+
+        .content-title{
+            @include text20;
+            color: $black;
+            line-height: normal;
+            font-weight: 600;
+            margin: 0 0 24px;
+        }
+        .accordionBody-col-1{
+            width: 28%;
+            padding: 0 15px 0 0;
+
+            .storeLocation-timing{
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: flex-start;
+                width: 100%;
+                text-align: left;
+                margin: 0 0 14px;
+
+                &:last-child{
+                    margin-bottom: 0;
+                }
+                .info-label{
+                    width: auto;
+                    min-width: 120px;
+                    padding: 0 10px 0 0;
+                }
+                .info-value{
+                    width: auto;
+                }
+            }
+        }
+        .accordionBody-col-2{
+            width: 23%;
+            padding: 0 24px 0 0;
+        }
+        .accordionBody-col-3{
+            width: 49%;
+
+            .googleMapEmbedBlock{
+                display: block;
+                text-align: right;
+                width: 100%;
+                margin: 0 auto 0 0;
+
+                iframe{
+                    width: 100%;
+                    height: 314px;
+                }
+            }
+        }
+    }
+    .storeAccordion{
+        .accordionitems-wrap{
+            .accordion-item{
+                border-left: 0;
+                border-right: 0;
+                border-top: 0;
+
+                .accordion-button{
+                    @include heading24;
+                    line-height: normal;
+                    font-weight: 700;
+                    padding: 24px 0;
+                    color: $black;
+                    background-color: $white;
+                    box-shadow: none;
+                    outline: none;
+
+                    &:not(.collapsed),&:focus,&:hover{
+                        background-color: $white;
+                        box-shadow: none;
+                        outline: none;
+                    }
+                }
+                .accordion-body{
+                    padding: 12px 0 32px;
+                }
+            }
+        }
+    }
+}

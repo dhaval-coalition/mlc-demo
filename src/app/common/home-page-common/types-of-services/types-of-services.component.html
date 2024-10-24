@@ -1,0 +1,36 @@
+<section class="section-typesOfServices" 
+    [class.default-bg-class]="isWhiteBgColor()"
+    [ngStyle]="{'backgroundColor':bgColor}">
+    <div class="container">
+        <div class='typesOfServices-inner'>
+            <h2 class='section-title' *ngIf='sectionTitle'>{{sectionTitle}}</h2>
+            <div class="typesOfServices-wrap" *ngIf="items && items.length > 0">
+                <ng-container *ngFor="let item of items">
+                    <div [ngClass]="['typesOfServices-row', item.imagePosition === 'Left' ? 'image-left' : 'image-right']">
+                        <!-- Conditional rendering based on imagePosition -->
+                        <div *ngIf="item.imagePosition === 'Left'" class="typesOfServices-image">
+                            <img class='typesOfServices-thumb' [src]='item.thumbImage' alt='' />
+                        </div>
+                        <div class="typesOfServices-content">
+                            <div class='section-description' [innerHTML]="item.itemDescription">{{item.itemDescription}}</div>
+                            <div class='btnBlock' *ngIf='item.button && item.button.text.length > 0'>
+                                <a [ngClass]="['btn btn-' + (item.button.variant || 'secondary')]" [href]="item.button.url || '#'">
+                                    {{item.button.text}}
+                                </a>                    
+                            </div>
+                        </div>
+                        <!-- Conditional rendering based on imagePosition -->
+                        <div *ngIf="item.imagePosition === 'Right'" class="typesOfServices-image">
+                            <img class='typesOfServices-thumb' [src]='item.thumbImage' alt='' />
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+            <div class='bottomBtnBlock' *ngIf='buttonStyle && buttonStyle.text.length > 0'>
+                <a [ngClass]="['btn btn-' + (buttonStyle?.variant || 'secondary')]" [href]="buttonStyle?.url || '#'">
+                    {{buttonStyle?.text}}
+                </a>                    
+            </div>
+        </div>
+    </div>
+</section>

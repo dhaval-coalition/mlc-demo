@@ -1,0 +1,22 @@
+<section class="section-whatYouNeed">
+    <div class="container">
+        <div class="whatYouNeed-wrap" [ngStyle]="{'backgroundColor':whatYouNeedBgColor}">
+            <div class="whatYouNeedTxt">
+                <h2 class='section-subtitle' *ngIf='sectionSubTitle'>{{sectionSubTitle}}</h2>
+                <div class='whatYouNeedItems' *ngIf='whatYouNeedItems && whatYouNeedItems.length > 0'>
+                    <div class='whatYouNeed-item' *ngFor="let item of whatYouNeedItems">
+                        <div class='whatYouNeed-icons'>
+                            <img [src]="item.icon" alt='' />
+                        </div>
+                        <div class='whatYouNeed-name' [innerHTML]="item.name"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="whatYouNeedImg" *ngIf="whatYouNeedThumb && whatYouNeedThumb.length > 0">
+                <div class="thumbBlock">
+                    <img class='whatYouNeed-thumb' [src]="whatYouNeedThumb" alt='' />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

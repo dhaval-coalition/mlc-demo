@@ -1,0 +1,16 @@
+<nav class='breadcrumb-block' aria-label="breadcrumb" *ngIf="!isHomePage()">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item" *ngFor="let breadcrumb of breadcrumbService.getBreadcrumbs(); let last = last"
+                [ngClass]="{'active': last}">
+                <ng-container *ngIf="!last">
+                    <a class='breadcrumb-name' [routerLink]="breadcrumb.url">{{ breadcrumb.label }}</a>
+                    <span class="breadcrumb-separator">/</span>
+                </ng-container>
+                <ng-container *ngIf="last">
+                    <span class='breadcrumb-name'>{{ breadcrumb.label }}</span>
+                </ng-container>
+            </li>
+        </ol>
+    </div>
+</nav>

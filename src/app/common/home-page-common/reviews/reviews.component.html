@@ -1,0 +1,25 @@
+<section class="section-reviews">
+    <div class="container">
+        <div class="section-head">
+            <h2 class='section-title' *ngIf='reviewTitle'>{{reviewTitle}}</h2>
+            <h3 class='section-subtitle' *ngIf='reviewSubTitle'>{{reviewSubTitle}}</h3>
+            <div class="section-description" [innerHTML]="reviewDescription"></div>
+        </div>
+        <div class="review-logo">
+            <div class='review-service' *ngIf='reviewLogo1'>
+                <img class='service-thumb' [src]="reviewLogo1" alt="" />
+            </div>
+            <div class='review-trustpilot' *ngIf='reviewLogo2'>
+                <img class='service-thumb' [src]="reviewLogo2" alt="" />
+            </div>
+        </div>
+        <div class='reviewBulletBlock' *ngIf='bulletPoint && bulletPoint.length'>
+            <div class="review-bullet">
+                <div class="bullet-item" *ngFor='let item of bulletPoint'>
+                    <img class='service-thumb' [src]="item.icon" alt="" />
+                    <span class='bullet-title'>{{item.name}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

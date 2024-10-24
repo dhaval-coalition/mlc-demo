@@ -1,0 +1,32 @@
+<section class="section-singleLocationHeroBanner" [ngStyle]="{'backgroundColor':bgColor}">
+    <div class="container">
+        <div class="singleLocationHeroBanner-wrap">
+            <div class="singleLocationHero-content">
+                <h1 class='section-title'>{{sectionTitle}}</h1>
+                <div class="section-description" *ngIf="sectionDescription" [innerHTML]="sectionDescription">
+                </div>
+                <div class="singleLocationHero-btnBlock">
+                    <div class='btnBlock' *ngIf='buttonStyle && buttonStyle.text.length > 0'>
+                        <a [ngClass]="[
+                                'btn', 
+                                'btn-' + (buttonStyle?.variant || 'secondary')]" 
+                            [href]="buttonStyle?.url || '#'">
+                            {{buttonStyle?.text}}
+                        </a>                    
+                    </div>
+                    <div class='btnBlock' *ngIf='buttonStyle2 && buttonStyle2.text.length > 0'>
+                        <a [ngClass]="[
+                                'btn', 
+                                'btn-' + (buttonStyle2?.variant || 'secondary')]" 
+                            [href]="buttonStyle2?.url || '#'">
+                            {{buttonStyle2?.text}}
+                        </a>                    
+                    </div>
+                </div>
+            </div>
+            <div class="singleLocationHero-image" *ngIf="singleLocationHeroThumb && singleLocationHeroThumb.length > 0">
+                <img class='singleLocationHero-thumb' [src]='singleLocationHeroThumb' alt='' />
+            </div>
+        </div>
+    </div>
+</section>

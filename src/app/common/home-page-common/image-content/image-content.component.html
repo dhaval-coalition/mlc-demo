@@ -1,0 +1,20 @@
+<section class="section-imageContentBlock">
+    <div class="container">
+        <div class="imageContentBlock-wrap" [ngStyle]="{'backgroundColor':bgColor}">
+            <div class="imageContentImg" *ngIf="bannerImage && bannerImage.length > 0">
+                <div class="thumbBlock">
+                    <img class='imageContent-thumb' [src]="bannerImage" alt='' />
+                </div>
+            </div>
+            <div class="imageContentTxt" *ngIf='descriptionBlock'>
+                <div class="section-description" [innerHTML]="descriptionBlock">
+                </div>
+                <div class='btnBlock' *ngIf='buttonStyle && buttonStyle.text.length > 0'>
+                    <a [ngClass]="['btn btn-' + (buttonStyle?.variant || 'secondary')]" [href]="buttonStyle?.url || '#'">
+                        {{buttonStyle?.text}}
+                    </a>                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

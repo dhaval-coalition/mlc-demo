@@ -1,0 +1,31 @@
+<div class='footer'>
+    <div class="container container-xl">
+        <div class="footer-wrap">
+            <div class="row">
+                <ng-container *ngIf='footerColumns && footerColumns.length > 0'>
+                    <div class="ft-col col-12 col-sm-6 col--md-4 col-lg-3" *ngFor="let item of footerColumns">
+                        <ng-container *ngIf='item.footerNavLinks && item.footerNavLinks.length > 0'>
+                            <ul>
+                                <li *ngFor='let navItem of item.footerNavLinks'>
+                                    <a [href]="navItem.url">{{navItem.name}}</a>
+                                </li>
+                            </ul>
+                        </ng-container>
+                    </div>
+                </ng-container>
+            </div>
+            <ng-container>
+                <div class="footer-copyright">
+                    <p class="copyright-text" *ngIf='footerCopyrightText && footerCopyrightText.length > 0'>© {{currentYear}} {{footerCopyrightText}}</p>
+                    <ng-container *ngIf='footerBottomNavLinks && footerBottomNavLinks.length > 0'>
+                        <ul class="copyright-items">
+                            <li class="copyright-item" *ngFor='let navItemBottom of footerBottomNavLinks'>
+                                <a [href]="navItemBottom.url">{{navItemBottom.name}}</a>
+                            </li>
+                        </ul>
+                    </ng-container>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

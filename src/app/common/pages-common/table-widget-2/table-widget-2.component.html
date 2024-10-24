@@ -1,0 +1,37 @@
+<section class="section-tableBlock multipleTableBlock">
+    <div class="container">
+        <div class="section-head" *ngIf="sectionTitle">
+            <h2 class='section-subtitle' *ngIf='sectionTitle' [innerHTML]="sectionTitle"></h2>
+        </div>
+        <div class="common-table common-multiple-table">
+            <ng-container *ngFor="let table of tableArray">
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan='2'>{{ table.header }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let row of table.tableRows" 
+                            [ngClass]="{'row-with-colspan': row.rowColspan, 'row-without-colspan': !row.rowColspan}">
+
+                            <td *ngIf="row.rowColspan" colspan="2">
+                              <div *ngIf="row.columns[0]?.columnValue" class="section-description" [innerHTML]="row.columns[0].columnValue"></div>
+                            </td>
+                            <ng-container *ngIf="!row.rowColspan">
+                              <td *ngFor="let column of row.columns">
+                                <div class="section-description" *ngIf="column.columnValue" [innerHTML]="column.columnValue"></div>
+                              </td>
+                            </ng-container>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+            </ng-container>
+        </div>  
+        <div class="tableBlockBottom" *ngIf="sectionDescription">
+            <div class="section-description" *ngIf="!isDescriptionEmpty(sectionDescription)" [innerHTML]="sectionDescription">
+            </div>  
+        </div> 
+    </div>
+</section>

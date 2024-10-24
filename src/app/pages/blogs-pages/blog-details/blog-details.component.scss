@@ -1,0 +1,193 @@
+@import "../../../../assets/styles/guidelines.scss";
+
+.blogDetail-wrap{
+    .blogpost-container{
+        max-width: 736px;
+        margin: 0 auto;
+        width: 100%;
+    }
+    .commonBadge{
+        position: static;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: 0 0 16px;
+    }
+    .blogPost-title{
+        @include heading58;
+        color: $black;
+        margin: 0 0 16px;
+        padding: 0 35px;
+    }
+    .blogPost-image{
+        margin: 64px 0 0;
+        display: block;
+        width: 100%;
+
+        .blogPost-thumb{
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            display: block;
+            border-radius: 16px;
+        }
+    }
+    .section-description{
+        display: block;
+        width: 100%;
+        margin: 0 0 64px;
+        
+        img{
+            border-radius: 16px;
+            margin-bottom: 24px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+        h2{
+            margin: 64px 0 24px;
+            width: 100%;
+        }
+        h3{
+            margin: 24px 0;
+            display: inline-block;
+            width: 100%;
+        }
+        p{
+            margin-bottom: 22px;
+        }
+    }
+    .blog-details-header{
+        margin: 0 0 64px;
+        position: relative;
+        width: 100%;
+
+        .blogpost-container{
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            padding: 86px 0 0;
+        }
+        .blog-hero{
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 1;
+            height: 487px;
+            background-size: cover;
+        }
+    }
+    .blogPost-bottom{
+        width: 100%;
+        padding: 32px 0 0;
+        margin: 40px 0 96px;
+        border-top: 1px solid $gray100;
+
+        .blogPost-authorInfo{
+            width: 100%;
+            display: block;
+            background-color: $gray50;
+            border-radius: 16px;
+            padding: 48px;
+            overflow: hidden;
+            margin: 0 0 24px;
+
+            .authorThumbBlock{
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                flex-wrap: wrap;
+                width: 100%;
+                gap: 16px;
+                margin: 0 0 24px;
+
+                .author-img{
+                    height: 64px;
+                    width: 64px;
+                    border-radius: 50%;
+                    overflow: hidden;
+
+                    .author-thum{
+                        max-height: 64px;
+                        width: auto;
+                        border-radius: 50%;
+                    }
+                    .author-name{
+                        font-weight: 600;
+                    }
+                }
+            }
+            .section-description{
+                margin: 0;
+
+                p{
+                    &:last-child{
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+        .blogPost-note{
+            @include text12;
+
+            p{
+                &:last-child{
+                    margin-bottom: 0;
+                }
+            }
+        }
+        .blogPost-share{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-items: center;
+            width: 100%;
+            margin: 0 0 64px;
+
+            .label-share{
+                @include text16;
+                margin: 0 32px 0 0;
+                display: block;
+                width: auto;
+                font-weight: 600;
+                color: $black;
+            }
+            .share-icons{
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: flex-start;
+                gap: 32px;
+
+                .shareIcon-item{
+                    width: auto;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 20px;
+                    width: 20px;
+                    margin: auto;
+                    cursor: pointer;
+                    transition: all 0.35s ease-in-out;
+
+                    &:hover{
+                        opacity: 0.65;
+                    }
+                    .shareIcon-thumb{
+                        max-width: 20px;
+                        height: auto;
+                    }
+                }
+            }
+        }
+    }
+    .blog-details-content{
+        position: relative;
+        z-index: 2;
+    }
+}

@@ -1,0 +1,340 @@
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    text-decoration: none;
+}
+a {
+    text-decoration: none;
+}
+body {
+    font-family: $Font2;
+}
+.btn{
+    &.btn-secondary{
+        color: $white;
+    }
+}
+h1, h2, h3, h4, h5, h6{
+    font-family: $Font2;
+    font-weight: 700;
+    color: $black;
+}
+.inputField-group{
+    width: auto;
+    margin-left: -10px;
+    margin-right: -10px;
+
+    > .inputField-wrap{
+        padding-left: 10px;
+        padding-right: 10px;
+        width: 50%;
+        display: inline-block;
+        vertical-align: top;
+    }
+}
+.inputField-wrap{
+    margin-bottom: 16px;
+
+    textarea{
+        min-height: 120px;
+        resize: none;
+    }
+}
+select{
+    &.form-select{
+        background-size: 20px 16px;
+    }
+}
+blockquote {
+    border-left: 5px solid #ddd;
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+}
+code, pre {
+    background-color: #f8f9fa;
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+}
+.form-legend{
+    fieldset, legend {
+        all: revert;
+    }
+}
+/**/
+.carousel-indicators{
+    [data-bs-target]{
+        opacity: 1;
+        
+        &.active{
+            background-color: $yellow;
+        }
+    }
+}
+.owl-dots{
+    position: absolute;
+    top: auto;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    text-align: center;
+    height: auto;
+    width: auto;
+
+    .owl-dot{
+        border: 0;
+        margin: 0 3px;
+        padding: 0;
+        height: 3px;
+        width: 28px;
+        border-radius: 0;
+        background-color: $white;
+
+        &.active{
+            background-color: $yellow;
+        }
+        > span{
+            display: none !important;
+        }
+    }
+}
+.faqAccordion{
+    margin: 0 0 48px;
+    
+    .accordion-item{
+        border-color: $gray100;
+    }
+    .accordion-header{
+        .accordion-button{
+            box-shadow: none !important;
+            outline: none !important;
+            font-size: 20px;
+            line-height: 25px;
+            font-weight: 700;
+            background-color: $grayLight;
+            color: $black;
+            padding: 24px;
+        }
+        &:not(.collapsed){
+            .accordion-button{
+                background-color: $ctPrimary;
+                color: $white;
+
+                &:after {
+                    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important;
+                }
+            }
+        }
+    }
+    .accordion-body{
+        color: $gray500;
+
+        p{
+            margin-bottom: 34px;
+        }
+        ul{
+            margin-bottom: 29px;
+        }
+        > div{
+            > p:last-child, 
+            > ul:last-child,
+            > ol:last-child{
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+.aboutUsPage-wrapper{
+    .section-loansHeroBanner{
+        .section-description{
+            @include text16; 
+        }
+        .loansHero-content{
+            max-width: 633px;
+        }
+    }
+}
+.section-tableBlock{
+    padding: 96px 0;
+    margin: 48px 0;
+    width: 100%;
+    display: block;    
+
+    &.multipleTableBlock{
+        background-color: $white;
+        padding: 0;
+        
+        .section-head{
+            max-width: 635px;
+        }
+        table{
+            margin-bottom: 48px;
+        }
+        .tableBlockBottom{
+            .section-description{
+                margin-top: 0;
+                margin-bottom: 0;
+            }
+        }
+    }
+    .section-head{
+        max-width: 925px;
+        width: 100%;
+        margin: 0 auto 64px;
+
+        .section-subtitle{
+            margin: 0;
+        }
+    }
+    .common-table {
+        .section-description{
+            *{
+                color: $gray700;
+            }
+            p{
+                &:last-child{
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }   
+    .tableBlockBottom{
+        width: 100%;
+        margin: 0 auto;
+        max-width: 1116px;
+        display: block;
+
+        .section-description{
+            font-family: $Font1;
+            margin: 48px auto 0;
+            display: block;
+            width: 100%;
+            font-size: 12px;
+            line-height: normal;
+
+            h6{
+                margin-bottom: 24px;
+            }
+            p{
+                &:last-child{
+                    margin-bottom: 0;
+                }
+            }
+        }
+        .btnBlock{
+            text-align: center;
+            margin: 48px auto 0;
+
+            .btn{
+                min-width: 354px;
+            }
+        }
+    }    
+}
+.common-table {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 1116px;
+    border-collapse: collapse;
+    border-radius: 16px;
+    overflow: hidden;
+
+    &.text-center,
+    &.common-multiple-table{
+        table{
+            th,td{
+                text-align: center;
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+            td{
+                .section-description{
+                    text-align: center;
+                }
+            }
+        }
+    }
+    &.text-small{
+        table {
+            th{
+                font-size: 16px;
+            }
+        }
+    }
+    &.bgColor-alternate{
+        table {
+            tbody{
+                tr {
+                    background-color: $grayLight2;
+                    
+                    &:nth-child(4n-3),
+                    &:nth-child(4n-2){
+                        background-color: $white;
+                    }
+                }
+            }
+        }
+    }    
+    table {
+        width: 100%;
+        table-layout: fixed;
+        border-spacing: 0;
+        border: 1px solid $gray100;
+        border-collapse: initial;
+        border-radius: 16px;
+        overflow: hidden;
+        
+        th, td {
+            text-align: left;
+        } 
+    }      
+    thead {
+        background-color: $ctPrimary;
+        color: $white;
+        border: 1px solid $gray100;
+        border-radius: 16px 16px 0 0;
+
+        th {
+            padding: 24px 30px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: normal;
+        } 
+    }      
+    tbody{ 
+        tr{
+            background-color: $white;
+            
+            &:nth-child(even){
+                background-color: $grayLight;
+            }
+            &:last-child{
+                td{
+                    border-bottom: 0;
+                }
+            }
+            &.row-with-colspan{
+                background-color: $white;
+            }
+            &.row-without-colspan{
+                background-color: $grayLight;
+            }
+        }   
+        td {
+            padding: 24px 30px;
+            border-bottom: 1px solid $gray100;
+            vertical-align: top;
+            font-size: 16px;
+            line-height: normal;
+        }
+    }
+} 
+.contact-form-block{
+    display: block;
+    width: 100%;
+
+    .contactForm-wrap{
+        margin: 0 0 40px;
+    }
+}

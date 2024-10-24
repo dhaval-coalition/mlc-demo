@@ -1,0 +1,289 @@
+@import "../../../assets/styles/guidelines.scss";
+
+.header{
+    padding: 9px 0;
+    display: block;
+    width: 100%;
+    background-color: $white;
+
+    .container{
+        max-width: 1480px;
+    }
+    .mobile-toggler{
+        display: block;
+        appearance: none;
+        height: 40px;
+        width: 40px;
+        margin: 0 15px 0 0;
+        border: 0;
+        padding: 0;
+        line-height: normal;
+        background-color: transparent;
+        color: $black;
+
+        @include ipad_small{
+            display: none;
+        }
+        svg{
+            fill: currentColor;
+            height: 26px;
+            width: 26px;
+        }
+    }
+    .header-logo{
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+
+        @include ipad_small{
+            display: block;
+        }
+        .headerlogo-thumb{
+            max-width: 140px;
+
+            @include mobile-large{
+                max-width: 150px;
+            }
+            @include tab_small{
+                max-width: 173px;
+            }
+        }
+    }
+    .header-wrap{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        gap: 15px;
+    }
+    .header-navBar{
+        display: none;
+        
+        @include ipad_small{
+            display: block;
+        }
+        .navBar-wrap{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            gap: 15px;
+
+            @include ipad_large{
+                gap: 20px;
+            }
+            @include tab_small{
+                gap: 48px;
+            }
+            .navBar-items{
+                display: flex;
+                position: relative;
+
+                &:hover{
+                    > .navSubBar-wrap{
+                        opacity: 1;
+                        visibility: visible;
+                    }
+                }
+                .navBar-action{
+                    @include text16;
+                    font-weight: 600;
+                    color: $black;
+                    display: flex;
+                    align-items: baseline;
+                    justify-content: center;
+                    text-align: center;
+
+                    @include tab_small{
+                        @include text18;
+                    }
+                    &:hover{
+                        color: $ctPrimary;
+                    }
+                    .icon{
+                        font-size: 10px;
+                        line-height: normal;
+                        display: flex;
+                        margin: 0 0 0 4px;
+                        position: relative;
+                        top: -1px;
+                    }
+                }
+            }
+            > .navBar-items{
+                > .navBar-action{
+                    padding: 15px 0;
+                }
+            }
+        }
+        .navSubBar-wrap{
+            @include ct_transition;
+            opacity: 0;
+            visibility: hidden;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            width: auto;
+            min-width: 220px;
+            background-color: $white;
+            z-index: 9;
+            border-top: 3px solid $ctSecondary;
+            padding: 12px 24px;
+            @include ct_boxShadow25;
+
+            .navBar-items{
+                padding: 5px 0;
+                line-height: normal;
+                width: 100%;
+                display: block;
+                text-align: left;
+
+                .navBar-action{
+                    @include text16;
+                    font-weight: 500;
+                    width: 100%;
+                    display: block;
+                    text-align: left;
+                }
+            }
+        }
+    }
+    .header-btn{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: auto;
+        gap: 10px;
+
+        @include tab_small{
+            gap: 18px;
+        }
+    }
+    .mobileMenuNav{
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: block;
+        height: 100%;
+        width: 100%;
+        z-index: 99999;
+        opacity: 0;
+        visibility: hidden;
+        transition: all .5s ease-in-out;
+
+        @include ipad_small{
+            display: none;
+        }
+        .menu-button{
+            display: block;
+            appearance: none;
+            height: 34px;
+            width: 34px;
+            margin: 0;
+            border: 0;
+            padding: 0;
+            line-height: normal;
+            background-color: transparent;
+            float: right;
+
+            &:hover{
+                color: $ctPrimary;
+                i{
+                    transform: rotate(90deg);
+                }
+            }
+            i{
+                display: block;
+                font-size: 34px;
+                line-height: 34px;
+                transition: all 0.35s ease-in-out;
+            }
+        }
+        .menuOverlay{
+            content: "";
+            background-color: rgba($color: $black, $alpha: 0.75);
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            display: block;
+            transition: all .5s ease-in-out;
+        }
+        .mobileMenu-wrap{
+            position: fixed;
+            z-index: 2;
+            padding: 15px;
+            background-color: $white;
+            left: -300px;
+            width: 300px;
+            right: auto;
+            overflow-y: auto;
+            height: 100%;
+            transition: left 0.35s ease-in-out;
+
+            .header-navBar{
+                clear: left;
+                display: inline-block;
+                width: 100%;
+            }
+            .navBar-wrap{
+                display: block;
+                width: 100%;
+                gap: 0;
+
+                .navBar-items{
+                    display: block;
+                    width: 100%;
+                }
+                .navBar-action{
+                    display: block;
+                    width: 100%;
+                    margin: 0;
+                    padding: 3px 0;
+                    text-align: left;
+                    line-height: normal;
+
+                    .bi-chevron-down{
+                        display: none;
+                    }
+                }
+                .navSubBar-wrap{
+                    display: block;
+                    width: 100%;
+                    margin: 0;
+                    padding: 0 0 10px 15px;
+                    max-width: none;
+                    position: static;
+                    opacity: 1;
+                    visibility: visible;
+                    border: 0;
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+}
+::ng-deep {
+    body{
+        &.menu-open{
+            overflow-y: hidden;
+            
+            .mobileMenuNav {
+                opacity: 1 !important;
+                visibility: visible !important;
+              
+                .mobileMenu-wrap {
+                  left: 0 !important;
+                }
+            }
+        }
+    }
+}

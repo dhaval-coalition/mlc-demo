@@ -1,0 +1,26 @@
+<section class="section-weOffer">
+    <div class="container">
+        <div class="section-head" *ngIf="sectionTitle || sectionDescription">
+            <h2 class='section-title' *ngIf='sectionTitle'>{{sectionTitle}}</h2>
+            <div class="section-description" *ngIf="sectionDescription" [innerHTML]="sectionDescription">
+            </div>
+        </div>
+        <ng-container *ngFor="let item of items">
+            <div class='weOffer-inner' [ngStyle]="{'backgroundColor':item.bgColor}">
+                <div class='weOffer-row'>
+                    <div class="weOffer-content">
+                        <div [ngClass]="['section-description icon-color-' + (item.descriptionItemIcons)]" [innerHTML]="item.itemDescription">{{item.itemDescription}}</div>
+                        <div class='btnBlock' *ngIf='item.button && item.button.text.length > 0'>
+                            <a [ngClass]="['btn btn-' + (item.button.variant || 'secondary')]" [href]="item.button.url || '#'">
+                                {{item.button.text}}
+                            </a>                    
+                        </div>
+                    </div>
+                    <div class="weOffer-image">
+                        <img class='weOffer-thumb' [src]='item.thumbImage' alt='' />
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</section>

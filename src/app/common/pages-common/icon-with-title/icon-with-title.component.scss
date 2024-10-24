@@ -1,0 +1,68 @@
+@import "../../../../assets/styles/guidelines.scss";
+
+.section-iconWithTitle{
+    display: block;
+    width: 100%;   
+    margin: 48px 0;
+    
+    .iconWithTitleItemsBlock{
+        margin: 0 auto;
+        width: 100%;
+        max-width: 1116px;
+    }
+    .iconWithTitleItems{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: center;
+        width: auto;
+        margin: 0 -15px;
+        gap: 64px 0;
+
+        .iconWithTitle-item{
+            margin: 0;
+            width: 25%;
+            display: inline-block;
+            float: none;
+            text-align: center;
+            padding: 0 15px;
+            
+            .iconWithTitle-icons{
+                height: 80px;
+                width: 80px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 24px;
+                background-color: transparent;
+                color: $white;
+
+                .iconWithTitle-thumb{
+                    max-height: 80px;
+                    width: auto;
+                    margin: auto;
+                }
+            }
+            .iconWithTitle-body{
+                display: block;
+                margin: 24px 0 0;
+            }
+            .iconWithTitle-title{
+                font-size: 17px;
+                line-height: 22px;
+                font-weight: 700;
+                color: $black;
+                margin: 0 0 16px;
+            }
+            .iconWithTitle-description{
+                line-height: 28px;
+
+                p{
+                    &:last-child{
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+}

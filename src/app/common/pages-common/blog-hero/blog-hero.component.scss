@@ -1,0 +1,27 @@
+@import "../../../../assets/styles/guidelines.scss";
+
+.blog-hero{
+    margin: 0 0 48px;
+    display: block;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    
+    .bannerOverlay{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+        min-height: 248px;
+    }
+    .section-title{
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        width: 100%;
+        display: block;
+    }
+}

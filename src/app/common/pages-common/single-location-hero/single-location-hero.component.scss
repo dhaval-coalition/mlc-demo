@@ -1,0 +1,69 @@
+@import "../../../../assets/styles/guidelines.scss";
+
+.section-singleLocationHeroBanner{
+    padding: 82px 0 0;
+    margin: 0 0 48px;
+    width: 100%;
+    display: block;
+
+    .section-title{
+        @include heading58;
+        margin: 0 0 16px;
+    }
+    .section-description{
+        @include text21;
+        margin: 0 0 48px;
+        color: $black;
+    }
+    .singleLocationHeroBanner-wrap{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .singleLocationHero-content{
+        width: 56%;
+        display: inline-block;
+        max-width: 525px;
+        padding: 15px 0;
+    }
+    .singleLocationHero-image{
+        width: 44%;
+        display: inline-block;
+        text-align: right;
+
+        .singleLocationHero-thumb{
+            margin: 0 0 0 auto;
+            max-width: 543px;
+            height: auto;
+            object-fit: cover;
+        }
+    }
+    .singleLocationHero-btnBlock{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 20px;
+
+        .btnBlock{
+            margin: 0;
+
+            .btn{
+                padding-left: 65px;
+                padding-right: 65px;
+            }
+            .btn-outline-secondary{
+                background-color: $white;
+                color: $ctSecondary;
+
+                &:hover{
+                    background-color: $ctSecondary;
+                    color: $white;
+                }
+            }
+        }
+    }
+}

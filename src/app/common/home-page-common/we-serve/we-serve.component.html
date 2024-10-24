@@ -1,0 +1,35 @@
+<section class="section-weServe">
+    <div class="container">
+        <h2 class='section-subtitle' *ngIf='sectionTitle'>{{sectionTitle}}</h2>
+        <div class="locationGuideItemsBlock" *ngIf="locationGuideList && locationGuideList.length > 0">
+            <div class="locationGuideList">
+                <div class="locationGuide-item" *ngFor="let item of locationGuideList">
+                    <div class='locationGuide-icons' [ngStyle]="{'backgroundColor':item.bgColor}">
+                        <img class='locationGuide-thumb' [src]='item.icon' alt='' />
+                    </div>
+                    <div class="locationGuide-title" *ngIf='item.title'>{{item.title}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="weServeItemsList" *ngIf="statesList && statesList.length > 0">
+            <div class="weServeItems">
+                <div class="weServe-item" *ngFor="let item of statesList">
+                    <div class="weServe-body" (click)="goToState(item.url)">
+                        <div class="weServeImg">
+                            <img class='weServe-thumb' [src]='item.thumbnail' alt='' />
+                        </div>
+                        <span class='weServe-title'>{{item.name}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="weServeBottom">
+            <div class='weServe-description' [innerHTML]="itemDescription"></div>
+            <div class='btnBlock' *ngIf='buttonStyle && buttonStyle.text.length > 0'>
+                <a [ngClass]="['btn btn-' + (buttonStyle?.variant || 'secondary')]" [href]="buttonStyle?.url || '#'">
+                    {{buttonStyle?.text}}
+                </a>                    
+            </div>
+        </div>
+    </div>
+</section>

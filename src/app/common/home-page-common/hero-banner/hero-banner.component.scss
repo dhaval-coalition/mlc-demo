@@ -1,0 +1,210 @@
+@import "../../../../assets/styles/guidelines.scss";
+
+.section-heroBanner{
+    @include ctArrow;
+    width: 100%;
+    display: block;
+    background-color: $ctPrimary;
+    position: relative;
+    margin: 0 0 48px;
+
+    .ct-arrow{
+        @media (max-width: $ipad_small + 1) {
+            top: 23%;
+            transform: none;
+        }
+
+        &.ct-left-arrow{
+            left: 10px;
+
+            @include tab_small{
+                left: 32px;
+            }
+        }
+        &.ct-right-arrow{
+            right: 10px;
+
+            @include tab_small{
+                right: 32px;
+            }
+        }
+    }
+    .carousel-indicators{
+        bottom: 0;
+    }
+    .ct-slider-block{
+        padding: 108px 0;
+    }
+    .heroBannerBlock{
+        width: 100%;
+        display: block;
+
+        &:after{
+            display: block;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(90deg, rgba($ctPrimary, 0.75) 100%, rgba($ctPrimary, 1) 70%);
+            background-size: auto;
+
+            @include ipad_small{
+                background: linear-gradient(90deg, rgba($ctPrimary, 0.75) 65%, rgba($ctPrimary, 1) 70%);     
+            }
+        }
+        .heroBanner-thumb{
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            z-index: -1;
+            max-width: 100%;
+
+            @include ipad_small{
+                max-width: 1180px;                
+            }
+        }
+    }
+    .container{
+        position: relative;
+        z-index: 2;
+
+        @media (max-width: $tab_small + 1) {
+            max-width: calc(100% - 100px);
+            width: 100%;
+        }
+    }
+    .captionRight{
+        position: relative;
+        z-index: 2;
+        top: 0;
+        transform: none;
+        left: auto;
+        right: auto;
+        width: 100%;
+        padding: 40px 15px;
+        max-width: 100%;
+        margin: 0 auto;
+        
+        @include mobile_small{
+            width: 100%;
+            max-width: 500px;
+        }
+        @include ipad_small{
+            position: absolute;
+            right: 60px;
+            max-width: 410px;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        @include tab_small{
+            right: 7.5%;
+            max-width: 416px;
+            width: 100%;
+        }
+    }
+}
+.heroBanner-caption{
+    color: $white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 0;
+    width: 100%;
+    
+    @include ipad_small{
+        padding: 90px 0;        
+    }
+    @include tab_small{
+        padding: 108px 0;
+    }
+    .captionLeft{
+        max-width: 100%;
+
+        @include ipad_small{
+            max-width: calc(100% - 420px);
+        }
+        @include tab_small{
+            max-width: 532px;            
+        }
+    }
+    .caption-title{
+        @include heading40;
+        margin: 0 0 5px;
+        color: $white;
+
+        @include tab_small{
+            @include heading52;   
+            margin: 0 0 16px;         
+        }
+    }
+    .caption-description{
+        @include text21;
+        margin: 0 0 20px;
+
+        :last-child{
+            margin-bottom: 0;
+        }
+        @include tab_small{
+            margin: 0 0 40px;            
+        }
+    }
+    .caption-items{
+        ul{
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+
+            li{
+                @include text20;
+                font-weight: 600;;
+                line-height: normal;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                margin: 0 0 10px;
+
+                @include tab_small{
+                    margin: 0 0 20px;          
+                }
+                &:last-child{
+                    margin-bottom: 0;
+                }
+                .bullet-icon{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 50px;
+                    width: 50px;
+                    background-color: $white;
+                    border-radius: 50%;
+                    color: $ctSecondary;
+                    margin: 0 18px 0 0;
+
+                    @include tab_small{
+                        height: 64px;
+                        width: 64px;         
+                    }
+                    .icon-img{
+                        max-height: 40px;
+                        width: auto;
+                        display: block;
+                        text-align: center;
+                        margin: 0 auto;
+                        
+                        @include tab_small{
+                            max-height: 34px;      
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
