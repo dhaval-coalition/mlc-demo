@@ -1,9 +1,14 @@
 <section class="section-vipCanBlock">
     <div class="container">
-        <div class="vipCanBlock-wrap">
+        <div class="vipCanBlock-wrap" [ngClass]="{' section-full-width ':sectionFullWidth}">
+            <div class="section-head">
+                <h2 class='section-subtitle' *ngIf='sectionHeadTitle'>{{sectionHeadTitle}}</h2>
+                <div class="section-description" *ngIf="sectionHeadDescription" [innerHTML]="sectionHeadDescription">
+                </div>
+            </div>
             <div class="vipCanImg" *ngIf="bannerImage && bannerImage.length > 0">
                 <div class="thumbBlock">
-                    <img class='vipCan-thumb' [src]="bannerImage" alt='' />
+                    <img class='vipCan-thumb' [src]="bannerImage" [alt]="bannerImageAlt && bannerImageAlt.trim() ? bannerImageAlt : '' " height="545" width="545" />
                 </div>
             </div>
             <div class="vipCanTxt">
@@ -11,7 +16,7 @@
                 <ng-container *ngIf="vipItems && vipItems.length > 0">
                     <div class='vipCanItems' *ngFor="let item of vipItems">
                         <div class='vipCanIcon' *ngIf="item.icon">
-                            <img class='vipCanIcon-thumb' [src]='item.icon' alt='' />
+                            <img class='vipCanIcon-thumb' [src]='item.icon' [alt]="item.iconImageAlt && item.iconImageAlt.trim() ? item.iconImageAlt : '' " height='80' width='80' fetchpriority="auto" />
                         </div>
                         <div class="vipCanContent">
                             <h3 class='section-subtitle' *ngIf='item.itemName'>{{item.itemName}}</h3>

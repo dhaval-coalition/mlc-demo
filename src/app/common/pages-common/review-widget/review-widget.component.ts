@@ -1,39 +1,19 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { BuilderBlock } from '@builder.io/angular';
+import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
+import { TrustpilotWidgetComponent } from '../trustpilot-widget/trustpilot-widget.component';
 
 @Component({
   selector: 'app-review-widget',
+  standalone: true,
+  imports: [CommonModule, TrustpilotWidgetComponent],
   templateUrl: './review-widget.component.html',
   styleUrl: './review-widget.component.scss'
 })
-@BuilderBlock({
-  tag: 'app-review-widget',
-  name: 'Review widget',
-  inputs:[
-    {
-      name: 'bgColor',
-      friendlyName: 'Background Color',
-      type: 'color',
-      defaultValue: '#EBF7F0',
-    },
-    {
-      name: 'logoItems',
-      type: 'list',
-      subFields:[
-        {
-          name: 'logo',
-          type: 'file',
-          friendlyName: 'Logo',
-          allowedFileTypes: ['jpeg', 'jpg', 'png', 'svg'],
-        }
-      ]
-    }
-  ]
-})
-export class ReviewWidgetComponent implements OnInit {
+export class ReviewWidgetComponent {
   @Input() bgColor = '';
   @Input() logoItems:{
     logo: string,
+    logoImageAlt: string,
   }[] = []
 
   constructor(){

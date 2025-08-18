@@ -3,16 +3,29 @@
 .section-aboutWeDifferent{
     display: block;
     width: 100%;   
-    margin: 48px 0;
+    margin: 30px 0;
 
+    @include mobile_large{
+        margin: 35px 0;
+    }
+    @include ipad_small{
+        margin: 48px 0;
+    }
     .section-head{
         text-align: center;
-        margin-bottom: 64px;
+        margin-bottom: 30px;
         
+        @include mobile_large{
+            margin-bottom: 64px;
+        }
         .section-subtitle{
-            @include heading40;
+            @include heading32;
             letter-spacing: -0.8px;
             margin: 0 auto;
+
+            @include ipad_small{
+                @include heading40;
+            }
         }
     }
     .weDifferentItemsBlock{
@@ -27,16 +40,22 @@
         justify-content: center;
         width: auto;
         margin: 0 -12px;
-        gap: 64px 0;
+        gap: 24px 0;
 
+        @include tab_small{
+            gap: 64px 0;            
+        }
         .weDifferent-item{
             margin: 0;
-            width: 33.33%;
+            width: 100%;
             display: inline-block;
             float: none;
             text-align: center;
             padding: 0 12px;
             
+            @include mobile_small{
+                width: 33.33%;
+            }
             .weDifferent-icons{
                 height: 80px;
                 width: 80px;
@@ -45,35 +64,65 @@
                 justify-content: center;
                 border-radius: 50%;
                 overflow: hidden;
-                margin: 0 auto 24px;
+                margin: 0 auto 12px;
                 background-color: transparent;
                 color: $white;
 
+                @include mobile_large{
+                    margin: 0 auto 24px;
+                }
                 .weDifferent-thumb{
-                    max-height: 49px;
+                    max-height: 40px;
                     width: auto;
                     margin: auto;
+
+                    @include mobile_small{
+                        max-height: 49px;
+                    }
                 }
             }
             .weDifferent-body{
                 display: block;
-                margin: 24px 0 0;
+                margin: 12px 0 0;
+
+                @include mobile_large{
+                    margin: 24px 0 0;
+                }
             }
             .weDifferent-title{
-                font-size: 17px;
-                line-height: 22px;
+                font-size: 16px;
+                line-height: 20px;
                 font-weight: 700;
                 color: $black;
-                margin: 0 0 16px;
+                margin: 0 0 8px;
+
+                @include mobile_large{
+                    font-size: 17px;
+                    line-height: 22px;
+                    margin: 0 0 16px;
+                }
             }
         }
     }
     .bottomBtnBlock{
         text-align: center;
-        margin: 48px auto 0;
+        margin: 24px auto 0;
 
+        @include mobile_large{
+            margin: 35px auto 0;
+        }
+        @include ipad_small{
+            margin: 48px auto 0;
+        }
         .btn{
-            min-width: 354px;
+            min-width: 1px;
+            width: 100%;
+            max-width: 100%;
+
+            @include mobile_small{
+                min-width: 354px;     
+                width: auto;           
+            }
         }
     }
 }

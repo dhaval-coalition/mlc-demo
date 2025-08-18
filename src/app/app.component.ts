@@ -1,50 +1,83 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { BodyClassService } from './shared/services/body-class.service';
-import { filter } from 'rxjs/operators';
-import { Router, NavigationEnd, Event as RouterEvent } from '@angular/router';
+import { Component, OnInit, Inject, PLATFORM_ID, inject } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { environment } from '../environments/environment';
+import { CommonModule } from '@angular/common';
+import { customComponents } from './common/builder-registry';
+import { BuilderContent, Content, fetchOneEntry } from '@builder.io/sdk-angular';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [
+    RouterOutlet, 
+    CommonModule,
+    Content
+  ],
   templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit, OnDestroy {
-  title = 'minuteloancenter-angular';
-  private routerSubscription: any;
+export class AppComponent implements OnInit {
+  apiKey = environment.builderAPI;
+  modelHeader = 'header'; // Builder model name for the header
+  modelFooter = 'footer'; // Builder model name for the footer
+  contentHeader: BuilderContent | null = null;
+  contentFooter: BuilderContent | null = null;
+  customComponents = customComponents; // Ensure this is initialized here
+  private http = inject(HttpClient);
 
-  constructor(private router: Router, private bodyClassService: BodyClassService) {}
-  
-  ngOnInit() {
-    this.updateBodyClass(this.router.url);
-    this.routerSubscription = this.router.events.pipe(
-      filter((event: RouterEvent): event is NavigationEnd => event instanceof NavigationEnd)
-    ).subscribe((event: NavigationEnd) => {
-      this.updateBodyClass(event.urlAfterRedirects);
+  constructor(
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
+
+  async ngOnInit() {
+    // Use Angular router instead of window.location for SSR compatibility
+    const urlPath = this.router.url.split('?')[0] || "/";
+
+    // Fetch header content
+    const builderContentHeader = await fetchOneEntry({
+      model: this.modelHeader,
+      apiKey: this.apiKey,
+      userAttributes: { urlPath },
+      fetch: this._httpClientFetch,
     });
-  }
 
-  updateBodyClass(url: string) {
-    // Define body classes for routes and patterns
-    const pageClasses = [
-      { pattern: /^\/home$/, className: 'home-page' },
-      { pattern: /^\/about$/, className: 'aboutUs-page' },
-      { pattern: /^\/loans$/, className: 'loans-page' },
-      { pattern: /^\/contact$/, className: 'contact-page' },
-      { pattern: /^\/locations$/, className: 'locations-page' },
-      { pattern: /^\/locations\/[^/]+$/, className: 'single-locations-page' },
-      { pattern: /^\/blog(\/.*)?$/, className: 'blog-page' },
-    ];
-  
-    // Find a matching class based on the pattern
-    const matchedClass = pageClasses.find((entry) => entry.pattern.test(url))?.className;
-    const bodyClass = matchedClass || 'default-page';
-  
-    // Set the body class
-    this.bodyClassService.setBodyClass(bodyClass);
-  }  
+    // Fetch footer content
+    const builderContentFooter = await fetchOneEntry({
+      model: this.modelFooter,
+      apiKey: this.apiKey,
+      userAttributes: { urlPath },
+      fetch: this._httpClientFetch,
+    });
 
-  ngOnDestroy() {
-    if (this.routerSubscription) {
-      this.routerSubscription.unsubscribe();
+    if (builderContentHeader) {
+      this.contentHeader = builderContentHeader;
+    }
+
+    if (builderContentFooter) {
+      this.contentFooter = builderContentFooter;
     }
   }
+
+  // Custom fetch function that uses Angular's HttpClient for SSR compatibility
+  private _httpClientFetch = async (url: string, options?: any) => {
+    return firstValueFrom(
+      this.http.request<any>(options?.method || 'GET', url, {
+        body: options?.body,
+        headers: options?.headers as any,
+        ...options,
+        observe: 'response',
+        responseType: 'json',
+      })
+    ).then((response: any) => {
+      return {
+        ok: response.status >= 200 && response.status < 300,
+        status: response.status,
+        json: () => Promise.resolve(response.body),
+      };
+    });
+  };
 }

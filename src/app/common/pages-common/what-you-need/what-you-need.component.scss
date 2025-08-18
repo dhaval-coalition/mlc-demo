@@ -1,25 +1,48 @@
 @import "../../../../assets/styles/guidelines.scss";
 
 .section-whatYouNeed{
-    padding: 48px 0;
     width: 100%;
     display: block;
+    padding: 30px 0;
     
+    @include mobile_large{
+        padding: 35px 0;
+    }
+    @include ipad_small{
+        padding: 48px 0;
+    }    
     .whatYouNeed-wrap{
         display: flex;
         flex-wrap: wrap;
         align-items: center;
         justify-content: space-between;
         width: 100%;
-        padding: 96px;
         border-radius: 16px;
         overflow: hidden;
+        padding: 24px;
+    
+        // @include mobile_xsmall{
+        //     padding: 40px;        
+        // }
+        @include mobile_large{
+            padding: 60px;
+        }
+        @include tab_small{
+            padding: 96px;
+        }
     }
     .whatYouNeedTxt{
-        width: 50.5%;
+        width: 100%;  
         
+        @include ipad_small{
+            width: 50.5%;      
+        }
         .section-subtitle{
-            margin: 0 0 48px;
+            margin: 0 0 24px;
+
+            @include ipad_small{
+                margin: 0 0 48px;
+            }
         }
         .whatYouNeedItems{
             width: 100%;
@@ -27,45 +50,71 @@
         }
         .whatYouNeed-item{
             display: flex;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
             align-items: center;
             justify-content: flex-start;
             width: 100%;
-            margin: 0 0 32px;
+            margin: 0 0 16px;
 
+            @include tab_small{
+                margin: 0 0 32px;
+            }
             &:last-child{
                 margin-bottom: 0;
             }
             .whatYouNeed-icons{
-                height: 64px;
-                width: 64px;
+                height: 54px;
+                min-width: 54px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 border-radius: 50%;
                 overflow: hidden;
-                margin: 0 24px 0 0;
+                margin: 0 12px 0 0;
                 background-color: $ctPrimary;
                 color: $white;
 
+                @include mobile_small{
+                    height: 64px;
+                    min-width: 64px;
+                    margin: 0 24px 0 0;
+                }
                 img{
-                    max-height: 40px;
+                    max-height: 36px;
                     width: auto;
                     margin: auto;
+
+                    @include mobile_small{
+                        max-height: 40px;
+                    }
                 }
             }
             .whatYouNeed-name{
-                font-size: 17px;
-                line-height: 22px;
-                font-weight: 700;
+                font-size: 16px;
+                line-height: 20px;
+                font-weight: 600;
                 color: $black;
+
+                @include mobile_small{
+                    font-size: 20px;
+                    line-height: 26px;                    
+                }
             }
         }
     }
     .whatYouNeedImg{
-        width: 49.5%;
-        padding: 0 0 0 96px;
+        width: 100%;
+        padding: 0 0 40px;
+        order: -1;
 
+        @include ipad_small{
+            width: 49.5%; 
+            padding: 0 0 0 70px;
+            order: inherit;
+        }
+        @include tab_small{
+            padding: 0 0 0 96px;
+        }
         .thumbBlock{
             border-radius: 8px;
             overflow: hidden;

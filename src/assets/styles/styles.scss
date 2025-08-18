@@ -1,0 +1,305 @@
+// regular style toast
+@import 'guidelines.scss';
+
+/******************** reCAPTCHA BADGE Styles ********************/
+.grecaptcha-badge { visibility: hidden; }
+
+/******************** LiveHelpNow Styles ********************/
+.processor {
+    height: 4px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+	left: 0;
+    z-index: 1000;
+    overflow: hidden;
+    background-color: #ddd;
+}
+
+.processor:before {
+    display: block;
+    position: absolute;
+    content: "";
+    left: -200px;
+    width: 200px;
+    height: 4px;
+    background-color: #2980b9;
+    animation: processor 2s linear infinite;
+}
+
+@keyframes processor {
+    from {
+        left: -200px;
+        width: 30%;
+    }
+
+    50% {
+        width: 30%;
+    }
+
+    70% {
+        width: 70%;
+    }
+
+    80% {
+        left: 50%;
+    }
+
+    95% {
+        left: 120%;
+    }
+
+    to {
+        left: 100%;
+    }
+}
+
+/* Absolute Center Spinner */
+.loading {
+  position: fixed;
+  z-index: 999;
+  height: 2em;
+  width: 2em;
+  overflow: visible;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+/* Transparent Overlay */
+.loading:before {
+  content: '';
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.3);
+}
+
+/* :not(:required) hides these rules from IE9 and below */
+.loading:not(:required) {
+  /* hide "loading..." text */
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+.loading:not(:required):after {
+  content: '';
+  display: block;
+  font-size: 10px;
+  width: 1em;
+  height: 1em;
+  margin-top: -0.5em;
+  -webkit-animation: spinner 1500ms infinite linear;
+  -moz-animation: spinner 1500ms infinite linear;
+  -ms-animation: spinner 1500ms infinite linear;
+  -o-animation: spinner 1500ms infinite linear;
+  animation: spinner 1500ms infinite linear;
+  border-radius: 0.5em;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.5) -1.5em 0 0 0, rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+  box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0, rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+}
+
+/* Animation */
+
+@-webkit-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-o-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+/******************** Overwrite Default Styles ********************/
+html, body {
+	height: 100%;
+	min-height: 100vh;
+	font-family: 'Sora', sans-serif;
+	font-size: 14px;
+	padding-top: 0px;
+
+	@media (max-width: #{ $mobile_large + 1 }) {
+		padding-top: 0px;
+	}
+
+	@media (max-width: #{ $mobile_small + 1 }) {
+		padding-top: 0px;
+	}
+
+	@media (max-width: #{ $mobile_xsmall + 1 }) {
+		padding-top: 0px;
+	}
+}
+img{ width: 100%; }
+
+
+/******************** Overwrite Bootstrap Styles ********************/
+.modal {
+	z-index: 105000;
+}
+
+.card {
+	width: 96%;
+	max-width: 600px;
+	margin: auto;
+	border-radius: 10px;
+	box-shadow: 0 8px 6px -6px #555;
+	margin-top: 1rem;
+}
+
+.card-body {
+	padding: 0.5rem 1.25rem;
+}
+
+.btn-sm {
+	font-size: .875rem !important;
+	font-weight: normal !important;
+}
+.btn-block{
+	width: 100%;
+}
+
+.btn-outline-secondary {
+	border: 1px solid #ced4da !important;
+}
+
+.btn-outline-success {
+	border: 1px solid #28a745 !important;
+}
+
+.form-control {
+	padding: 0.375rem 1rem;
+	height: inherit;
+}
+
+
+/******************** Global Specific Styles for VIP ********************/
+.bg {
+	width: 100%;
+	min-height: 100vh;
+	height: 100%;
+	background: linear-gradient(180deg, rgba(136,210,223,1) 0%, rgba(93,182,199,1) 100%);
+	padding-bottom: 100px;
+}
+.builder-header {
+	padding: 90px 0;
+	min-height: 100%;
+	@media (max-width: #{ $mobile_small + 1 }) {
+		padding-top: 140px;
+	}
+}
+.flinksconnect {
+	width: 100%;
+}
+.material-icons{
+    vertical-align: middle;
+}
+.superscript{
+    vertical-align: top;
+    font-size: 14px;
+}
+.createAccount {
+    font-size: 11pt;
+    color: cornflowerblue;
+    text-decoration: underline;
+}
+.logo{
+    width: 90%;
+    max-width: 100px;
+    padding-top: 10px;
+}
+.headerNav {
+    background-color: whitesmoke;
+    padding: 5px 0;
+}
+.headerNav img {
+    height: 30px;
+    padding-top: .25rem;
+
+}
+.footerNav {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding-bottom: 20px;
+}
+.footerNav img {
+    margin-top:5px;
+    width: 40px;
+}
+.backBtn{
+    width: 20px;
+}
+.pointer{ cursor: pointer; }

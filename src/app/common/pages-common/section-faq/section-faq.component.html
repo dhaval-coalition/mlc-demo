@@ -1,0 +1,24 @@
+<section class="section-common-faq">
+    <div class="sectionCommon-faq-wrap">
+        <h2 class='section-subtitle-faq' *ngIf='sectionTitle'>{{sectionTitle}}</h2>
+        <div class='faqAccordion' *ngIf='faqAccordionObject'>
+            <h2 class='faqAccordion-title' *ngIf='faqAccordionObject.accordionBlockTitle'>{{faqAccordionObject.accordionBlockTitle}}</h2>
+            <div class="accordionitems-wrap" ngbAccordion [closeOthers]="true" *ngIf="faqAccordionObject.faqItems && faqAccordionObject.faqItems.length > 0">
+                <ng-container *ngFor='let item of faqAccordionObject.faqItems; let i = index'>
+                    <div class='accordion-item' ngbAccordionItem [collapsed]="i !== 0">
+                        <div ngbAccordionHeader>
+                            <button ngbAccordionButton>Q. {{item.faqQue}}</button>
+                        </div>
+                        <div ngbAccordionCollapse>
+                            <div ngbAccordionBody>
+                                <ng-template>
+                                    <div [innerHTML]="item.faqAns"></div>
+                                </ng-template>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</section>

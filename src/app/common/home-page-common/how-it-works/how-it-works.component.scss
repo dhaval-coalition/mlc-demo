@@ -3,14 +3,27 @@
 .section-howItWorks{
     display: block;
     width: 100%;   
-    padding: 48px 0; 
-
+    padding: 30px 0;
+    
+    @include mobile_large{
+        padding: 35px 0;
+    }
+    @include ipad_small{
+        padding: 48px 0;
+    }
     .section-head{
         text-align: center;
-        margin-bottom: 52px;
+        margin-bottom: 30px;
         
+        @include mobile_large{
+            margin-bottom: 52px;
+        }        
         .section-subtitle{
-            margin: 0 0 24px;
+            margin: 0 0 16px;
+
+            @include mobile_large{
+                margin: 0 0 24px;
+            }
         }
     }
     .howItWorksItemsBlock{
@@ -29,31 +42,52 @@
 
         .howItWorks-item{
             margin: 0;
-            width: 33.33%;
+            width: 100%;
             display: inline-block;
             float: none;
             text-align: center;
             padding: 0 15px;
             
+            @include mobile_small{
+                width: 33.33%;
+            }
             .howItWorks-thumb{
                 width: auto;
-                max-height: 80px;
+                max-height: 60px;
                 margin: 0 auto;
                 display: block;
+
+                @include mobile_small{
+                    max-height: 80px;
+                }
             }
             .howItWorks-body{
                 display: block;
-                margin: 24px 0 0;
+                margin: 15px 0 0;
+
+                @include mobile_large{
+                    margin: 24px 0 0;
+                }
             }
             .howItWorks-title{
                 font-size: 17px;
                 line-height: 22px;
                 font-weight: 700;
                 color: $black;
-                margin: 0 0 16px;
+                margin: 0 0 6px;
+
+                @include mobile_large{
+                    margin: 0 0 16px;
+                }
             }
             .howItWorks-description{
                 line-height: 28px;
+
+                p{
+                    &:last-child{
+                        margin-bottom: 0;
+                    }
+                }
             }
         }
     }

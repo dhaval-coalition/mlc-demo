@@ -1,95 +1,15 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { BuilderBlock } from '@builder.io/angular';
 
 @Component({
   selector: 'app-about-vip-pays',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './about-vip-pays.component.html',
-  styleUrl: './about-vip-pays.component.scss',
-  encapsulation: ViewEncapsulation.None
+  styleUrl: './about-vip-pays.component.scss'
 })
-@BuilderBlock({
-  tag: 'app-about-vip-pays',
-  name: 'About vip pays',
-  inputs: [
-    {
-      name: 'sectionTitle',
-      type: 'string',
-      defaultValue: 'Being an MLC VIP Pays',
-      friendlyName: 'Title',
-    },
-    {
-      name: 'sectionDescription',
-      type: 'html',
-      defaultValue: 'Enter some text...',
-      friendlyName: 'Description',
-    },
-    {
-      name: 'vipPaysItems',
-      type: 'list',
-      friendlyName: 'Items',
-      defaultValue: [
-        {
-          itemBackgroundColor: '#EEF3F9',
-          itemName: 'Item Title',
-          videoOptions: {
-            aboutVideo: '',
-            autoplay: false,
-            loop: false,
-            muted: true,
-            controls: true
-          }
-        }
-      ],
-      subFields:[
-        {
-          name: 'itemBackgroundColor',
-          friendlyName: 'Background Color',
-          type: 'color',
-        },
-        {
-          name: 'videoOptions',
-          type: 'object',
-          friendlyName: 'Video Options',
-          subFields: [
-            {
-              name: 'aboutVideo',
-              friendlyName: 'Video ID',
-              type: 'string',
-              helperText: 'Enter only the YouTube video ID (e.g., A6C2Vs8HnsA).',
-            },
-            {
-              name: 'autoplay',
-              type: 'boolean',
-              friendlyName: 'Autoplay',
-            },
-            {
-              name: 'loop',
-              type: 'boolean',
-              friendlyName: 'Loop',
-            },
-            {
-              name: 'muted',
-              type: 'boolean',
-              friendlyName: 'Muted',
-            },
-            {
-              name: 'controls',
-              type: 'boolean',
-              friendlyName: 'Show Controls',
-            },
-          ]
-        },
-        {
-          name: 'itemDescription',
-          type: 'html',
-          friendlyName: 'Description',
-        },
-      ]
-    },
-  ]
-})
-export class AboutVipPaysComponent implements OnInit {
+export class AboutVipPaysComponent {
   @Input() sectionTitle = '';
   @Input() sectionDescription = '';
   @Input() vipPaysItems:{

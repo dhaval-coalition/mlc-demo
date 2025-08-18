@@ -2,14 +2,14 @@
     <div class="container">
         <div class="section-head">
             <h2 class='section-subtitle' *ngIf='sectionTitle'>{{sectionTitle}}</h2>
-            <div class="section-description" *ngIf="sectionDescription" [innerHTML]="sectionDescription">
+            <div class="section-description" [ngClass]="{' large-description-text ':largeText}" *ngIf="sectionDescription" [innerHTML]="sectionDescription">
             </div>
         </div>
         <div class="bestChoiceItemsBlock" *ngIf="bestChoiceItems && bestChoiceItems.length > 0">
             <div class="bestChoiceItems">
                 <div class="bestChoice-item" *ngFor="let item of bestChoiceItems">
                     <div class='bestChoice-icons' [ngStyle]="{'backgroundColor':item.iconBackgroundColor}">
-                        <img class='bestChoice-thumb' [src]='item.icon' alt='' />
+                        <img class='bestChoice-thumb' [src]='item.icon' [alt]="item.iconImageAlt && item.iconImageAlt.trim() ? item.iconImageAlt : '' " />
                     </div>
                     <div class="bestChoice-body">
                         <div class="bestChoice-title" *ngIf='item.itemName'>{{item.itemName}}</div>

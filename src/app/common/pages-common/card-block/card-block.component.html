@@ -1,0 +1,10 @@
+<section class="section-cardBlock">
+    <h2 class='section-title' *ngIf='sectionTitle'>{{sectionTitle}}</h2>
+    <div class="cardBlock-items">
+        <div class="cardBlock-item" *ngFor="let item of cardBlockItems">
+            <div class="cardBlock-body">
+                <div class="cardBlock-description" *ngIf="item.itemDescription" [innerHTML]="item.itemDescription"></div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -22,14 +22,22 @@ $Font3: "aktiv-grotesk-thin";
 /**/
 
 $tab_large: 1399px;
+$tab_medium: 1299px;
 $tab_small: 1199px;
 $ipad_large: 1024px;
 $ipad_small: 991px;
 $mobile_large: 767px;
 $mobile_small: 558px;
+$mobile_xsmall: 376px;
 
 @mixin tab-large {
     @media (min-width: #{$tab_large}) {
+        @content;
+    }
+}
+
+@mixin tab-medium {
+    @media (min-width: #{$tab_medium}) {
         @content;
     }
 }
@@ -64,6 +72,12 @@ $mobile_small: 558px;
     }
 }
 
+@mixin mobile-xsmall {
+    @media (min-width: #{$mobile_xsmall}) {
+        @content;
+    }
+}
+
 /**/
 
 @mixin heading58{
@@ -73,6 +87,14 @@ $mobile_small: 558px;
 @mixin heading52{
     font-size: 52px;
     line-height: 66px;
+}
+@mixin heading44{
+    font-size: 44px;
+    line-height: 50px;
+}
+@mixin heading36{
+    font-size: 36px;
+    line-height: normal;
 }
 @mixin heading40{
     font-size: 40px;
@@ -174,6 +196,7 @@ $mobile_small: 558px;
         display: flex;
         align-items: center;
         justify-content: center;
+		z-index: 1;
 
         @include mobile_large{
             height: 40px;
@@ -197,10 +220,21 @@ $mobile_small: 558px;
             text-align: center;
         }
     }
-} 
-.body{
-    // margin-top: 35px;
-    // margin-bottom: 70px;
+}
+.body {
+	padding-top: 90px;
+
+	@media (max-width: #{ $mobile_large + 1 }) {
+		padding-top: 120px;
+	}
+
+	@media (max-width: #{ $mobile_small + 1 }) {
+		padding-top: 120px;
+	}
+
+	@media (max-width: #{ $mobile_xsmall + 1 }) {
+		padding-top: 120px;
+	}
 }
 .form-control,.form-select{
     font-size: 1rem;
@@ -220,24 +254,55 @@ $mobile_small: 558px;
     }
 }
 .section-title{
-    @include heading52;
+    font-size: 36px;
+    line-height: 40px;
     font-weight: 700;
+
+    // @include mobile_small{
+    //     font-size: 38px;
+    //     line-height: 44px;        
+    // }
+    // @include mobile_large{
+    //     font-size: 40px;
+    //     line-height: 48px;
+    // }
+    @include ipad_small{
+        font-size: 48px;
+        line-height: 60px;
+    }
+    @include ipad_large{
+        @include heading52;        
+    }
 }
 .section-subtitle{
-    @include heading32;
+    font-size: 26px;
+    line-height: 30px;
     font-weight: 700;
+
+    @include mobile_large{
+        font-size: 28px;
+        line-height: 34px;
+    }
+    @include ipad_small{
+        @include heading32;
+    }
 }
 .section-description{
     @include text16;
     color: $gray700;
 
+    &.large-description-text{
+        @include mobile_large{
+            @include text21;
+        }
+    }
     ul,ol{
         padding-left: 15px;
     }
     li{
         padding: 8px 0;
     }
-    a{
+    a:not(.btn){
         color: $ctPrimary;
         font-weight: 700;
 
@@ -262,26 +327,18 @@ $mobile_small: 558px;
     font-weight: 600;
     padding: 8px 12px;
 }
-.breadcrumb-block{
-    .breadcrumb{
-        .loans-page &,
-        .aboutUs-page &,
-        .blog-page &,
-        .locations-page &,
-        .single-locations-page &{
-            position: absolute;
-            top: 0;
-            left: 12px;
-            z-index: 2;
-        }
-    }
-}
 .custom-pagination{
     display: block;
     width: 100%;
     text-align: center;
-    margin: 64px auto 20px;
+    margin: 24px auto 20px;
 
+    @include mobile_small{
+        margin: 48px auto 20px;
+    }
+    @include ipad_small{
+        margin: 64px auto 20px;
+    }
     ul{
         margin: 0 auto;
         padding: 0;
@@ -294,6 +351,7 @@ $mobile_small: 558px;
             float: none;
             text-align: center;
             padding: 0 6px;
+            margin: 6px 0;
 
             [disabled]{
                 filter: contrast(0.85);

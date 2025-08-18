@@ -3,8 +3,14 @@
 .section-iconWithTitle{
     display: block;
     width: 100%;   
-    margin: 48px 0;
+    margin: 30px 0;
     
+    @include mobile_large{
+        margin: 35px 0;
+    }
+    @include ipad_small{
+        margin: 48px 0;
+    }    
     .iconWithTitleItemsBlock{
         margin: 0 auto;
         width: 100%;
@@ -17,42 +23,76 @@
         justify-content: center;
         width: auto;
         margin: 0 -15px;
-        gap: 64px 0;
+        gap: 30px 0;
 
+        @include mobile_small{
+            gap: 50px 0;
+        }
+        @include ipad_small{
+            gap: 64px 0;
+        }
         .iconWithTitle-item{
             margin: 0;
-            width: 25%;
+            width: 100%;
             display: inline-block;
             float: none;
             text-align: center;
             padding: 0 15px;
-            
+
+            @include mobile_small{
+                width: 50%;
+            }
+            @include ipad_small{
+                width: 25%;
+            }
             .iconWithTitle-icons{
-                height: 80px;
-                width: 80px;
+                height: 70px;
+                width: 70px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                margin: 0 auto 24px;
+                margin: 0 auto 12px;
                 background-color: transparent;
                 color: $white;
 
+                @include mobile_small{
+                    height: 80px;
+                    width: 80px;
+                }
+                @include mobile_large{
+                    margin: 0 auto 24px;
+                }
                 .iconWithTitle-thumb{
-                    max-height: 80px;
+                    max-height: 60px;
                     width: auto;
                     margin: auto;
+
+                    @include mobile_small{
+                        max-height: 80px;
+                    }
                 }
             }
             .iconWithTitle-body{
                 display: block;
-                margin: 24px 0 0;
+                margin: 6px 0 0;
+
+                @include mobile_large{
+                    margin: 12px 0 0;
+                }
+                @include ipad_small{
+                    margin: 24px 0 0;
+                }
             }
             .iconWithTitle-title{
                 font-size: 17px;
                 line-height: 22px;
                 font-weight: 700;
                 color: $black;
-                margin: 0 0 16px;
+                margin: 0 0 8px;
+
+                @include mobile_small{
+                    margin: 0 0 16px;
+                }
             }
             .iconWithTitle-description{
                 line-height: 28px;

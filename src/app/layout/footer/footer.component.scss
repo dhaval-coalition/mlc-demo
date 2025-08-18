@@ -3,16 +3,9 @@
 .footer {
     background-color: $blue800;
     color: $white;
-    padding: 30px 0 20px;
+    padding: 30px 0 30px;
     display: block;
     width: 100%;
-    
-    @include mobile_large{
-        padding: 40px 0 20px;
-    }
-    @include ipad_large{
-        padding: 64px 0 30px;        
-    }
     a {
         color: $blue200;
         
@@ -124,4 +117,4 @@
             }
         }
     }
-}   
+}

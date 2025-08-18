@@ -1,19 +1,42 @@
 @import "../../../../assets/styles/guidelines.scss";
 
 .section-singleLocationHeroBanner{
-    padding: 82px 0 0;
-    margin: 0 0 48px;
     width: 100%;
     display: block;
+    padding: 50px 0 30px;
+    margin: 0 0 30px;
 
+    @include mobile_large{
+        margin: 0 0 35px;
+    }
+    @include ipad_small{
+        margin: 0 0 48px;
+        padding: 82px 0 0;
+    }
     .section-title{
-        @include heading58;
-        margin: 0 0 16px;
+        @include heading36;
+        margin: 0 0 5px;
+
+        @include ipad_small{
+            font-size: 48px;
+            line-height: 60px;
+        }
+        @include ipad_large{
+            @include heading52;   
+            margin: 0 0 16px;         
+        }
+        @include tab_small{
+            @include heading58;       
+        }
     }
     .section-description{
         @include text21;
-        margin: 0 0 48px;
         color: $black;
+        margin: 0 0 16px;
+
+        @include ipad_small{
+            margin: 0 0 48px;
+        }
     }
     .singleLocationHeroBanner-wrap{
         width: 100%;
@@ -23,21 +46,46 @@
         justify-content: space-between;
     }
     .singleLocationHero-content{
-        width: 56%;
+        width: 100%;
         display: inline-block;
-        max-width: 525px;
-        padding: 15px 0;
+        max-width: 100%;
+        padding: 0;
+
+        @include ipad_small{
+            width: 56%;
+            padding: 15px 15px 15px 0;
+        }
+        @include ipad_large{
+            padding: 15px 0;
+        }
+        @include tab_small{
+            max-width: 525px;
+        }
     }
     .singleLocationHero-image{
-        width: 44%;
-        display: inline-block;
-        text-align: right;
+        width: 100%;
+        display: block;
+        text-align: center;
+        order: -1;
+        padding: 0 20px 20px;
 
+        @include ipad_small{
+            width: 44%;
+            order: inherit;
+            display: inline-block;
+            text-align: right;
+            padding: 0;
+        }
         .singleLocationHero-thumb{
             margin: 0 0 0 auto;
-            max-width: 543px;
+            max-width: 100%;
             height: auto;
             object-fit: cover;
+
+            @include tab_small{
+                max-width: 543px;
+                aspect-ratio: 541 / 567;
+            }
         }
     }
     .singleLocationHero-btnBlock{
@@ -46,14 +94,22 @@
         flex-wrap: wrap;
         align-items: center;
         justify-content: flex-start;
-        gap: 20px;
+        gap: 10px;
 
+        @include mobile_small{
+            gap: 20px;
+        }
         .btnBlock{
             margin: 0;
 
             .btn{
-                padding-left: 65px;
-                padding-right: 65px;
+                padding-left: 30px;
+                padding-right: 30px;
+                
+                @include mobile_large{
+                    padding-left: 65px;
+                    padding-right: 65px;
+                }
             }
             .btn-outline-secondary{
                 background-color: $white;

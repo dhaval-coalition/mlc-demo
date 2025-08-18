@@ -9,7 +9,7 @@
             <div class="beVipItems">
                 <div class="beVip-item" *ngFor="let item of beVipItems">
                     <div class='beVip-icons'>
-                        <img class='beVip-thumb' [src]='item.icon' alt='' />
+                        <img class='beVip-thumb' [src]='item.icon' [alt]="item.iconImageAlt && item.iconImageAlt.trim() ? item.iconImageAlt : '' " />
                     </div>
                     <div class="beVip-body">
                         <div class="beVip-title" *ngIf='item.itemName'>{{item.itemName}}</div>

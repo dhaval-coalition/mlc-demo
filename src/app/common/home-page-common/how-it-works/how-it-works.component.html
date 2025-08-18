@@ -9,10 +9,10 @@
         <div class="howItWorksItemsBlock" *ngIf="howItWorkItems && howItWorkItems.length > 0">
             <div class="howItWorksItems">
                 <div class="howItWorks-item" *ngFor="let item of howItWorkItems">
-                    <img class='howItWorks-thumb' [src]='item.icon' alt='' />
+                    <img class='howItWorks-thumb' [src]='item.icon' [alt]="item.iconAlt && item.iconAlt.trim() ? item.iconAlt : '' " height='81' width='80' fetchpriority="auto" />
                     <div class="howItWorks-body">
                         <div class="howItWorks-title">{{item.itemName}}</div>
-                        <div class="howItWorks-description">{{item.itemDescription}}</div>
+                        <div class="howItWorks-description" *ngIf="item.itemDescription" [innerHTML]="item.itemDescription"></div>
                     </div>
                 </div>
             </div>

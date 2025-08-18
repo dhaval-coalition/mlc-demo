@@ -3,15 +3,22 @@
         <div class="section-head">
             <h2 class='section-subtitle' *ngIf='sectionTitle'>{{sectionTitle}}</h2>
         </div>
-        <!-- <div class="aboutReview-widget">
-
-        </div> -->
+        <div class="aboutReview-widget"> 
+            <app-trustpilot-widget [templateId]="'53aa8912dec7e10d38f59f36'"
+                                   [businessUnitId]="'5c5868340d936000014b62f0'"
+                                   [height]="'140px'"
+                                   [width]="'100%'"
+                                   [stars]="'5'">
+            </app-trustpilot-widget>
+        </div>
         <div class="aboutReview-bottom" *ngIf="sectionBottomTitle || buttonStyle">
             <h3 class='section-bottomTitle' *ngIf="sectionBottomTitle && sectionBottomTitle.length > 0">{{sectionBottomTitle}}</h3>
             <div class='bottomBtnBlock' *ngIf='buttonStyle && buttonStyle.text.length > 0'>
-                <a [ngClass]="['btn btn-' + (buttonStyle?.variant || 'secondary')]" [href]="buttonStyle?.url || '#'">
+                <a [ngClass]="['btn btn-' + (buttonStyle?.variant || 'secondary')]"
+                   [href]="buttonStyle?.url || '#'"
+                   [target]="buttonStyle?.targetBlank ? '_blank' : '_self'">
                     {{buttonStyle?.text}}
-                </a>                    
+                </a>
             </div>
         </div>
     </div>

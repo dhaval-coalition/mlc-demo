@@ -1,10 +1,19 @@
 <section class="section-reviewWidget" [ngStyle]="{'backgroundColor:': bgColor}">
     <div class="container">
         <div class="reviewWidget-wrap">
+            <app-trustpilot-widget
+                [templateId]="'53aa8912dec7e10d38f59f36'"
+                [businessUnitId]="'5c5868340d936000014b62f0'"
+                [height]="'140px'"
+                [width]="'100%'"
+                [stars]="'5'"
+            >
+            </app-trustpilot-widget>
+
             <div class="reviewWidgetLogos" *ngIf="logoItems && logoItems.length > 0">
                 <ul>
                     <li *ngFor="let item of logoItems">
-                        <img class='reviewWidget-logo' [src]='item.logo' alt='' />
+                        <img class='reviewWidget-logo' [src]='item.logo' [alt]="item.logoImageAlt && item.logoImageAlt.trim() ? item.logoImageAlt : '' " />
                     </li>
                 </ul>
             </div>

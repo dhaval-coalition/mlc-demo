@@ -7,17 +7,24 @@
         </div>
         <div class="review-logo">
             <div class='review-service' *ngIf='reviewLogo1'>
-                <img class='service-thumb' [src]="reviewLogo1" alt="" />
+                <img class='service-thumb' [src]="reviewLogo1" [alt]="reviewLogo1Alt && reviewLogo1Alt.trim() ? reviewLogo1Alt : '' " height='133' width='163' fetchpriority="auto" />
             </div>
-            <div class='review-trustpilot' *ngIf='reviewLogo2'>
-                <img class='service-thumb' [src]="reviewLogo2" alt="" />
+            <div class='review-trustpilot'>
+                <app-trustpilot-widget
+                    [templateId]="'53aa8912dec7e10d38f59f36'"
+                    [businessUnitId]="'5c5868340d936000014b62f0'"
+                    [height]="'140px'"
+                    [width]="'100%'"
+                    [stars]="'5'"
+                >
+                </app-trustpilot-widget>
             </div>
         </div>
         <div class='reviewBulletBlock' *ngIf='bulletPoint && bulletPoint.length'>
             <div class="review-bullet">
                 <div class="bullet-item" *ngFor='let item of bulletPoint'>
-                    <img class='service-thumb' [src]="item.icon" alt="" />
-                    <span class='bullet-title'>{{item.name}}</span>
+                    <img class='service-thumb' [src]="item.icon" [alt]="item.iconAlt && item.iconAlt.trim() ? item.iconAlt : '' " height='80' width='81' />
+                    <span class='bullet-title' *ngIf="item.name" [innerHTML]="item.name"></span>
                 </div>
             </div>
         </div>

@@ -1,10 +1,16 @@
 @import "../../../../assets/styles/guidelines.scss";
 
 .section-contactTopinfo{
-    margin: 48px 0 0;
     width: 100%;
     display: block;
+    margin: 30px 0 0;
     
+    @include mobile_large{
+        margin: 30px 0 0;
+    }
+    @include ipad_small{
+        margin: 48px 0 0;
+    }
     .contactTopinfo-wrap{
         text-align: center;
         margin: 0 auto;
@@ -19,21 +25,38 @@
             }
         }
         &.bottomDescription{
-            margin: 0 0 30px;
+            margin: 0 0 16px;
+
+            @include ipad_small{
+                margin: 0 0 30px;
+            }
         }
     }
     .btnBlock{
         text-align: center;
-        margin: 30px auto 60px;
+        margin: 15px auto 30px;
+
+        @include mobile_large{
+            margin: 24px auto 40px;
+        }
+        @include ipad_small{
+            margin: 30px auto 60px;
+        }
     }
     .contact-card{
         display: flex;
         flex-wrap: wrap;
         align-items: center;
         justify-content: center;
-        margin: 0 auto 50px;
-        gap: 20px;
+        margin: 0 auto 30px;
+        gap: 14px;
 
+        @include mobile_large{
+            gap: 20px;
+        }
+        @include ipad_small{
+            margin: 0 auto 50px;
+        }
         .contactCard-item{
             width: auto;
             display: flex;
@@ -56,14 +79,23 @@
             width: 100%;
         }
         .contactCard-title{
-            @include heading22;
+            @include text20;
             line-height: normal;
-            margin: 0 0 6px;
+            margin: 0 0 2px;
+
+            @include mobile_large{
+                @include heading22;
+                margin: 0 0 6px;
+            }
         }
         .contactCard-text{
-            @include text18;
+            @include text16;
             line-height: normal;
             margin: 0 auto;
+
+            @include mobile_large{
+                @include text18;
+            }
         }
     }
 }

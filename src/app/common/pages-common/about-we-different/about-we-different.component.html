@@ -7,7 +7,7 @@
             <div class="weDifferentItems">
                 <div class="weDifferent-item" *ngFor="let item of weDifferentItems">
                     <div class='weDifferent-icons' [ngStyle]="{'backgroundColor':item.iconBackgroundColor}">
-                        <img class='weDifferent-thumb' [src]='item.icon' alt='' />
+                        <img class='weDifferent-thumb' [src]='item.icon' [alt]="item.iconImageAlt && item.iconImageAlt.trim() ? item.iconImageAlt : '' " />
                     </div>
                     <div class="weDifferent-body">
                         <div class="weDifferent-title" *ngIf='item.itemName'>{{item.itemName}}</div>
@@ -16,9 +16,11 @@
             </div>
         </div>
         <div class='bottomBtnBlock' *ngIf='buttonStyle && buttonStyle.text.length > 0'>
-            <a [ngClass]="['btn btn-' + (buttonStyle?.variant || 'secondary')]" [href]="buttonStyle?.url || '#'">
+            <a [ngClass]="['btn btn-' + (buttonStyle?.variant || 'secondary')]"
+               [href]="buttonStyle?.url || '#'"
+               [target]="buttonStyle?.targetBlank ? '_blank' : '_self'">
                 {{buttonStyle?.text}}
-            </a>                    
+            </a>
         </div>
     </div>
 </section>

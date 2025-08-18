@@ -4,7 +4,7 @@
             <div class="iconWithTitleItems">
                 <div class="iconWithTitle-item" *ngFor="let item of iconWithTitleItems">
                     <div class='iconWithTitle-icons'>
-                        <img class='iconWithTitle-thumb' [src]='item.icon' alt='' />
+                        <img class='iconWithTitle-thumb' [src]='item.icon' [alt]="item.iconImageAlt && item.iconImageAlt.trim() ? item.iconImageAlt : '' " />
                     </div>
                     <div class="iconWithTitle-body">
                         <div class="iconWithTitle-title" *ngIf='item.itemName'>{{item.itemName}}</div>

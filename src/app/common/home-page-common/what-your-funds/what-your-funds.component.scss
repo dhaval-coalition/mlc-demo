@@ -1,20 +1,42 @@
 @import "../../../../assets/styles/guidelines.scss";
 
 .section-whatYourFunds{
-    padding: 48px 0;
     width: 100%;
     display: block;
-
+    padding: 30px 0;
+    
+    @include mobile_large{
+        padding: 35px 0;
+    }
+    @include ipad_small{
+        padding: 48px 0;
+    }
     .whatYourFunds-wrap{
         width: 100%;
-        padding: 96px;
         border-radius: 16px;
         overflow: hidden;
+        padding: 30px;
 
+        @include mobile_small{
+            padding: 40px;
+        }
+        @include mobile_large{
+            padding: 60px;
+        }
+        @include tab_small{
+            padding: 96px;
+        }
         .whatYourFunds-title{
-            margin: 0 0 64px;
             color: $black;
             text-align: center;
+            margin: 0 0 30px;
+        
+            @include mobile_large{
+                margin: 0 0 40px;
+            }
+            @include tab_small{
+                margin: 0 0 64px;            
+            }
         }
         .funds-items{
             width: auto;
@@ -23,28 +45,59 @@
             align-items: flex-start;
             justify-content: center;
             margin: 0 -15px;
+            gap: 30px 0;
 
+            @include ipad_large{
+                gap: 0;             
+            }
             .funds-body{
-                padding: 0 15px;
-                width: 16.6666667%;
+                padding: 0 15px;    
+                width: 100%;
                 text-align: center;
+
+                @include mobile_xsmall{
+                    width: 50%;
+                }
+                @include mobile_small{
+                    width: 33.33%;
+                }
+                @include mobile_large{
+                    width: 25%;
+                }
+                @include ipad_small{
+                    width: 20%;
+                }
+                @include ipad_large{
+                    width: 16.6666667%;                
+                }
             }
             .funds-icons{
-                height: 80px;
-                width: 80px;
+                height: 60px;
+                width: 60px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 border-radius: 50%;
                 overflow: hidden;
-                margin: 0 auto 24px;
+                margin: 0 auto 10px;
                 background-color: $ctPrimary;
                 color: $white;
 
+                @include mobile_xsmall{
+                    height: 80px;
+                    width: 80px;
+                }
+                @include ipad_small{
+                    margin: 0 auto 24px;                    
+                }
                 img{
-                    max-height: 49px;
+                    max-height: 40px;
                     width: auto;
                     margin: auto;
+                    
+                    @include mobile_xsmall{
+                        max-height: 49px;
+                    }
                 }
             }
             .funds-name{
@@ -55,21 +108,38 @@
             }
         }
         .bottomContent{
-            margin: 64px 0 0;
             width: 100%;
             display: block;
             text-align: center;
-
+            margin: 30px 0 0;
+        
+            @include mobile_large{
+                margin: 40px 0 0;
+            }
+            @include tab_small{
+                margin: 64px 0 0;         
+            }
             .section-bottomTitle{
                 @include text20;
                 font-weight: 700;
-                margin: 0 0 32px;
                 color: $black;
+                margin: 0 0 16px;
+
+                @include ipad_small{
+                    margin: 0 0 32px;
+                }
             }
         }
         .btnBlock{
             .btn{
-                min-width: 354px;
+                min-width: 1px;
+                width: 100%;
+                max-width: 100%;
+    
+                @include mobile_small{
+                    min-width: 354px;  
+                    width: auto;              
+                }
             }
         }
     }

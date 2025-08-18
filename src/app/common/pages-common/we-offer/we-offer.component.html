@@ -1,8 +1,8 @@
 <section class="section-weOffer">
     <div class="container">
-        <div class="section-head" *ngIf="sectionTitle || sectionDescription">
+        <div class="section-head" *ngIf="sectionTitle || sectionDescriptionTrim">
             <h2 class='section-title' *ngIf='sectionTitle'>{{sectionTitle}}</h2>
-            <div class="section-description" *ngIf="sectionDescription" [innerHTML]="sectionDescription">
+            <div class="section-description" [innerHTML]="sectionDescriptionTrim">
             </div>
         </div>
         <ng-container *ngFor="let item of items">
@@ -10,14 +10,17 @@
                 <div class='weOffer-row'>
                     <div class="weOffer-content">
                         <div [ngClass]="['section-description icon-color-' + (item.descriptionItemIcons)]" [innerHTML]="item.itemDescription">{{item.itemDescription}}</div>
-                        <div class='btnBlock' *ngIf='item.button && item.button.text.length > 0'>
-                            <a [ngClass]="['btn btn-' + (item.button.variant || 'secondary')]" [href]="item.button.url || '#'">
+                        <div class='btnBlock'>
+                            <a *ngIf='item.button && item.button.text.length > 0' [ngClass]="['btn btn-' + (item.button.variant || 'secondary')]" [href]="item.button.url || '#'">
                                 {{item.button.text}}
+                            </a>
+                            <a *ngIf='item.button2 && item.button2.text.length > 0' [ngClass]="['btn btn-' + (item.button2.variant || 'secondary')]" [href]="item.button2.url || '#'">
+                                {{item.button2.text}}
                             </a>                    
                         </div>
                     </div>
                     <div class="weOffer-image">
-                        <img class='weOffer-thumb' [src]='item.thumbImage' alt='' />
+                        <img class='weOffer-thumb' [src]='item.thumbImage' [alt]="item.thumbImageAlt && item.thumbImageAlt.trim() ? item.thumbImageAlt : '' " />
                     </div>
                 </div>
             </div>

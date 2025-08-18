@@ -1,89 +1,16 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
-import { BuilderBlock } from '@builder.io/angular';
+import { CommonModule } from '@angular/common';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-we-offer',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './we-offer.component.html',
   styleUrl: './we-offer.component.scss',
   encapsulation: ViewEncapsulation.None
 })
-@BuilderBlock({
-  tag: 'app-we-offer',
-  name: 'We offer',
-  inputs:[
-    {
-      name: 'sectionTitle',
-      type: 'string',
-      friendlyName: 'Title',
-      defaultValue: "Explore the Loan Products We Offer!",
-    },
-    {
-      name: 'sectionDescription',
-      type: 'html',
-      defaultValue: 'Enter some text...',
-      friendlyName: 'Description',
-    },
-    {
-      name: 'items',
-      type: 'list',
-      friendlyName: 'Offer',
-      subFields:[
-        {
-          name: 'bgColor',
-          type: 'color',
-          defaultValue: '#EEF3F9',
-        },
-        {
-          name: 'itemDescription',
-          type: 'html',
-          defaultValue: 'Enter some text...',
-          friendlyName: 'Description',
-        },
-        {
-          name: 'descriptionItemIcons',
-          friendlyName:'Item icons color',
-          type: 'string',
-          defaultValue: 'blue',
-          enum: ['blue', 'green', 'yellow'],
-        },
-        {
-          name: 'button',
-          type: 'object',
-          friendlyName:'Button',
-          defaultValue: {
-            text: 'Apply Now',
-            url: '/',
-            variant: 'secondary',
-          },
-          subFields: [
-            {
-              name: 'text',
-              type: 'string',
-            },
-            {
-              name: 'url',
-              type: 'url',
-            },
-            {
-              name: 'variant',
-              type: 'string',
-              defaultValue: 'secondary',
-              enum: ['primary', 'outline-primary', 'secondary', 'outline-secondary'],
-            },
-          ],
-        },
-        {
-          name: "thumbImage",
-          type: "file",
-          allowedFileTypes: ['jpeg', 'jpg', 'png', 'svg'],
-          friendlyName: "Image",
-          defaultValue: "https://placehold.co/451x451",
-        }
-      ]
-    }
-  ]
-})
-export class WeOfferComponent implements OnInit {
+export class WeOfferComponent {
   @Input() bgColor = '';
   @Input() sectionTitle = '';
   @Input() sectionDescription = '';
@@ -93,7 +20,13 @@ export class WeOfferComponent implements OnInit {
     itemDescription: string;
     bgColor: string;
     thumbImage: string;
+    thumbImageAlt: string,
     button?: {
+      text: string;
+      url: string;
+      variant: string;
+    };
+    button2?: {
       text: string;
       url: string;
       variant: string;
@@ -105,7 +38,24 @@ export class WeOfferComponent implements OnInit {
     variant: ''
   };
 
-  constructor(){}
+  sectionDescriptionTrim: string = '';
+
+  constructor(private sanitizer: DomSanitizer){}
   ngOnInit(): void {
+    // Initialize sectionDescriptionTrim with cleaned HTML
+	  this.sectionDescriptionTrim = this.cleanHTML(this.sectionDescription);
+	  if (this.items && !Array.isArray(this.items)) {
+		  this.items = [this.items]; // Wrap the object in an array
+	  }
+  }
+
+  // Method to clean up empty paragraphs
+  cleanHTML(content: string): string {
+    // Remove <p><br></p> or any empty <p> tags
+    return content.replace(/<p><br><\/p>/g, '').replace(/<p><\/p>/g, '');
+  }
+
+  get sanitizedDescription(): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(this.sectionDescriptionTrim);
   }
 }

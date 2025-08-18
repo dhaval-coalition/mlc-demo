@@ -1,19 +1,51 @@
 @import "../../../../assets/styles/guidelines.scss";
 
 .section-loansHeroBanner{
-    padding: 82px 0 0;
-    margin: 0 0 48px;
+    padding: 50px 0 30px;
     width: 100%;
     display: block;
+    margin: 0 0 30px;
+    min-height: 1px;
+    position: relative;
 
+    @include mobile_large{
+        margin: 0 0 35px;
+    }
+    @include ipad_small{
+        margin: 0 0 48px;
+        // padding: 82px 0 0;
+        padding: 50px 0;
+    }
     .section-title{
-        @include heading58;
-        margin: 0 0 16px;
+        @include heading36;
+        margin: 0 0 5px;
+
+        @include ipad_small{
+            font-size: 48px;
+            line-height: 60px;
+        }
+        @include ipad_large{
+            @include heading52;   
+            margin: 0 0 16px;         
+        }
+        @include tab_small{
+            @include heading58;       
+        }
     }
     .section-description{
         @include text21;
-        margin: 0 0 48px;
         color: $black;
+        margin: 0 0 16px;
+
+        @include mobile_large{
+            margin: 0 0 30px;
+        }
+        @include ipad_small{
+            margin: 0 0 40px;
+        }
+        @include tab_small{
+            margin: 0 0 48px;
+        }
     }
     .loansHeroBanner-wrap{
         width: 100%;
@@ -21,41 +53,91 @@
         flex-wrap: wrap;
         align-items: center;
         justify-content: space-between;
+        min-height: 1px;
+
+        @include ipad_small{
+            min-height: 550px;
+        }
     }
     .loansHero-content{
-        width: 56%;
+        width: 100%;
         display: inline-block;
-        max-width: 525px;
-        padding: 15px 0;
+        max-width: 100%;
+        padding: 0;
+
+        @include ipad_small{
+            width: 56%;
+            padding: 15px 15px 15px 0;
+        }
+        @include ipad_large{
+            padding: 15px 0;
+        }
+        @include tab_small{
+            max-width: 525px;
+        }
     }
     .loansHero-image{
-        width: 44%;
-        display: inline-block;
-        text-align: right;
+        width: 100%;
+        display: block;
+        text-align: center;
+        order: -1;
+        padding: 0 20px 20px;
+        position: static;
 
+        @include ipad_small{
+            width: calc(44% - 20px);
+            order: inherit;
+            display: inline-block;
+            text-align: right;
+            padding: 0;
+            position: absolute;
+            top: auto;
+            bottom: 0;
+            left: auto;
+            right: 20px;
+        }
+        @include tab_medium{
+            right: 8%;
+        }
         .loansHero-thumb{
             margin: 0 0 0 auto;
-            max-width: 543px;
+            max-width: 100%;
             height: auto;
             object-fit: cover;
+            
+            @include tab_small{
+                max-width: 543px;
+            }
         }
     }
     .loansHero-storeLocator{
         width: 100%;
         max-width: 368px;
 
+        .inputField-wrap{
+            margin-bottom: 10px;
+        }
         .form-select{
             max-width: 100%;
             width: 100%;
         }
         .btnBlock{
-            margin: 20px 0 0;
+            margin: 10px 0 0;
             
+            @include ipad_small{
+                margin: 20px 0 0;
+            }
             .btn{
                 &.btn-width-large{
                     max-width: 100%;
                     width: auto;
-                    min-width: 368px;
+                    min-width: 1px;
+                    width: 100%;
+                    max-width: 100%;
+        
+                    @include mobile_small{
+                        min-width: 368px;                
+                    }
                 }
                 &.btn-width-medium{
                     max-width: 100%;

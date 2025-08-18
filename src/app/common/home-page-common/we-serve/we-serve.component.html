@@ -1,11 +1,11 @@
 <section class="section-weServe">
     <div class="container">
         <h2 class='section-subtitle' *ngIf='sectionTitle'>{{sectionTitle}}</h2>
-        <div class="locationGuideItemsBlock" *ngIf="locationGuideList && locationGuideList.length > 0">
+        <div class="locationGuideItemsBlock" [ngClass]="{'hideGuideLabel':hideLabel}" *ngIf="locationGuideList && locationGuideList.length > 0">
             <div class="locationGuideList">
                 <div class="locationGuide-item" *ngFor="let item of locationGuideList">
                     <div class='locationGuide-icons' [ngStyle]="{'backgroundColor':item.bgColor}">
-                        <img class='locationGuide-thumb' [src]='item.icon' alt='' />
+                        <img class='locationGuide-thumb' [src]='item.icon' [alt]="item.iconAlt && item.iconAlt.trim() ? item.iconAlt : '' " height='32' width='32' />
                     </div>
                     <div class="locationGuide-title" *ngIf='item.title'>{{item.title}}</div>
                 </div>
@@ -16,7 +16,7 @@
                 <div class="weServe-item" *ngFor="let item of statesList">
                     <div class="weServe-body" (click)="goToState(item.url)">
                         <div class="weServeImg">
-                            <img class='weServe-thumb' [src]='item.thumbnail' alt='' />
+                            <img class='weServe-thumb' [src]='item.thumbnail' [alt]="item.thumbnailAlt && item.thumbnailAlt.trim() ? item.thumbnailAlt : '' " height='140' width='140' fetchpriority="auto" />
                         </div>
                         <span class='weServe-title'>{{item.name}}</span>
                     </div>
@@ -26,9 +26,11 @@
         <div class="weServeBottom">
             <div class='weServe-description' [innerHTML]="itemDescription"></div>
             <div class='btnBlock' *ngIf='buttonStyle && buttonStyle.text.length > 0'>
-                <a [ngClass]="['btn btn-' + (buttonStyle?.variant || 'secondary')]" [href]="buttonStyle?.url || '#'">
+                <a [ngClass]="['btn btn-' + (buttonStyle?.variant || 'secondary')]"
+                   [href]="buttonStyle?.url || '#'"
+                   [target]="buttonStyle?.targetBlank ? '_blank' : '_self'">
                     {{buttonStyle?.text}}
-                </a>                    
+                </a>
             </div>
         </div>
     </div>

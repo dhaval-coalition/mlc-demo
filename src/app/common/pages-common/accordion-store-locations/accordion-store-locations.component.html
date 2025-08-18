@@ -1,11 +1,11 @@
-<section class="section-accordionLocations">
+<section class="section-accordionLocations" id='storeLocations'>
     <div class="container">
         <div class="accordionLocations-wrap">
             <h2 class='section-subtitle' *ngIf='sectionTitle'>{{sectionTitle}}</h2>
             <div class='storeAccordion'>
-                <div class="accordionitems-wrap" ngbAccordion [closeOthers]="true" *ngIf="store && store.length > 0">
-                    <ng-container *ngFor='let item of store'>
-                        <div class='accordion-item' ngbAccordionItem>
+                <div class="accordionitems-wrap" ngbAccordion [closeOthers]="false" *ngIf="store && store.length > 0">
+                    <ng-container *ngFor='let item of store; let i = index'>
+                        <div class='accordion-item' ngbAccordionItem [collapsed]="i !== 0">
                             <div ngbAccordionHeader>
                                 <button ngbAccordionButton>{{item.storeQue}}</button>
                             </div>
@@ -24,9 +24,11 @@
                                                 <div class='content-title' *ngIf="item.locationSettingObject.contentTitle2">{{item.locationSettingObject.contentTitle2}}</div>
                                                 <div [innerHTML]="item.locationSettingObject.storeAddress"></div>
                                                 <div class='btnBlock' *ngIf='item.locationSettingObject.buttonStyle && item.locationSettingObject.buttonStyle.text.length > 0'>
-                                                    <a [ngClass]="['btn btn-' + (item.locationSettingObject.buttonStyle.variant)]" [href]="item.locationSettingObject.buttonStyle.url || '#'">
+                                                    <a [ngClass]="['btn btn-' + (item.locationSettingObject.buttonStyle.variant)]"
+                                                       [href]="item.locationSettingObject.buttonStyle.url || '#'"
+                                                       [target]="item.locationSettingObject.buttonStyle.targetBlank ? '_blank' : '_self'">
                                                         {{item.locationSettingObject.buttonStyle.text}}
-                                                    </a>                    
+                                                    </a>
                                                 </div>
                                             </div>
                                             <div class="accordionBody-col-3" *ngIf="item.mapSettingObject">

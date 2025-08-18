@@ -11,23 +11,47 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let row of tableRows">
-                        <td *ngFor="let column of row.columns">
-                            <div class="section-description" *ngIf="column.columnValue" [innerHTML]="column.columnValue">
-                            </div>
-                        </td>
-                    </tr>
+                    <ng-container *ngFor="let row of tableRows">
+                        <tr [ngClass]="{'add-gray-fix-background': row.fixedBGColor, 'add-white-fix-background': !row.fixedBGColor}">
+                            <td *ngFor="let column of row.columns">
+                                <div class="section-description" *ngIf="column.columnValue" [innerHTML]="column.columnValue">
+                                </div>
+                            </td>
+                        </tr>
+                    </ng-container>
                 </tbody>
             </table>
-        </div>  
-        <div class="tableBlockBottom" *ngIf="sectionDescription || buttonStyle.text.length > 0">
-            <div class="section-description" *ngIf="!isDescriptionEmpty(sectionDescription)" [innerHTML]="sectionDescription">
+        </div>
+        <div class="tableBlockBottom" *ngIf="sectionDescription || sectionLargeDescription || buttonStyle?.text?.length > 0 || licenseRegistration?.licenseItems?.length > 0">
+            <div class="section-description small-text-description" *ngIf="!isDescriptionEmpty(sectionDescription)" [innerHTML]="sectionDescription">
+            </div>
+            <div class="section-description large-text-description" *ngIf="!isDescriptionEmpty(sectionLargeDescription)" [innerHTML]="sectionLargeDescription">
+            </div>
+            <div class="licenseBlock" *ngIf='licenseRegistration?.licenseItems?.length'>
+                <h3 class='licenseBlock-heading' *ngIf="licenseRegistration?.titleText">{{ licenseRegistration?.titleText }}</h3>
+                <div class="licenseItems">
+                    <ng-container *ngFor="let item of licenseRegistration.licenseItems">
+                        <div class="licenseItem" *ngIf="item.pdfFileUrl">
+                            <a class='licenseItemLink' [href]="item.pdfFileUrl" [target]="item.pdfFileTargetBlank ? '_blank' : '_self'">
+                                <img class="licenseBlock-thumb"
+                                     *ngIf="item.thumbImage"
+                                     [src]="item.thumbImage"
+                                     [alt]="item.thumbImageAlt && item.thumbImageAlt.trim() ? item.thumbImageAlt : ''" />
+                            </a>
+                        </div>
+                    </ng-container>
+                </div>
+                <div class="licenseDescriptionBlock" *ngIf="!isDescriptionEmpty(licenseRegistration.licenseBottomDescription)" [innerHTML]="licenseRegistration.licenseBottomDescription">
+                </div>
             </div>
             <div class='btnBlock' *ngIf='buttonStyle && buttonStyle.text.length > 0'>
-                <a [ngClass]="['btn btn-' + (buttonStyle?.variant || 'secondary')]" [href]="buttonStyle?.url || '#'">
+                <a [ngClass]="['btn btn-' + (buttonStyle?.variant || 'secondary')]"
+                   [href]="buttonStyle?.url || '#'"
+                   [target]="buttonStyle?.targetBlank ? '_blank' : '_self'">
                     {{buttonStyle?.text}}
-                </a>                    
-            </div>      
-        </div> 
+                </a>
+            </div>
+        </div>
     </div>
 </section>
+

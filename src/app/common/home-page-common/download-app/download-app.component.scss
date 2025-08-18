@@ -1,47 +1,76 @@
 @import "../../../../assets/styles/guidelines.scss";
 
 .section-downloadApp{
-    padding: 48px 0;
     width: 100%;
     display: block;
-
+    padding: 30px 0;
+    
+    @include mobile_large{
+        padding: 35px 0;
+    }
+    @include ipad_small{
+        padding: 48px 0;
+    }
     .downloadApp-wrap{
         width: 100%;
-        padding: 72px 98px;
         border-radius: 16px;
         overflow: hidden;
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        gap: 0 5px;
+        gap: 0;
+        padding: 50px 24px 30px;
 
-        @include mobile-small{
-            gap: 10px;
+        @include mobile_small{
+            padding: 72px 40px 40px;
         }
-        @include mobile-large{
-            gap: 20px;
+        @include mobile_large{
+            padding: 72px 60px 60px;
         }
-        @include ipad-small{
-            gap: 50px;
+        @include ipad_small{
+            gap: 0 80px;
+            flex-wrap: nowrap;
         }
-        @include tab-small{
+        @include tab_small{
+            padding: 72px 98px;
+        }
+        @include tab_large{
             gap: 0 198px;
         }
     }
     .downloadApp-image{
-        width: 50%;
+        width: 100%;
         display: inline-block;
-        max-width: 424px;
+        max-width: 324px;
+        min-width: 1px;
+        margin: 0 auto 66px;
 
+        @include mobile_small{
+            max-width: 424px;             
+        }
+        @include ipad_small{
+            min-width: 424px;
+            max-width: 100%;
+            width: auto;
+            margin: 0;
+        }
         .downloadAppImg-wrap{
             width: 100%;
             position: relative;
-            min-height: 424px;
+            min-height: 254px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 20px;
+            gap: 10px;
 
+            @include mobile_xsmall{
+                min-height: 294px; 
+                gap: 15px;         
+            }
+            @include mobile_small{
+                min-height: 424px;  
+                gap: 20px;              
+            }
             &:after{
                 content: '';
                 position: absolute;
@@ -58,38 +87,76 @@
                 position: relative;
                 z-index: 2;
                 border-radius: 8px;
-
+                max-height: 254px;
+                
+                @include mobile_xsmall{
+                    max-height: 294px;           
+                }
+                @include mobile_small{
+                    max-height: 374px;              
+                }
                 &.thumb-1{
-                    transform: translateY(50px);
+                    transform: translateY(25px);
+
+                    @include mobile_small{
+                        transform: translateY(50px);         
+                    }
                 }
                 &.thumb-2{
-                    transform: translateY(-50px);
+                    transform: translateY(-25px);
+                    
+                    @include mobile_small{
+                        transform: translateY(-50px);        
+                    }
                 }
             }
         }
     }
     .downloadApp-content{
-        width: 50%;
+        width: 100%;
         display: inline-block;
-        max-width: 475px;
+        max-width: 100%;
+        min-width: 1px;
 
+        @include ipad_small{
+            width: 475px;
+        }
         .section-description{
             line-height: 28px;
         }
         h2,h3,h4,h5,h6{
-            margin-bottom: 24px;
+            margin-bottom: 16px;
+
+            @include mobile_large{
+                margin-bottom: 24px;
+            }
         }
         .downloadAppIcons{
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            justify-content: flex-start;
-            gap: 24px;
-            margin: 32px 0 0;
-
+            justify-content: center;
+            gap: 8px;
+            margin: 16px 0 0;
+            
+            @include mobile_small{
+                gap: 12px;
+            }
+            @include mobile_large{
+                margin: 32px 0 0;
+                justify-content: flex-start;
+            }
+            @include tab_small{
+                gap: 24px;
+            }
             .downloadApp-icon{
                 display: inline-block;
                 width: auto;
+                max-height: 50px;
+
+                @include mobile_small{
+                    max-height: 61px;
+                }
             }
         }
     }

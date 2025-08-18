@@ -1,10 +1,16 @@
 @import "../../../../assets/styles/guidelines.scss";
 
 .section-vipCanBlock{
-    padding: 48px 0;
     width: 100%;
     display: block;
+    padding: 30px 0;
     
+    @include mobile_large{
+        padding: 35px 0;
+    }
+    @include ipad_small{
+        padding: 48px 0;
+    }    
     .vipCanBlock-wrap{
         display: flex;
         flex-wrap: wrap;
@@ -14,11 +20,44 @@
         width: 100%;
         max-width: 1116px;
 
+        &.section-full-width{
+            max-width: none;
+        }
+        .section-head{
+            width: 100%;
+            text-align: center;
+            margin-bottom: 30px;
+            
+            @include mobile_large{
+                margin-bottom: 52px;
+            }        
+            .section-subtitle{
+                margin: 0 0 16px;
+    
+                @include mobile_large{
+                    margin: 0 0 24px;
+                }
+            }
+            .section-description{
+                p{
+                    &:last-child{
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
         .vipCanImg{
-            width: 51%;
+            width: 100%;
             display: inline-block;
-            padding: 0 117px 0 0;
+            padding: 0 0 40px;
 
+            @include ipad_small{
+                width: 51%;
+                padding: 0 60px 0 0;
+            }
+            @include tab_small{
+                padding: 0 117px 0 0;   
+            }
             .thumbBlock{
                 border-radius: 8px;
                 overflow: hidden;
@@ -30,11 +69,18 @@
             }
         }
         .vipCanTxt{
-            width: 49%;
+            width: 100%;
             display: inline-block;
 
+            @include ipad_small{
+                width: 49%;
+            }
             .section-subtitle{
-                margin: 0 0 48px;
+                margin: 0 0 24px;
+
+                @include ipad_small{
+                    margin: 0 0 48px;
+                }
             }
             .vipCanItems{
                 display: flex;
@@ -47,21 +93,32 @@
                     margin-bottom: 0;
                 }
                 .vipCanIcon{
-                    height: 80px;
-                    width: 80px;
+                    height: 70px;
+                    width: 70px;
                     display: inline-block;
 
+                    @include mobile_small{
+                        height: 80px;
+                        width: 80px;
+                    }
                     .vipCanIcon-thumb{
                         width: auto;
-                        max-height: 80px;
+                        max-height: 70px;
                         object-fit: cover;
+
+                        @include mobile_small{
+                            max-height: 80px;
+                        }
                     }
                 }
                 .vipCanContent{
                     width: calc(100% - 80px);
                     display: inline-block;
-                    padding: 0 0 0 24px;
+                    padding: 0 0 0 16px;
 
+                    @include mobile_small{
+                        padding: 0 0 0 24px;
+                    }
                     .section-subtitle{
                         @include text17;
                         margin: 0 0 16px;
@@ -69,6 +126,11 @@
                     .section-description{
                         h2,h3,h4,h5,h6{
                             margin-bottom: 16px;
+                        }
+                        p{
+                            &:last-child{
+                                margin-bottom: 0;
+                            }
                         }
                     }
                 }

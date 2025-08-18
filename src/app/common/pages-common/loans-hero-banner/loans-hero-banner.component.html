@@ -7,24 +7,25 @@
                 </div>
                 <div class="loansHero-storeLocator">
                     <div class='inputField-wrap' *ngIf="heroFormFields">
-                        <select class="form-select form-select-lg">
+                        <select class="form-select form-select-lg" (change)="updateButtonUrl($event)">
                             <option value="" selected>Pick Your State</option>
-                            <option *ngFor="let state of statesList" [value]="state.name">{{ state.name }}</option>
+                            <option *ngFor="let state of statesList" [value]="state.name" [attr.location-url]="'/locations'+state.url">{{ state.name }}</option>
                         </select>
                     </div>
                     <div class='btnBlock' *ngIf='buttonStyle && buttonStyle.text.length > 0'>
                         <a [ngClass]="[
-                                'btn', 
+                                'btn',
                                 'btn-' + (buttonStyle?.variant || 'secondary'),
-                                'btn-width-' + (buttonStyle?.width || 'large')]" 
-                            [href]="buttonStyle?.url || '#'">
+                                'btn-width-' + (buttonStyle?.width || 'large')]"
+                           [href]="buttonStyle?.url || '#'"
+                           [target]="buttonStyle?.targetBlank ? '_blank' : '_self'">
                             {{buttonStyle?.text}}
-                        </a>                    
+                        </a>
                     </div>
                 </div>
             </div>
             <div class="loansHero-image" *ngIf="loansHeroThumb && loansHeroThumb.length > 0">
-                <img class='loansHero-thumb' [src]='loansHeroThumb' alt='' />
+                <img class='loansHero-thumb' [src]='loansHeroThumb' [alt]="loansHeroThumbAlt && loansHeroThumbAlt.trim() ? loansHeroThumbAlt : '' " />
             </div>
         </div>
     </div>

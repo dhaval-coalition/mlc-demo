@@ -1,4 +1,4 @@
-<div class='footer'>
+<footer class='footer'>
     <div class="container container-xl">
         <div class="footer-wrap">
             <div class="row">
@@ -7,7 +7,7 @@
                         <ng-container *ngIf='item.footerNavLinks && item.footerNavLinks.length > 0'>
                             <ul>
                                 <li *ngFor='let navItem of item.footerNavLinks'>
-                                    <a [href]="navItem.url">{{navItem.name}}</a>
+                                    <a [href]="navItem.url" [attr.aria-label]="navItem.name">{{navItem.name}}</a>
                                 </li>
                             </ul>
                         </ng-container>
@@ -20,7 +20,7 @@
                     <ng-container *ngIf='footerBottomNavLinks && footerBottomNavLinks.length > 0'>
                         <ul class="copyright-items">
                             <li class="copyright-item" *ngFor='let navItemBottom of footerBottomNavLinks'>
-                                <a [href]="navItemBottom.url">{{navItemBottom.name}}</a>
+                                <a [href]="navItemBottom.url" [attr.aria-label]="navItemBottom.name">{{navItemBottom.name}}</a>
                             </li>
                         </ul>
                     </ng-container>
@@ -28,4 +28,4 @@
             </ng-container>
         </div>
     </div>
-</div>
+</footer>

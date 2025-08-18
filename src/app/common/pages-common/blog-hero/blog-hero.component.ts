@@ -1,31 +1,14 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { BuilderBlock } from '@builder.io/angular';
+import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-blog-hero',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './blog-hero.component.html',
   styleUrl: './blog-hero.component.scss'
 })
-@BuilderBlock({
-  tag: 'app-blog-hero',
-  name: 'Blog hero',
-  inputs:[
-    {
-      name:'bgImage',
-      type: 'file',
-      allowedFileTypes: ['jpeg', 'jpg', 'png', 'svg'],
-      friendlyName: "Image",
-      defaultValue: "https://placehold.co/1600x248",
-    },
-    {
-      name: 'sectionTitle',
-      type: 'string',
-      friendlyName: 'Title',
-      defaultValue: "The Minute Blog",
-    },
-  ]
-})
-export class BlogHeroComponent implements OnInit {
+export class BlogHeroComponent {
   @Input() bgImage = '';
   @Input() sectionTitle = '';
 

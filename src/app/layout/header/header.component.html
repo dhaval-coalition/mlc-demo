@@ -1,57 +1,83 @@
-<header class='header'>
+<header class='header main-header' id="myHeader">
     <div class="container">
         <div class="header-wrap">
             <div class="header-logo" *ngIf="logoImageURL">
-                <button class="mobile-toggler" type="button" id='mobileToggleButton' (click)="menuClick()">
+                <button class="mobile-toggler" type="button" id='mobileToggleButton' (click)="menuClick()" aria-label="Mobile Toggle Button">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="14" viewBox="0 0 20 14" id="menu">
                         <g id="Page-1" fill="none" fill-rule="evenodd" stroke="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1">
-                          <g id="Artboard" stroke="#000" stroke-width="2" transform="translate(-1629 -1753)">
-                            <g id="menu" transform="translate(1630 1754)">
-                              <path id="Shape" d="M0 6h18M0 0h18M0 12h18"></path>
+                            <g id="Artboard" stroke="#000" stroke-width="2" transform="translate(-1629 -1753)">
+                                <g id="menu" transform="translate(1630 1754)">
+                                    <path id="Shape" d="M0 6h18M0 0h18M0 12h18"></path>
+                                </g>
                             </g>
-                          </g>
                         </g>
                     </svg>
                 </button>
-                <a class='headerLogo-link' [href]="logoURL">
-                    <img class="headerlogo-thumb" [src]="logoImageURL" alt='' /> 
+                <a class='headerLogo-link' [href]="logoURL" aria-label="Minute Loan Center" rel="noopener noreferrer">
+                    <img class="headerlogo-thumb" [src]="logoImageURL" alt='Minuteloancenter' width="173" height="72" />
                 </a>
             </div>
-            <ng-container *ngTemplateOutlet="navBarTemplate"></ng-container>
+            <ng-container *ngTemplateOutlet="desktopNavBarTemplate"></ng-container>
             <div class="header-btn" *ngIf="buttonList && buttonList.length > 0">
                 <ng-container *ngFor="let btn of buttonList">
-                    <a [class]="'btn btn-' + (btn.style || 'primary')" [href]="btn.url">{{btn.name}}</a>
+                    <a [class]="'btn btn-' + (btn.style || 'primary')" [href]="btn.url" [attr.aria-label]="btn.name">{{btn.name}}</a>
                 </ng-container>
             </div>
         </div>
     </div>
-    <div class='mobileMenuNav' id='mobileMenuWrapper'>
+
+    <!-- Mobile Menu - only renders if isMobile is true -->
+    <div *ngIf="isMobile" class='mobileMenuNav' id='mobileMenuWrapper'>
         <div class="mobileMenu-wrap">
             <button class='menu-button' type='button' (click)="menuCloseBtn()">
                 <i class="bi bi-x"></i>
             </button>
-            <ng-container *ngTemplateOutlet="navBarTemplate"></ng-container>
+            <ng-container *ngTemplateOutlet="mobileNavBarTemplate"></ng-container>
         </div>
         <div class="menuOverlay" (click)="menuCloseBtn()"></div>
     </div>
-    <ng-template #navBarTemplate>
-        <nav class="header-navBar" *ngIf="navLinks && navLinks.length > 0">
+
+    <!-- Desktop Navigation Template -->
+    <ng-template #desktopNavBarTemplate>
+        <nav class="header-navBar desktopNavOnly" *ngIf="navLinks && navLinks.length > 0">
             <ul class="navBar-wrap">
-              <li class="navBar-items" *ngFor="let link of navLinks">
-                <a class="navBar-action" [href]="link.url">
-                    {{link.name}}
-                    <ng-container *ngIf="link.subNav && link.subNav.length > 0">
-                        <i class="icon bi bi-chevron-down"></i>
-                    </ng-container>
-                </a>
-                <ng-container *ngIf="link.subNav && link.subNav.length > 0">
-                    <ul class='navSubBar-wrap'>
+                <li class="navBar-items" *ngFor="let link of navLinks">
+                    <a class="navBar-action" [href]="link.url" [attr.aria-label]="link.name">
+                        {{ link.name }}
+                        <ng-container *ngIf="link.subNav && link.subNav.length > 0">
+                            <i class="icon bi bi-chevron-down"></i>
+                        </ng-container>
+                    </a>
+                    <ul class='navSubBar-wrap' *ngIf="link.subNav && link.subNav.length > 0">
                         <li class='navBar-items navSubBar-items' *ngFor="let subLinks of link.subNav">
-                            <a class="navBar-action navSubBar-action" [href]="subLinks.url">{{subLinks.name}}</a>
+                            <a class="navBar-action navSubBar-action" [href]="subLinks.url" [attr.aria-label]="subLinks.name">{{ subLinks.name }}</a>
                         </li>
                     </ul>
-                </ng-container>
-              </li>
+                </li>
+            </ul>
+        </nav>
+    </ng-template>
+
+    <!-- Mobile Navigation Template with Accordion Toggle -->
+    <ng-template #mobileNavBarTemplate>
+        <nav class="header-navBar mobileNavOnly" *ngIf="navLinks && navLinks.length > 0">
+            <ul class="navBar-wrap">
+                <li class="navBar-items" *ngFor="let link of navLinks; let i = index">
+                    <a class="navBar-action" [href]="link.url" [attr.aria-label]="link.name">
+                        {{ link.name }}
+                    </a>
+                    <ng-container *ngIf="link.subNav && link.subNav.length > 0">
+                        <i class="icon mobileAccIcon"
+                           [ngClass]="{'bi bi-plus': !openSections[i], 'bi bi-dash': openSections[i]}"
+                           (click)="toggleSubMenu(i)">
+                        </i>
+                        <ul class='navSubBar-wrap' *ngIf="openSections[i]">
+                            <li class='navBar-items navSubBar-items' *ngFor="let subLinks of link.subNav">
+                                <a class="navBar-action navSubBar-action" [href]="subLinks.url" [attr.aria-label]="subLinks.name">{{ subLinks.name }}</a>
+                            </li>
+                        </ul>
+                    </ng-container>
+                </li>
             </ul>
         </nav>
     </ng-template>

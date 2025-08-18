@@ -1,13 +1,26 @@
 @import "../../../../assets/styles/guidelines.scss";
 
 .section-faqAndQA{
-    margin: 48px 0;
     width: 100%;
     display: block;
+    padding: 30px 0;
     
+    @include mobile_large{
+        padding: 35px 0;
+    }
+    @include ipad_small{
+        padding: 48px 0;
+    }    
     .section-subtitle{
-        margin: 0 auto 64px;
         text-align: center;
+        margin: 0 auto 30px;
+        
+        @include mobile_large{
+            margin: 0 auto 40px;
+        }
+        @include tab_small{
+            margin: 0 auto 64px;        
+        }
     }
     .faqAndQA-wrap{
         display: block;
@@ -17,14 +30,24 @@
     }
     .btnBlock{
         text-align: center;
-        margin: 48px auto 0;
+        margin: 16px auto 0;
 
+        @include mobile_large{
+            margin: 48px auto 0;
+        }
         .btn{
 
             &.btn-width-large{
                 max-width: 100%;
                 width: auto;
-                min-width: 354px;
+                min-width: 1px;
+                width: 100%;
+                max-width: 100%;
+    
+                @include mobile_small{
+                    min-width: 354px; 
+                    width: auto;               
+                }
             }
             &.btn-width-medium{
                 max-width: 100%;

@@ -1,6 +1,19 @@
-<builder-component name="header"></builder-component>
-<main class='body'>
-    <app-breadcrumb></app-breadcrumb>
-    <router-outlet></router-outlet>
-</main>
-<builder-component name="footer"></builder-component>
+<ng-container *ngIf="contentHeader">
+  <builder-content
+    [model]="modelHeader"
+    [content]="contentHeader"
+    [apiKey]="apiKey"
+    [customComponents]="customComponents" 
+  ></builder-content>
+</ng-container>
+
+<router-outlet></router-outlet>
+
+<ng-container *ngIf="contentFooter">
+  <builder-content
+    [model]="modelFooter"
+    [content]="contentFooter"
+    [apiKey]="apiKey"
+    [customComponents]="customComponents" 
+  ></builder-content>
+</ng-container>

@@ -1,18 +1,27 @@
 @import "../../../../assets/styles/guidelines.scss";
 
 .section-reviewWidget{
-    padding: 82px 0 0;
-    margin: 0 0 48px;
     width: 100%;
     display: block;
+    margin: 30px 0;
 
+    @include mobile_large{
+        margin: 35px 0;
+    }
+    @include ipad_small{
+        margin: 48px 0;
+    }
     .reviewWidget-wrap{
         width: 100%;
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        max-width: 1036px;
+        max-width: 100%;
         margin: 0 auto;
+
+        @include ipad_large{
+            max-width: 1036px;
+        }
     }
     .reviewWidgetLogos{
         width: 100%;
@@ -23,10 +32,21 @@
             padding: 0;
             text-align: center;
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
-            justify-content: space-between;
-            gap: 120px;
+            justify-content: center;
+            gap: 30px;
 
+            @include ipad_small{
+                gap: 40px;
+            }
+            @include ipad_large{
+                gap: 80px;
+            }
+            @include tab_small{
+                gap: 110px;
+                justify-content: space-between;
+            }
             > li{
                 display: block;
                 text-align: center;
@@ -36,6 +56,18 @@
             display: block;
             margin: auto;
             text-align: center;
+            height: auto;
+            width: auto;
+            max-height: 80px;
+            max-width: 168px;
+
+            @include ipad_small{
+                max-height: 100px;             
+            }
+            @include tab_small{
+                max-height: none;
+                max-width: none;   
+            }
         }
     }
 }

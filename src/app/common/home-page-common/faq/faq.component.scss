@@ -1,21 +1,43 @@
 @import "../../../../assets/styles/guidelines.scss";
 
 .section-faqBlock{
-    padding: 48px 0 96px;
-    margin: 48px 0 0;
     width: 100%;
     display: block;
-
+    margin: 30px 0 0;
+    padding: 30px 0;
+    
+    @include mobile_large{        
+        padding: 36px 0 48px;
+        margin: 36px 0 0;
+    }
+    @include ipad_small{
+        padding: 48px 0 96px;
+        margin: 48px 0 0;
+    }
     .section-head{
-        margin: 0 auto 64px;
+        margin: 0 auto 30px;
+        
+        @include mobile_large{
+            margin: 0 auto 40px;
+        }
+        @include tab_small{
+            margin: 0 auto 64px;        
+        }
     }
     .section-title{
         margin: 0 0 8px;
     }
     .faqIcon-wrap{
         display: block;
-        margin: 0 auto 64px;
         max-width: 792px;
+        margin: 0 auto 30px;
+        
+        @include mobile_large{
+            margin: 0 auto 40px;
+        }
+        @include tab_small{
+            margin: 0 auto 64px;        
+        }
     }
     .faqIcons{
         display: flex;
@@ -29,7 +51,11 @@
         .faqIconItem{
             padding: 0 15px;
             display: inline-block;
-            width: 33.33%;
+            width: 100%;
+
+            @include mobile_small{
+                width: 33.33%;
+            }
         }
         .faqIconWrap{
             height: 80px;
@@ -37,10 +63,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 24px;
+            margin: 0 auto 12px;
             border-radius: 50%;
             overflow: hidden;
 
+            @include mobile_large{
+                margin: 0 auto 24px;
+            }
             .faqIcon-thumb{
                 width: auto;
                 height: auto;
@@ -48,9 +77,13 @@
             }
         }
         .faqIcon-name{
-            @include text17;
+            @include text16;
             font-weight: 700;
             margin: 0;
+
+            @include mobile_small{
+                @include text17;
+            }
         }
     }
     .faqAccordionBlock{
@@ -66,15 +99,35 @@
     }
     .faqAccordion-title{
         @include text20;
-        margin: 0 auto 64px;
         text-align: center;
+        margin: 0 auto 30px;
+        
+        @include mobile_large{
+            margin: 0 auto 40px;
+        }
+        @include tab_small{
+            margin: 0 auto 64px;        
+        }
     }
     .btnBlock{
         text-align: center;
-        margin: 0 auto 96px;
-
+        margin: 0 auto 30px;
+        
+        @include mobile_large{
+            margin: 0 auto 40px;
+        }
+        @include tab_small{
+            margin: 0 auto 96px;     
+        }
         .btn{
-            min-width: 354px;
+            min-width: 1px;
+            width: 100%;
+            max-width: 100%;
+
+            @include mobile_small{
+                min-width: 354px;
+                width: auto;             
+            }
         }
     }
 }

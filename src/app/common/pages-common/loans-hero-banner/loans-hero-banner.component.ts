@@ -1,103 +1,45 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
-import { BuilderBlock } from '@builder.io/angular';
-import { LocationsDataService } from '../../../shared/services/locations-data.service';
+import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-loans-hero-banner',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './loans-hero-banner.component.html',
-  styleUrl: './loans-hero-banner.component.scss',
-  encapsulation: ViewEncapsulation.None
+  styleUrl: './loans-hero-banner.component.scss'
 })
-@BuilderBlock({
-  tag: 'app-loans-hero-banner',
-  name: 'Loans - hero banner',
-  inputs: [
-    {
-      name: 'bgColor',
-      friendlyName: 'Background Color',
-      type: 'color',
-      defaultValue: '#EEF3F9',
-    },
-    {
-      name:'sectionTitle',
-      type: 'string',
-      friendlyName: 'Title',
-      defaultValue: 'Apply For A Fast Personal Loan - Choose your State',
-    },
-    {
-      name: 'sectionDescription',
-      type: 'html',
-      defaultValue: 'Enter some text...',
-      friendlyName: 'Description',
-    },
-    {
-      name: 'heroFormFields',
-      type: 'boolean',
-      defaultValue: true,
-    },
-    {
-      name: 'buttonStyle',
-      type: 'object',
-      friendlyName:'Button',
-      defaultValue: {
-        text: 'See Our Store Locator',
-        url: '/',
-        variant: 'secondary',
-        width: 'large',
-      },
-      subFields: [
-        {
-          name: 'text',
-          type: 'string',
-        },
-        {
-          name: 'url',
-          type: 'url',
-        },
-        {
-          name: 'variant',
-          type: 'string',
-          defaultValue: 'primary',
-          enum: ['primary', 'outline-primary', 'secondary', 'outline-secondary'],
-        },
-        {
-          name: 'width',
-          type: 'string',
-          defaultValue: 'large',
-          enum: ['auto', 'medium', 'large'],
-        },
-      ],
-    },
-    {
-      name: 'loansHeroThumb',
-      friendlyName: 'Thumb Image',
-      type: 'file',
-      allowedFileTypes: ['jpeg', 'jpg', 'png', 'svg'],
-    },
-  ]
-})
-export class LoansHeroBannerComponent implements OnInit {
-  statesList:any[] = [];
+export class LoansHeroBannerComponent {
+  statesList: any[] = [];
 
-  @Input() bgColor = '';
-  @Input() sectionTitle = '';
-  @Input() sectionDescription = '';
-  @Input() loansHeroThumb = '';
-  @Input() heroFormFields = true;
-  @Input() buttonStyle:any = {
-    text: '',
-    url: '/',
-    variant: '',
-    width: '',
-  }
+	@Input() bgColor = '';
+	@Input() sectionTitle = '';
+	@Input() sectionDescription = '';
+	@Input() loansHeroThumb = '';
+	@Input() loansHeroThumbAlt = '';
+	@Input() heroFormFields = true;
+	@Input() buttonStyle: any = {
+		text: '',
+		url: '/',
+		variant: '',
+		width: '',
+		targetBlank: false,
+	}
 
-  constructor(private locationsDataService:LocationsDataService){
-  }
-  ngOnInit(): void {
-    this.locationsDataService.getStates().subscribe((response:any) => {
-      if(response.results && response.results.length > 0 && response.results[0].data.states){
-        this.statesList = response.results[0].data.states;
-      }
-    });
-  }
+	constructor(
+    // private locationsDataService: LocationsDataService
+  ) {
+	}
+	ngOnInit(): void {
+		// this.locationsDataService.getStates().subscribe((response: any) => {
+		// 	if (response.results && response.results.length > 0 && response.results[0].data.states) {
+		// 		this.statesList = response.results[0].data.states;
+		// 	}
+		// });
+	}
+	updateButtonUrl(event: Event): void {
+		const selectElement = event.target as HTMLSelectElement;
+		const selectedOption = selectElement.options[selectElement.selectedIndex];
+		const locationUrl = selectedOption.getAttribute('location-url'); // Get the 'location-url' attribute
+		this.buttonStyle.url = locationUrl ? locationUrl : '/locations'; // Update the button URL
+	}
 }

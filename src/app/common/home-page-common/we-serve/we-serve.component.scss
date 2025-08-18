@@ -1,80 +1,149 @@
 @import '../../../../assets/styles/guidelines.scss';
 
 .section-weServe{
-    padding: 48px 0;
     width: 100%;
     display: block;    
-
+    padding: 30px 0;
+    
+    @include mobile_large{
+        padding: 35px 0;
+    }
+    @include ipad_small{
+        padding: 48px 0;
+    }
     .section-subtitle{
-        @include heading40;
+        @include heading32;
         letter-spacing: -0.8px;
         margin: 0;
         text-align: center;
+
+        @include tab_small{
+            @include heading40;
+        }
     }
     .locationGuideItemsBlock{
         display: block;
         width: 100%;
-        margin: 24px 0 0;
+        margin: 16px 0 0;
 
+        &.hideGuideLabel{
+            display: none !important;
+        }
+        @include mobile_large{
+            margin: 24px 0 0;
+        }
         .locationGuideList{
             display: flex;
             flex-wrap: wrap;
             align-items: center;
             justify-content: center;
             width: auto;
-            margin: 0 -48px;
+            margin: 0 -15px;
+            padding: 0 15px;
+            gap: 15px 0;
 
+            @include tab_large{
+                margin: 0 -48px;
+                padding: 0;
+                gap: 0;
+            }
             .locationGuide-item{
                 margin: 0;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                padding: 0 48px;
+                padding: 0 7px;
                 
+                @include mobile_small{
+                    padding: 0 15px;
+                }
+                @include tab_large{
+                    padding: 0 48px;                    
+                }
                 .locationGuide-icons{
-                    height: 48px;
-                    width: 48px;
+                    height: 34px;
+                    width: 34px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     border-radius: 50%;
                     overflow: hidden;
-                    margin: 0 15px 0 0;
+                    margin: 0 5px 0 0;
                     background-color: transparent;
                     color: $white;
 
+                    @include mobile_small{
+                        height: 48px;
+                        width: 48px;
+                        margin: 0 15px 0 0;
+                    }
                     .locationGuide-thumb{
-                        max-height: 32px;
+                        max-height: 20px;
                         width: auto;
                         margin: auto;
+
+                        @include mobile_small{
+                            max-height: 32px;
+                        }
                     }
                 }
                 .locationGuide-title{
-                    @include text20;
+                    @include text14;
                     margin: 0;
                     font-weight: 700;
+
+                    @include mobile_xsmall{
+                        @include text16;                        
+                    }
+                    @include mobile_small{
+                        @include text20;                        
+                    }
                 }
             }
         }
     }
     .weServeItemsList{
         width: 100%;
-        margin: 64px 0;
+        margin: 40px 0;
+
+        @include tab_small{
+            margin: 64px 0;
+        }
     }
     .weServeItems{
         display: flex;
         flex-wrap: wrap;
         align-items: flex-start;
         justify-content: center;
-        gap: 30px 0;
         width: auto;
-        margin: 0 -15px;
+        gap: 20px 0;
+        margin: 0 -10px;
 
+        @include tab_small{
+            gap: 30px 0;
+            margin: 0 -15px;
+        }
         .weServe-item{
             display: inline-block;
             float: none;
-            width: 20%;
-            padding: 0 15px;
+            width: 100%;
+            padding: 0 10px;
+            
+            @include mobile_xsmall{
+                width: 50%;
+            }
+            @include mobile_large{
+                width: 33.33%;
+            }
+            @include ipad_small{
+                width: 25%;
+            }
+            @include ipad_large{
+                width: 20%;
+            }
+            @include tab_small{
+                padding: 0 15px;
+            }
         }
         .weServe-body{
             display: block;
@@ -84,29 +153,44 @@
             overflow: hidden;
             @include ct_transition;
             @include ct_boxShadow01;
-            padding: 15px;
+            padding: 10px;
             cursor: pointer;
 
+            @include ipad_large{
+                padding: 15px;
+            }
             &:hover{
                 @include ct_boxShadow15;
                 transform: translateY(-1px);
             }
             .weServeImg{
-                margin: 0 auto 15px;
+                margin: 0 auto 10px;
                 text-align: center;
                 display: block;
 
+                @include ipad_large{
+                    margin: 0 auto 15px;
+                }
                 .weServe-thumb{
-                    max-height: 133px;
+                    max-height: 100px;
                     object-fit: cover;
                     width: auto;
+
+                    @include tab_small{
+                        max-height: 133px;                        
+                    }
                 }
             }
             .weServe-title{
                 font-weight: 600;
-                font-size: 20px;
-                line-height: 26px;
+                font-size: 18px;
+                line-height: 22px;
                 color: $black;
+
+                @include mobile_small{
+                    font-size: 20px;
+                    line-height: 26px;                    
+                }
             }
         }
     }
@@ -118,7 +202,11 @@
         max-width: 750px;
 
         .btnBlock{
-            margin: 32px 0 0;
+            margin: 16px 0 0;
+
+            @include mobile_large{
+                margin: 32px 0 0;
+            }
         }
         .weServe-description{
             margin: 0;

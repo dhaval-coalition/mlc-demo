@@ -3,17 +3,31 @@
 .section-beVip{
     display: block;
     width: 100%;   
-    padding: 96px 0; 
-    margin: 48px 0;
-
+    margin: 30px 0;
+    padding: 40px 0;
+    
+    @include mobile_large{
+        padding: 60px 0;
+        margin: 35px 0;
+    }
+    @include ipad_small{
+        padding: 96px 0;
+        margin: 48px 0;
+    }
     &.default-bg-class{
         padding-top: 0;
         padding-bottom: 0;
     }
     .section-head{
         text-align: center;
-        margin-bottom: 64px;
+        margin-bottom: 30px;
         
+        @include mobile_large{
+            margin-bottom: 45px;
+        }
+        @include ipad_small{
+            margin-bottom: 64px;
+        }           
         .section-subtitle{
             margin: 0 auto;
         }
@@ -30,35 +44,49 @@
         justify-content: center;
         width: auto;
         margin: 0 -15px;
-        gap: 64px 0;
+        gap: 24px 0;
 
+        @include tab_small{
+            gap: 64px 0;            
+        }
         .beVip-item{
             margin: 0;
-            width: 33.33%;
+            width: 100%;
             display: inline-block;
             float: none;
             text-align: center;
             padding: 0 15px;
             
+            @include mobile_large{
+                width: 33.33%;
+            }
             .beVip-icons{
                 height: 80px;
                 width: 80px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                margin: 0 auto 24px;
+                margin: 0 auto 12px;
                 background-color: transparent;
                 color: $white;
-
+                
                 .beVip-thumb{
-                    max-height: 80px;
+                    max-height: 70px;
                     width: auto;
                     margin: auto;
+
+                    @include mobile_small{
+                        max-height: 80px;
+                    }
                 }
             }
             .beVip-body{
                 display: block;
-                margin: 24px 0 0;
+                margin: 12px 0 0;
+
+                @include mobile_large{
+                    margin: 24px 0 0;
+                }
             }
             .beVip-title{
                 font-size: 17px;

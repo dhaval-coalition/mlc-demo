@@ -8,24 +8,26 @@
                 <div class="singleLocationHero-btnBlock">
                     <div class='btnBlock' *ngIf='buttonStyle && buttonStyle.text.length > 0'>
                         <a [ngClass]="[
-                                'btn', 
-                                'btn-' + (buttonStyle?.variant || 'secondary')]" 
-                            [href]="buttonStyle?.url || '#'">
+                                'btn',
+                                'btn-' + (buttonStyle?.variant || 'secondary')]"
+                           [href]="buttonStyle?.url || '#'"
+                           [target]="buttonStyle?.targetBlank ? '_blank' : '_self'">
                             {{buttonStyle?.text}}
-                        </a>                    
+                        </a>
                     </div>
-                    <div class='btnBlock' *ngIf='buttonStyle2 && buttonStyle2.text.length > 0'>
+                    <div class='btnBlock' *ngIf='buttonStyle2 && buttonStyle2.text.length > 0' (click)="handleClick($event, 'storeLocations')">
                         <a [ngClass]="[
-                                'btn', 
-                                'btn-' + (buttonStyle2?.variant || 'secondary')]" 
-                            [href]="buttonStyle2?.url || '#'">
+                                'btn',
+                                'btn-' + (buttonStyle2?.variant || 'secondary')]"
+                           [href]="buttonStyle2?.url || '#'"
+                           [target]="buttonStyle2?.targetBlank ? '_blank' : '_self'">
                             {{buttonStyle2?.text}}
-                        </a>                    
+                        </a>
                     </div>
                 </div>
             </div>
             <div class="singleLocationHero-image" *ngIf="singleLocationHeroThumb && singleLocationHeroThumb.length > 0">
-                <img class='singleLocationHero-thumb' [src]='singleLocationHeroThumb' alt='' />
+                <img class='singleLocationHero-thumb' [src]='singleLocationHeroThumb' [alt]="thumbImageAlt && thumbImageAlt.trim() ? thumbImageAlt : '' " />
             </div>
         </div>
     </div>

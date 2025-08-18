@@ -1,6 +1,6 @@
-<section class="section-typesOfServices" 
-    [class.default-bg-class]="isWhiteBgColor()"
-    [ngStyle]="{'backgroundColor':bgColor}">
+<section class="section-typesOfServices"
+         [class.default-bg-class]="isWhiteBgColor()"
+         [ngStyle]="{'backgroundColor':bgColor}">
     <div class="container">
         <div class='typesOfServices-inner'>
             <h2 class='section-title' *ngIf='sectionTitle'>{{sectionTitle}}</h2>
@@ -9,27 +9,31 @@
                     <div [ngClass]="['typesOfServices-row', item.imagePosition === 'Left' ? 'image-left' : 'image-right']">
                         <!-- Conditional rendering based on imagePosition -->
                         <div *ngIf="item.imagePosition === 'Left'" class="typesOfServices-image">
-                            <img class='typesOfServices-thumb' [src]='item.thumbImage' alt='' />
+                            <img class='typesOfServices-thumb' [src]='item.thumbImage' [alt]="item.thumbImageAlt && item.thumbImageAlt.trim() ? item.thumbImageAlt : '' " />
                         </div>
                         <div class="typesOfServices-content">
                             <div class='section-description' [innerHTML]="item.itemDescription">{{item.itemDescription}}</div>
                             <div class='btnBlock' *ngIf='item.button && item.button.text.length > 0'>
-                                <a [ngClass]="['btn btn-' + (item.button.variant || 'secondary')]" [href]="item.button.url || '#'">
+                                <a [ngClass]="['btn btn-' + (item.button.variant || 'secondary')]"
+                                   [href]="item.button.url || '#'"
+                                   [target]="item.button.targetBlank ? '_blank' : '_self'">
                                     {{item.button.text}}
-                                </a>                    
+                                </a>
                             </div>
                         </div>
                         <!-- Conditional rendering based on imagePosition -->
                         <div *ngIf="item.imagePosition === 'Right'" class="typesOfServices-image">
-                            <img class='typesOfServices-thumb' [src]='item.thumbImage' alt='' />
+                            <img class='typesOfServices-thumb' [src]='item.thumbImage' [alt]="item.thumbImageAlt && item.thumbImageAlt.trim() ? item.thumbImageAlt : '' " />
                         </div>
                     </div>
                 </ng-container>
             </div>
             <div class='bottomBtnBlock' *ngIf='buttonStyle && buttonStyle.text.length > 0'>
-                <a [ngClass]="['btn btn-' + (buttonStyle?.variant || 'secondary')]" [href]="buttonStyle?.url || '#'">
+                <a [ngClass]="['btn btn-' + (buttonStyle?.variant || 'secondary')]"
+                   [href]="buttonStyle?.url || '#'"
+                   [target]="buttonStyle.targetBlank ? '_blank' : '_self'">
                     {{buttonStyle?.text}}
-                </a>                    
+                </a>
             </div>
         </div>
     </div>

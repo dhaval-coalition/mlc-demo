@@ -1,25 +1,27 @@
 <section class="section-whatYourFunds">
     <div class="container">
         <div class="whatYourFunds-wrap" [ngStyle]="{'backgroundColor':bgColor}">
-           <h2 class='whatYourFunds-title' *ngIf='sectionTitle'>{{sectionTitle}}</h2>
-           <div class='funds-items' *ngIf="fundsItems && fundsItems.length > 0">
-               <ng-container *ngFor="let item of fundsItems">
+            <h2 class='whatYourFunds-title' *ngIf='sectionTitle'>{{sectionTitle}}</h2>
+            <div class='funds-items' *ngIf="fundsItems && fundsItems.length > 0">
+                <ng-container *ngFor="let item of fundsItems">
                     <div class='funds-body'>
                         <div class='funds-icons'>
-                            <img [src]="item.icon" alt='' />
+                            <img [src]="item.icon" [alt]="item.iconImageAlt && item.iconImageAlt.trim() ? item.iconImageAlt : '' " height='50' width='50' fetchpriority="auto"/>
                         </div>
                         <div class='funds-name' [innerHTML]="item.name"></div>
-                   </div>
-               </ng-container>
-           </div>
-           <div class="bottomContent">
+                    </div>
+                </ng-container>
+            </div>
+            <div class="bottomContent">
                 <div class='section-bottomTitle' *ngIf="sectionBottomTitle && sectionBottomTitle.length > 0">{{sectionBottomTitle}}</div>
-                <div class='btnBlock sd' *ngIf='buttonStyle && buttonStyle.text.length > 0'>  
-                    <a [ngClass]="['btn btn-' + (buttonStyle?.variant || 'secondary')]" [href]="buttonStyle?.url || '#'">
+                <div class='btnBlock sd' *ngIf='buttonStyle && buttonStyle.text.length > 0'>
+                    <a [ngClass]="['btn btn-' + (buttonStyle?.variant || 'secondary')]"
+                       [href]="buttonStyle?.url || '#'"
+                       [target]="buttonStyle?.targetBlank ? '_blank' : '_self'">
                         {{buttonStyle?.text}}
-                    </a>       
+                    </a>
                 </div>
-           </div>
+            </div>
         </div>
     </div>
 </section>

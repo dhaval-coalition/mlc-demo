@@ -1,0 +1,83 @@
+@import "../../../../assets/styles/guidelines.scss";
+
+.cardBlock-full-container{
+    background-color: $blue50;
+    margin-bottom: 40px;
+    
+    @include tab_small{
+        margin-bottom: 64px;            
+    }
+}
+.section-cardBlock{
+    width: 100%;
+    display: block;
+    padding: 30px 0;
+    
+    @include mobile_large{
+        padding: 35px 0;
+    }
+    @include ipad_small{
+        padding: 48px 0;
+    }  
+    .section-title{
+        text-align: center;
+        margin: 0 0 30px;
+        
+        @include mobile_large{
+            margin: 0 0 40px;
+        }
+        @include tab_small{
+            margin: 0 0 64px;            
+        }
+    }
+    .cardBlock-items{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: auto;
+        margin: 0 -12px;
+
+        .cardBlock-item{
+            padding: 12px;
+            width: 100%;
+            display: flex;
+
+            @include mobile_small{
+                width: 50%;
+            }
+            @include mobile_large{
+                width: 33.33%;
+            }
+            @include ipad_small{
+                width: 25%;
+            }
+        }
+        .cardBlock-body{
+            background-color: $gray100;
+            text-align: center;
+            border-radius: 16px;
+            overflow: hidden;
+            padding: 20px 15px;
+            width: 100%;
+            border: 1px solid transparent;
+            @include ct_transition;
+    
+            &:hover{
+                @include ct_boxShadow15;
+                transform: translateY(-1px);
+                border-color: rgba($black, 0.075);
+            }               
+            @include ipad_small{
+                padding: 20px 30px;
+            }  
+        }
+        .cardBlock-description{
+            p{
+                &:last-child{
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}

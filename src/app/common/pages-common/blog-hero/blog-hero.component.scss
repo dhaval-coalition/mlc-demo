@@ -1,13 +1,19 @@
 @import "../../../../assets/styles/guidelines.scss";
 
 .blog-hero{
-    margin: 0 0 48px;
     display: block;
     width: 100%;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    
+    margin: 0 0 30px;
+
+    @include mobile_large{
+        margin: 0 0 35px;
+    }
+    @include ipad_small{
+        margin: 0 0 48px;
+    }    
     .bannerOverlay{
         display: flex;
         flex-wrap: wrap;

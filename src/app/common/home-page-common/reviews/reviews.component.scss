@@ -3,14 +3,30 @@
 .section-reviews{
     display: block;
     width: 100%;   
-    padding: 48px 0; 
+    padding: 30px 0; 
 
+    @media (max-width: $mobile_small) {
+        min-height: 500px;
+    }
+    @include mobile_large{
+        padding: 35px 0; 
+    }
+    @include ipad_small{
+        padding: 48px 0; 
+    }
     .section-head{
         text-align: center;
-        margin-bottom: 52px;
+        margin-bottom: 30px;
         
+        @include mobile_large{
+            margin-bottom: 52px;
+        }
         .section-subtitle{
-            margin: 0 0 24px;
+            margin: 0 0 16px;
+
+            @include mobile_large{
+                margin: 0 0 24px;
+            }
         }
     }
     .review-logo{
@@ -20,8 +36,28 @@
         flex-wrap: wrap;
         align-items: center;
         justify-content: center;
-        gap: 64px;
-        margin: 0 0 64px;
+        gap: 32px;
+        margin: 0 0 32px;
+
+        @include mobile_large{
+            gap: 40px;
+            margin: 0 0 64px;
+        }
+        .review-trustpilot{
+            max-width: 300px;
+
+            ::ng-deep {
+                app-trustpilot-widget{
+                    .trustpilot-widget{
+                        margin:0 auto;
+                    }
+                }
+            }
+        }
+        .service-thumb{
+            max-height: 133px;
+            width: auto;
+        }
     }
     .reviewBulletBlock{
         max-width: 940px;
@@ -35,21 +71,31 @@
         justify-content: center;
         width: auto;
         margin: 0 -15px;
-        gap: 48px 0;
+        gap: 25px 0;
 
+        @include mobile_large{
+            gap: 48px 0;
+        }
         .bullet-item{
             margin: 0;
-            width: 33.33%;
+            width: 50%;
             display: inline-block;
             float: none;
             text-align: center;
             padding: 0 15px;
 
+            @include mobile_small{
+                width: 33.33%;
+            }
             .service-thumb{
                 width: auto;
-                max-height: 80px;
+                max-height: 62px;
                 margin: 0 auto;
                 display: block;
+
+                @include mobile_small{
+                    max-height: 80px;
+                }
             }
             .bullet-title{
                 display: block;
@@ -57,8 +103,17 @@
                 width: 100%;
                 clear: left;
                 text-align: center;
-                padding: 24px 0 0;
+                padding: 10px 0 0;
                 color: $black;
+
+                @include mobile_small{
+                    padding: 24px 0 0;
+                }
+                p{
+                    &:last-child{
+                        margin-bottom: 0;
+                    }
+                }
             }
         }
     }

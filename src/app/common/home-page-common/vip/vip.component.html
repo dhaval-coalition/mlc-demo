@@ -2,13 +2,13 @@
     <div class="container">
         <div class="section-head">
             <h2 class='section-title' *ngIf='sectionTitle'>{{sectionTitle}}</h2>
-            <div class="section-description" *ngIf="sectionDescription" [innerHTML]="sectionDescription">
+            <div class="section-description large-description-text" *ngIf="sectionDescription" [innerHTML]="sectionDescription">
             </div>
         </div>
         <div class="vipBlock-wrap" *ngIf="vipBlockItems && vipBlockItems.length > 0">
             <div class="vipBlockItems">
                 <div class="vipBlock-item" *ngFor="let item of vipBlockItems">
-                    <img class='vipBlock-thumb' [src]='item.icon' alt='' />
+                    <img class='vipBlock-thumb' [src]='item.icon' [alt]="item.iconImageAlt && item.iconImageAlt.trim() ? item.iconImageAlt : '' " height='80' width='80' fetchpriority="auto" />
                     <div class="vipBlock-body">
                         <div class="vipBlock-title">{{item.itemName}}</div>
                         <div class="vipBlock-description">{{item.itemDescription}}</div>
