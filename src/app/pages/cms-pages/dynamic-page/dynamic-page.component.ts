@@ -35,9 +35,10 @@ export class DynamicPageComponent implements OnInit {
   constructor(
     private http: HttpClient,
     @Optional() private router: Router,
-    @Inject(PLATFORM_ID) private platformId: Object
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private seoService: SeoService
   ) {}
-
+  
   // SSR-safe URL detection with multiple fallbacks
   private getUrlPath(): string {
     if (isPlatformServer(this.platformId)) {
@@ -71,6 +72,9 @@ export class DynamicPageComponent implements OnInit {
   }
 
   async ngOnInit() {
+    // Apply SEO metadata dynamically using SeoService
+    this.seoService.applyPageMetadata();
+
     try {
       // On client side, wait a bit for Router to be fully initialized
       if (!isPlatformServer(this.platformId) && !this.router) {

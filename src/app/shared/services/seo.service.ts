@@ -2,7 +2,7 @@ import { inject, Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';  // Import Angular services for title and meta tags
 import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
-import { isPlatformBrowser } from '@angular/common';
+import { DOCUMENT } from '@angular/common';
 import { fetchOneEntry } from '@builder.io/sdk-angular';  // Correct import for fetchOneEntry
 import { SEO_CONFIG } from '../seo.config';
 import { HttpClient } from '@angular/common/http';
@@ -25,8 +25,10 @@ export class SeoService {
     @Inject(PLATFORM_ID) private platformId: Object, 
     private title: Title, 
     private meta: Meta, 
-    private router: Router
+    private router: Router,
+    @Inject(DOCUMENT) private dom: Document
   ) {}
+  
 
   // Method to update the page title
   updateTitle(title: string) {
@@ -36,6 +38,23 @@ export class SeoService {
   // Method to update the meta description
   updateDescription(description: string) {
     this.meta.updateTag({ name: 'description', content: description });
+  }
+
+  updateCanonicalLink(url: string): void {
+    const head = this.dom.getElementsByTagName('head')[0]; // Get the head element
+    let link: HTMLLinkElement | null = this.dom.querySelector(`link[rel='canonical']`);
+
+    // Prepend domain URL from environment to create the full canonical URL
+    const canonicalUrl = `${environment.siteUrl}${url}`;
+    
+    if (!link) {
+      // If the canonical link tag doesn't exist, create a new one
+      link = this.dom.createElement('link') as HTMLLinkElement;
+      link.setAttribute('rel', 'canonical');
+      head.appendChild(link); // Append the new link tag to the head
+    }
+    // Set the href attribute of the canonical link
+    link.setAttribute('href', canonicalUrl);
   }
 
   // Method to apply SEO metadata based on the current route
@@ -72,33 +91,29 @@ export class SeoService {
       if (content && content.data) {
         const metaTitle = content.data['metatitle'] || SEO_CONFIG.defaultTitle;  // Fallback to default title
         const metaDescription = content.data['metadesc'] || SEO_CONFIG.defaultDescription;  // Fallback to default description
-        this.applySeoMetadata(metaTitle, metaDescription);
+        const canonicalLink = content.data['url'] || SEO_CONFIG.defaultCanonical;  // Fallback to default canonical
+        this.applySeoMetadata(metaTitle, metaDescription, canonicalLink);
       } else {
         // If no content found, apply default metadata
-        this.applySeoMetadata(SEO_CONFIG.defaultTitle, SEO_CONFIG.defaultDescription);
+        this.applySeoMetadata(SEO_CONFIG.defaultTitle, SEO_CONFIG.defaultDescription, SEO_CONFIG.defaultCanonical);
       }
     } catch (error) {
       console.error(`Error fetching SEO data for ${url}:`, error);
-      this.applySeoMetadata(SEO_CONFIG.defaultTitle, SEO_CONFIG.defaultDescription); // Apply defaults on error
+      this.applySeoMetadata(SEO_CONFIG.defaultTitle, SEO_CONFIG.defaultDescription, SEO_CONFIG.defaultCanonical); // Apply defaults on error
     }
   }
 
   // Method to apply SEO metadata (title, description, robots, etc.)
-  applySeoMetadata(title: string, description: string): void {
+  applySeoMetadata(title: string, description: string, canonical: string): void {
     this.updateTitle(title);
     this.updateDescription(description);
+    this.updateCanonicalLink(canonical);
     
     // Log the applied SEO metadata
     console.log(`SEO Applied: Title - ${title}, Description - ${description}`);
 
     // Apply robots meta tag from SEO_CONFIG
     this.meta.updateTag({ name: 'robots', content: SEO_CONFIG.defaultRobots });
-
-    // Add canonical tag update only if it's running in the browser
-    if (isPlatformBrowser(this.platformId)) {
-      const canonicalUrl = window.location.href;
-      this.meta.updateTag({ rel: 'canonical', href: canonicalUrl });
-    }
   }
 
   // Method to apply SEO metadata based on the current route
@@ -112,6 +127,7 @@ export class SeoService {
     this.applyMetadata({
       metatitle: SEO_CONFIG.defaultTitle,
       metadesc: SEO_CONFIG.defaultDescription,
+      metacano: SEO_CONFIG.defaultCanonical,
       robots: SEO_CONFIG.defaultRobots,
     });
   }
@@ -120,17 +136,13 @@ export class SeoService {
   applyMetadata(data: any) {
     const title = data?.metatitle || SEO_CONFIG.defaultTitle;
     const description = data?.metadesc || SEO_CONFIG.defaultDescription;
+    const canonical = data?.metacano || SEO_CONFIG.defaultCanonical;
     const robots = data?.robots || SEO_CONFIG.defaultRobots;
 
     this.updateTitle(title);
     this.updateDescription(description);
+    this.updateCanonicalLink(canonical);
     this.meta.updateTag({ name: 'robots', content: robots });
-
-    // Add canonical tag update only if it's running in the browser
-    if (isPlatformBrowser(this.platformId)) {
-      const canonicalUrl = data?.canonical || SEO_CONFIG.defaultCanonical;
-      this.meta.updateTag({ rel: 'canonical', href: canonicalUrl });
-    }
   }
 
   // Custom fetch function that uses Angular's HttpClient for SSR compatibility
