@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, ViewChild } from '@angular/core';
-import { Router } from 'express';
 import { CarouselComponent, CarouselModule } from 'ngx-owl-carousel-o';
+import { BlogService } from '../../../shared/services/blog.service';
+import { Router } from '@angular/router';
 
 interface BlogPost {
   data: {
@@ -31,27 +32,27 @@ export class InformationHubComponent {
   @Input() sectionTitle = '';
   @Input() sectionDescription = '';
 
-  // constructor(private router: Router, private blogService: BlogService){
-  // }
+  constructor(private router: Router, private blogService: BlogService){
+  }
   
   ngOnInit(): void {
     // Fetch the most recent blog posts
-    // this.blogService.getBlogPosts().subscribe({
-    //   next: (response: { results: BlogPost[] }) => {
-    //     if (response && response.results) {
-    //       // Sort posts by date and take the latest 6
-    //       this.recentPosts = response.results
-    //         .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
-    //         .slice(0, 6);
-    //     }
-    //   }
-    // });
+    this.blogService.getBlogPosts().subscribe({
+      next: (response: { results: BlogPost[] }) => {
+        if (response && response.results) {
+          // Sort posts by date and take the latest 6
+          this.recentPosts = response.results
+            .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+            .slice(0, 6);
+        }
+      }
+    });
   }
 
   // Generate a URL-friendly slug and navigate to the post
   navigateToPost(post: any): void {
-    // const slug = this.generateSlug(post.data.slug);
-    // this.router.navigate(['/blog', slug]);
+    const slug = this.generateSlug(post.data.slug);
+    this.router.navigate(['/blog', slug]);
   }
 
   // Helper function to generate a URL-friendly slug
