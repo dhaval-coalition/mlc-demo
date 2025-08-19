@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "concurrently \"ng serve\" \"npx builder-dev-tools\"",
+    "start": "concurrently \"ng serve\" \"node dist/angular-19-builder-ssr-ssg-starter/server/server.mjs\"",
     "build": "ng build && ng run angular-19-builder-ssr-ssg-starter:server",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
