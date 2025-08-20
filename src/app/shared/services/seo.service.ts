@@ -110,7 +110,7 @@ export class SeoService {
     this.updateCanonicalLink(canonical);
     
     // Log the applied SEO metadata
-    console.log(`SEO Applied: Title - ${title}, Description - ${description}`);
+    // console.log(`SEO Applied: Title - ${title}, Description - ${description}`);
 
     // Apply robots meta tag from SEO_CONFIG
     this.meta.updateTag({ name: 'robots', content: SEO_CONFIG.defaultRobots });

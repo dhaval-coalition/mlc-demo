@@ -81,11 +81,21 @@ export class HeroBannerComponent {
 		}
 		this.setupMutationObserver();
 
-    if(isPlatformBrowser(this.platformId)){
-		  this.setupResizeObserver();
-    }
+		if(isPlatformBrowser(this.platformId)){
+			this.setupResizeObserver();
+			this.manuallyResizeWindow();
+		}
 	}
 
+	manuallyResizeWindow(): void {
+		setTimeout(() => {
+			if (isPlatformBrowser(this.platformId)) {
+				window.dispatchEvent(new Event('resize'));
+				this.cdr.detectChanges();
+			}
+		}, 100);
+	}
+	
 	private setupMutationObserver(): void {
 		// Disconnect existing observer if any
 		if (this.mutationObserver) {

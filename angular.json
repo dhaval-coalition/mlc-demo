@@ -5,7 +5,11 @@
   "projects": {
     "angular-19-builder-SSR-SSG-starter": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",

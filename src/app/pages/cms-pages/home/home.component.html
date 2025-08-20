@@ -1,0 +1,29 @@
+<div class="homePage-wrapper">
+    <ng-container *ngIf="!isLoading">
+        <ng-container *ngIf="content || isPreviewing; else notFound">
+            <builder-content
+            [model]="model"
+            [content]="content"
+            [apiKey]="apiKey"
+            [customComponents]="customComponents"
+            ></builder-content>
+        </ng-container>
+        <ng-template #notFound>
+            <div class="misc-wrapper">
+                <div class="misc-inner p-2 p-sm-3">
+                    <div class="w-100 text-center">
+                        <h1 class="mb-2">Oops! Page Not Found 🕵🏻‍♀️</h1>
+                        <p class="mb-4">Oops! 😖 The requested URL was not found on this server.</p>
+                        <a class="btn btn-primary mb-2" href="/">Go to Home</a>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </ng-container>
+
+    <div *ngIf="isLoading">
+        <!-- <div class="Loading-wrapper">
+            <h2>Loading content...</h2>
+        </div> -->
+    </div>
+</div>

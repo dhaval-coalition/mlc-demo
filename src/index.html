@@ -29,5 +29,24 @@
 </head>
 <body>
   <app-root></app-root>
+  <script type="text/javascript">
+      window.lhnJsSdkInit = function () {
+          lhnJsSdk.setup = {
+              application_id: "fddb4c14-3443-4e1c-298c-8f9a2120c3b0",
+              application_secret: "oe84m8qbt2r0vd0ed0675cro8nzeikqkmz2s6xdrnk6ovorp/j"
+          };
+          lhnJsSdk.controls = [{
+              type: "hoc",
+              id: "2aa700cf-5409-4093-8062-ac4ad73633ab"
+          }];
+      };
+
+      (function (d, s) {
+          var newjs, lhnjs = d.getElementsByTagName(s)[0];
+          newjs = d.createElement(s);
+          newjs.src = "https://developer.livehelpnow.net/js/sdk/lhn-jssdk-current.min.js";
+          lhnjs.parentNode.insertBefore(newjs, lhnjs);
+      }(document, "script"));
+  </script>
 </body>
 </html>

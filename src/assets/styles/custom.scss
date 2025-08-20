@@ -248,15 +248,16 @@ code, pre {
 .aboutUsPage-wrapper {
 	.section-loansHeroBanner {
 		.section-description {
-			@include text16;
-			margin: 0;
+			font-size: 16px !important;
+    		line-height: 24px !important;
+			margin: 0 !important;
 		}
 
 		.loansHero-content {
-			max-width: 100%;
+			max-width: 100% !important;
 
 			@include ipad_small {
-				max-width: 633px;
+				max-width: 633px !important;
 			}
 		}
 	}
