@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "concurrently \"ng serve\" \"node dist/angular-19-builder-ssr-ssg-starter/server/server.mjs\"",
-    "build": "ng build && ng run angular-19-builder-ssr-ssg-starter:server",
+    "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:angular-19-builder-SSR-SSG-starter": "node dist/angular-19-builder-ssr-ssg-starter/server/server.mjs",
