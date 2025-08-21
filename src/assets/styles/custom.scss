@@ -1281,3 +1281,13 @@ app-trustpilot-widget {
 		}
 	}
 }
+/**/
+.section-heroBanner{
+	.custom-owlCarousel{
+		.owl-carousel{
+			.owl-stage,.owl-item{
+				min-width: 100%;
+			}
+		}
+	}
+}

@@ -4,6 +4,8 @@ import { AboutUsComponent } from './pages/cms-pages/about-us/about-us.component'
 import { HomeComponent } from './pages/cms-pages/home/home.component';
 import { ContactComponent } from './pages/cms-pages/contact/contact.component';
 import { LoansComponent } from './pages/cms-pages/loans/loans.component';
+import { LocationsComponent } from './pages/cms-pages/locations/locations.component';
+import { SingleLocationComponent } from './pages/cms-pages/single-location/single-location.component';
 
 export const routes: Routes = [
   {
@@ -21,6 +23,14 @@ export const routes: Routes = [
   {
     path: "loans",
     component: LoansComponent,
+  },
+  {
+    path: "locations",
+    component: LocationsComponent,
+  },
+  {
+    path: 'locations/:slug',
+    component: SingleLocationComponent,
   },
   {
     path: "**",

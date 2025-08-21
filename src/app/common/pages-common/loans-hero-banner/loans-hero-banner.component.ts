@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { LocationsDataService } from '../../../shared/services/locations-data.service';
 
 @Component({
   selector: 'app-loans-hero-banner',
@@ -26,15 +27,15 @@ export class LoansHeroBannerComponent {
 	}
 
 	constructor(
-    // private locationsDataService: LocationsDataService
+    private locationsDataService: LocationsDataService
   ) {
 	}
 	ngOnInit(): void {
-		// this.locationsDataService.getStates().subscribe((response: any) => {
-		// 	if (response.results && response.results.length > 0 && response.results[0].data.states) {
-		// 		this.statesList = response.results[0].data.states;
-		// 	}
-		// });
+		this.locationsDataService.getStates().subscribe((response: any) => {
+			if (response.results && response.results.length > 0 && response.results[0].data.states) {
+				this.statesList = response.results[0].data.states;
+			}
+		});
 	}
 	updateButtonUrl(event: Event): void {
 		const selectElement = event.target as HTMLSelectElement;
