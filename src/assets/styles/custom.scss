@@ -1036,6 +1036,38 @@ app-trustpilot-widget {
 			gap: 40px 0;
 		}
 
+		> dynamic-renderer {
+			width: 100%;
+			margin: 0 auto;
+			padding: 15px;
+
+			@include mobile_xsmall {
+				width: 50%;
+			}
+
+			@include ipad_small {
+				width: 33.33%;
+			}
+
+			.builder-column {
+				width: 100% !important;
+				margin: 0 auto !important;
+				padding: 15px !important;
+
+				@include mobile_xsmall {
+					width: 50% !important;
+				}
+
+				@include ipad_small {
+					width: 33.33% !important;
+				}
+				img {
+					max-width: 90% !important;
+					margin: 0 auto !important;
+				}
+			}
+		}
+
 		.builder-column {
 			width: 100%;
 			margin: 0 auto;

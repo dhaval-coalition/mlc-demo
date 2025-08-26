@@ -15,17 +15,20 @@ export class BlogService {
 
   // Fetch blog posts with pagination support
   getAllBlogPosts(limit: number = 100, offset: number = 0): Observable<any> {
-    const url = `${this.apiUrl}${this.modelName}?apiKey=${this.apiKey}&limit=${limit}&offset=${offset}`;
+    const cacheBuster = `?t=${new Date().getTime()}`;
+    const url = `${this.apiUrl}${this.modelName}?apiKey=${this.apiKey}&limit=${limit}&offset=${offset}${cacheBuster}`;
     return this.http.get(url);
   }  
 
   getBlogPosts(): Observable<any> {
-    const url = `${this.apiUrl}${this.modelName}?apiKey=${this.apiKey}&limit=6`;
+    const cacheBuster = `?t=${new Date().getTime()}`;
+    const url = `${this.apiUrl}${this.modelName}?apiKey=${this.apiKey}&limit=6${cacheBuster}`;
     return this.http.get(url);
   }
 
   getRelatedBlogPosts(): Observable<any> {
-    const url = `${this.apiUrl}${this.modelName}?apiKey=${this.apiKey}&limit=50`;
+    const cacheBuster = `?t=${new Date().getTime()}`;
+    const url = `${this.apiUrl}${this.modelName}?apiKey=${this.apiKey}&limit=50${cacheBuster}`;
     return this.http.get(url);
   }
 

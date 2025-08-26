@@ -1,0 +1,70 @@
+@import "../../../assets/styles/guidelines.scss";
+
+
+.breadcrumb-block{
+    .container{
+        position: relative;
+        max-width: 1480px;
+    }
+    .breadcrumb{
+        list-style-type: none;
+        margin: 18px 0;
+    }
+    .breadcrumb-item{
+        @include text14;
+        text-transform: capitalize;
+        color: $ctNeutral;
+
+        &:before{
+            display: none !important;
+        }
+    }
+    .breadcrumb-separator{
+        padding-left: 8px;
+    }
+    .breadcrumb-name{
+        color: $ctNeutral;        
+
+        &:hover:not(span){
+            color: $ctPrimary;
+        }
+    }
+}
+::ng-deep {
+    xng-breadcrumb {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        
+        .xng-breadcrumb-list{
+            list-style-type: none;
+            margin: 18px 0;
+            
+            > li{
+                @include text14;
+                text-transform: capitalize;
+                color: $ctNeutral;
+
+                &:first-child{
+                    &.xng-breadcrumb-separator{
+                        display: none !important;
+                    }
+                    &.xng-breadcrumb-trail{
+                        // display: none !important;
+                    }
+                }
+                .xng-breadcrumb-trail{
+                    color: $ctNeutral;
+                }
+                .xng-breadcrumb-link{
+                    color: $ctNeutral;
+
+                    &:hover:not(span){
+                        color: $ctPrimary;
+                    }
+                }
+            }
+        }
+    }
+}
+  

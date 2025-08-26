@@ -5,11 +5,12 @@ import { Router } from '@angular/router';
 import { Content } from '@builder.io/sdk-angular';
 import { SeoService } from '../../../shared/services/seo.service';
 import { BuilderPageContentBase } from '../../../shared/builder-page-content.base';
+import { NotFoundComponent } from '../../../common/not-found/not-found.component';
 
 @Component({
   selector: 'app-loans',
   standalone: true,
-  imports: [CommonModule, Content],
+  imports: [CommonModule, Content, NotFoundComponent],
   templateUrl: './loans.component.html',
   styleUrls: ['./loans.component.scss']
 })

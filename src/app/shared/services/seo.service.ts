@@ -2,7 +2,7 @@ import { inject, Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';  // Import Angular services for title and meta tags
 import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, isPlatformServer } from '@angular/common';
 import { fetchOneEntry } from '@builder.io/sdk-angular';  // Correct import for fetchOneEntry
 import { SEO_CONFIG } from '../seo.config';
 import { HttpClient } from '@angular/common/http';
@@ -29,6 +29,37 @@ export class SeoService {
     @Inject(DOCUMENT) private dom: Document
   ) {}
   
+  // SSR-safe URL detection with multiple fallbacks
+  private getUrlPath(): string {
+    if (isPlatformServer(this.platformId)) {
+      // On server, try Router service with fallback
+      try {
+        if (this.router?.url) {
+          return this.router.url.split('?')[0];
+        }
+        
+        // Fallback: default to root for SSR
+        return "/";
+      } catch (error) {
+        return "/";
+      }
+    } else {
+      // On client, use router or window.location
+      try {
+        if (this.router?.url) {
+          return this.router.url.split('?')[0];
+        }
+        
+        if (typeof window !== 'undefined' && window.location) {
+          return window.location.pathname;
+        }
+        
+        return "/";
+      } catch (error) {
+        return "/";
+      }
+    }
+  }
 
   // Method to update the page title
   updateTitle(title: string) {
@@ -41,6 +72,7 @@ export class SeoService {
   }
 
   updateCanonicalLink(url: string): void {
+    url = this.getUrlPath();
     const head = this.dom.getElementsByTagName('head')[0]; // Get the head element
     let link: HTMLLinkElement | null = this.dom.querySelector(`link[rel='canonical']`);
 
@@ -71,8 +103,9 @@ export class SeoService {
       options = { url: url };
     } else if (url.startsWith('/blog/')) {
       model = this.modelBlogPost;
-      const slug = url.split('/blog/')[1];
-      options = { query: { 'data.slug': slug } };
+      // const slug = url.split('/blog/')[1];
+      // options = { query: { 'data.slug': slug } };
+      options = { url: url };
     } else {
       // Default for homepage or other pages
       options = { url: url };

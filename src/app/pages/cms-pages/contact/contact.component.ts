@@ -8,11 +8,12 @@ import { environment } from '../../../../environments/environment';
 import { customComponents } from '../../../common/builder-registry';
 import { firstValueFrom } from 'rxjs';
 import { FilloutFormComponent } from '../../../common/fillout-form/fillout-form.component';
+import { NotFoundComponent } from '../../../common/not-found/not-found.component';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, Content, FilloutFormComponent],
+  imports: [CommonModule, Content, FilloutFormComponent, NotFoundComponent],
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss'],
 })

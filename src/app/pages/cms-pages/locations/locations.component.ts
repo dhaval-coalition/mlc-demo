@@ -5,11 +5,12 @@ import { BuilderPageContentBase } from '../../../shared/builder-page-content.bas
 import { SeoService } from '../../../shared/services/seo.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { NotFoundComponent } from '../../../common/not-found/not-found.component';
 
 @Component({
   selector: 'app-locations',
   standalone: true,
-  imports: [CommonModule, Content],
+  imports: [CommonModule, Content, NotFoundComponent],
   templateUrl: './locations.component.html',
   styleUrls: ['./locations.component.scss'],
 })

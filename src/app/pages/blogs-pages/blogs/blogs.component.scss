@@ -1,0 +1,266 @@
+@import "../../../../assets/styles/guidelines.scss";
+
+.blogListing-page{
+    overflow: auto;
+
+    @include tab_small{
+        overflow: inherit;
+    }
+    .noBlogPost{
+        text-align: center;
+        width: 100%;
+        margin: 0 auto 16px;
+
+        @include mobile_large{
+            margin: 0 auto 48px;
+        }
+        p{
+            @include text20;
+            font-weight: 700;
+            color: $black;
+            text-align: center;
+            margin: 0 auto;
+        }
+    }
+    .blogPostBlock{
+        display: block;
+        width: 100%;
+        max-width: 1116px;
+        margin: 16px auto;
+
+        @include mobile_large{
+            margin: 48px auto;
+        }        
+        .blogPost-top{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            justify-content: space-between;
+            width: 100%;
+            gap: 20px;
+            margin: 0 0 20px;
+
+            @include mobile_large{
+                margin: 0 0 32px;
+                gap: 10px;
+            }
+            .blogPost-filter{
+                width: 100%;
+
+                @include mobile_large{
+                    width: calc(100% - 295px);
+                }
+                ul{
+                    margin: 0;
+                    padding: 0;
+                    width: auto;
+                    list-style-type: none;
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    justify-content: flex-start;
+                    gap: 10px;
+                    
+                    @include ipad_large{
+                        gap: 16px;
+                    }
+                    @media (max-width: #{ $mobile_large + 1 }) {
+                        gap: 8px;
+                    }
+                    li{
+                        display: block;
+                        width: auto;
+
+                        .btn{
+                            border-color: $gray100;
+                            color: $gray700;
+                            background-color: $white;
+                            font-weight: 600;
+
+                            &:hover,&.is-active{
+                                border-color: $ctPrimary;
+                                color: $white;
+                                background-color: $ctPrimary;
+                            }
+                            @media (max-width: #{ $mobile_large + 1 }) {
+                                font-size: 14px;
+                                padding: 8px 16px;
+                            }
+                            @media (max-width: #{ $mobile_xsmall + 1 }) {
+                                font-size: 13px;
+                                padding: 8px 12px;
+                            }
+                        }
+                    }
+                }
+            }
+            .blogPost-search{
+                width: 100%;
+
+                @include mobile_large{
+                    width: 285px;
+                }
+                .blog-search-wrap{
+                    width: 100%;
+                    display: block;
+                    position: relative;
+
+                    .form-control{
+                        padding-right: 50px;
+                        border-color: $gray100;
+                    }
+                    .search-icon{
+                        height: 100%;
+                        width: 50px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        text-align: center;
+                        position: absolute;
+                        top: 0;
+                        bottom: 0;
+                        left: auto;
+                        right: 0;
+                        margin: 0;
+                    }
+                }
+            }
+        }
+        .blogPostList-main{
+            width: 100%;
+            display: block;
+        }
+        .blogPost-wrap{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            justify-content: center;
+            width: 100%;
+            // margin: 0 -12px;
+            margin: 0 auto;
+            gap: 24px;
+            padding: 0;
+
+            @include mobile_large{
+                width: calc(100% + 24px) !important;
+            }
+            @media (max-width: #{ $mobile_large + 1 }) {
+                height: auto !important;
+                position: static !important;
+                width: 100% !important;
+            }
+            .blogPost-items{
+                width: 100%;
+                display: inline-block;
+                vertical-align: top;
+                // padding: 0 12px;
+                
+                @include mobile_large{
+                    // width: 33.33%;
+                    width: calc(33.33% - 24px);
+                    margin-bottom: 24px;
+                }
+                @media (max-width: #{ $mobile_large + 1 }) {
+                    height: auto !important;
+                    position: static !important;
+                    width: 100% !important;
+                    left: 0 !important;
+                    top: 0 !important;
+                    margin-bottom: 0;
+                }
+                .blogPostItems-wrap{
+                    border-radius: 8px;
+                    overflow: hidden;
+                    width: 100%;
+                    display: block;
+                    cursor: pointer;
+                    @include ct_boxShadow01;
+                    @include ct_transition;
+
+                    &:hover{
+                        transform: translateY(-2px);
+                        @include ct_boxShadow15;
+                    }
+                }
+            }
+            .blogPost-image{
+                width: 100%;
+                height: 160px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                margin: 0 auto;
+                overflow: hidden;
+                border-radius: 0 0 8px 8px;
+
+                @include ipad_small{
+                    height: 224px;
+                }
+                &.no-thumb-img{
+                    display: inline;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    height: auto;
+                    min-height: 1px;
+
+                    .commonBadge{
+                        position: relative;
+                    }
+                }
+            }
+            .blogPost-thumb{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                max-width: 100%;
+            }
+            .blogPostItems-body{
+                padding: 14px;
+                width: 100%;
+                text-align: left;
+
+                @include ipad_small{
+                    padding: 24px;
+                }
+                .blogPost-title{
+                    @include text18;
+                    color: $black;
+                    margin: 0 0 8px;
+
+                    @include ipad_small{
+                        @include text20;
+                    }
+                }
+                .blogPost-date{
+                    @include text14;
+                    color: $ctNeutral;
+                    margin: 0 0 10px;
+                    width: 100%;
+                    display: block;
+
+                    @include ipad_small{
+                        margin: 0 0 16px;
+                    }
+                }
+                .blogPost-description{
+                    @include text16;
+                    font-weight: normal;
+                    width: 100%;
+                    display: block;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    -webkit-box-orient: vertical;
+
+                    *{
+                        @include text16;
+                        font-weight: normal;
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+}

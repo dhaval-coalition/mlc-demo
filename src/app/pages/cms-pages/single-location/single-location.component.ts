@@ -7,11 +7,12 @@ import { environment } from '../../../../environments/environment';
 import { firstValueFrom } from 'rxjs';
 import { BuilderContent, Content, fetchOneEntry, isPreviewing } from '@builder.io/sdk-angular';
 import { customComponents } from '../../../common/builder-registry';
+import { NotFoundComponent } from '../../../common/not-found/not-found.component';
 
 @Component({
   selector: 'app-single-location',
   standalone: true,
-  imports: [CommonModule, Content],
+  imports: [CommonModule, Content, NotFoundComponent],
   templateUrl: './single-location.component.html',
   styleUrls: ['./single-location.component.scss'],
 })
