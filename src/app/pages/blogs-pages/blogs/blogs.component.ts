@@ -90,7 +90,6 @@ export class BlogsComponent {
   async ngOnInit() {
     // Apply SEO metadata dynamically using SeoService
     this.seoService.applyPageMetadata();
-    // this.breadcrumbService.fetchAndSetBreadcrumb('@blogPageTitle');
     this.fetchBlogPosts();
 
     try {

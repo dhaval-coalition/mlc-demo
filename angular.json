@@ -53,7 +53,12 @@
             "outputMode": "server",
             "ssr": {
               "entry": "src/server.ts"
-            }
+            },
+            "allowedCommonJsDependencies": [
+              "masonry-layout",
+              "outlayer",
+              "get-size"
+            ]
           },
           "configurations": {
             "production": {

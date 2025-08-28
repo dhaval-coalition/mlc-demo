@@ -31,7 +31,7 @@ export const routes: Routes = [
     component: LocationsComponent,
   },
   {
-    path: 'locations-detail',
+    path: 'locations/:slug',
     component: SingleLocationComponent,
   },
   {
@@ -39,7 +39,7 @@ export const routes: Routes = [
     component: BlogsComponent,
   },
   {
-    path: "blog-detail",
+    path: "blog/:slug",
     component: BlogDetailsComponent,
   },
   {
