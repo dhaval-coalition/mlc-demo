@@ -54,9 +54,6 @@ export class BlogDetailsComponent {
 					this.blogPost = post; // Store blog post data
 					this.badge = post.badge; // Access and store the badge
 
-					// Set the breadcrumb title using the blog's title
-					// this.breadcrumbService.set('@blogDetailsTitle', this.blogPost.title);
-
 					// Fetch all blog posts and filter for related posts
 					this.fetchRelatedPosts();
 

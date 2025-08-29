@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:prod": "npm run generate-sitemap && ng build --configuration=production && npm run copy-sitemap",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:angular-19-builder-SSR-SSG-starter": "node dist/angular-19-builder-ssr-ssg-starter/server/server.mjs",
