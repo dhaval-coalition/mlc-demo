@@ -1,6 +1,6 @@
 import { CommonModule, isPlatformServer } from '@angular/common';
 import { SeoService } from '../../../shared/services/seo.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Component, Inject, Input, Optional, PLATFORM_ID } from '@angular/core';
 import { environment } from '../../../../environments/environment';
@@ -30,6 +30,7 @@ export class SingleLocationComponent{
     private seoService: SeoService,
     @Optional() private router: Router,
     @Inject(PLATFORM_ID) private platformId: Object,
+    private route: ActivatedRoute
   ) {}
 
   async ngOnInit() {
@@ -42,7 +43,7 @@ export class SingleLocationComponent{
         await new Promise(resolve => setTimeout(resolve, 100));
       }
       
-      // Use SSR-safe URL detection
+      // Use improved URL detection that includes the slug parameter
       this.currentUrlPath = this.getUrlPath();
 
       // Create a fetch function that works with or without HttpClient
@@ -107,16 +108,23 @@ export class SingleLocationComponent{
     }
   }
 
-  // SSR-safe URL detection with multiple fallbacks
+  // Improved SSR-safe URL detection that properly handles route parameters
   private getUrlPath(): string {
     if (isPlatformServer(this.platformId)) {
-      // On server, try Router service with fallback
+      // On server, try to get the URL from the route parameters first
       try {
+        const slug = this.route.snapshot.paramMap.get('slug');
+        if (slug) {
+          // Handle both formats: /locations/slug and /locations/slug-personal-loans
+          return `/locations/${slug}`;
+        }
+        
+        // Fallback to router URL if available
         if (this.router?.url) {
           return this.router.url.split('?')[0];
         }
         
-        // Fallback: default to root for SSR
+        // Last fallback: default to root for SSR
         return "/";
       } catch (error) {
         return "/";

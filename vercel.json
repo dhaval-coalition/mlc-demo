@@ -1,0 +1,64 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "dist/angular-19-builder-ssr-ssg-starter/server/server.mjs",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "dist/angular-19-builder-ssr-ssg-starter/browser/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/assets/(.*)",
+      "dest": "/dist/angular-19-builder-ssr-ssg-starter/browser/assets/$1"
+    },
+    {
+      "src": "/media/(.*)",
+      "dest": "/dist/angular-19-builder-ssr-ssg-starter/browser/media/$1"
+    },
+    {
+      "src": "/styles-(.*).css",
+      "dest": "/dist/angular-19-builder-ssr-ssg-starter/browser/styles-$1.css"
+    },
+    {
+      "src": "/scripts-(.*).js",
+      "dest": "/dist/angular-19-builder-ssr-ssg-starter/browser/scripts-$1.js"
+    },
+    {
+      "src": "/main-(.*).js",
+      "dest": "/dist/angular-19-builder-ssr-ssg-starter/browser/main-$1.js"
+    },
+    {
+      "src": "/polyfills-(.*).js",
+      "dest": "/dist/angular-19-builder-ssr-ssg-starter/browser/polyfills-$1.js"
+    },
+    {
+      "src": "/chunk-(.*).js",
+      "dest": "/dist/angular-19-builder-ssr-ssg-starter/browser/chunk-$1.js"
+    },
+    {
+      "src": "/favicon.ico",
+      "dest": "/dist/angular-19-builder-ssr-ssg-starter/browser/favicon.ico"
+    },
+    {
+      "src": "/robots.txt",
+      "dest": "/dist/angular-19-builder-ssr-ssg-starter/browser/robots.txt"
+    },
+    {
+      "src": "/sitemap.xml",
+      "dest": "/dist/angular-19-builder-ssr-ssg-starter/browser/sitemap.xml"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/dist/angular-19-builder-ssr-ssg-starter/server/server.mjs"
+    }
+  ],
+  "functions": {
+    "dist/angular-19-builder-ssr-ssg-starter/server/server.mjs": {
+      "maxDuration": 30
+    }
+  }
+}

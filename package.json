@@ -6,11 +6,13 @@
     "start": "ng serve",
     "build": "ng build",
     "build:prod": "npm run generate-sitemap && ng build --configuration=production && npm run copy-sitemap",
+    "build:vercel": "npm run generate-sitemap && ng build --configuration=production --output-mode=server && npm run copy-sitemap",
+    "build:prerender": "npm run generate-sitemap && ng build --configuration=production --output-mode=prerender && npm run copy-sitemap",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:angular-19-builder-SSR-SSG-starter": "node dist/angular-19-builder-ssr-ssg-starter/server/server.mjs",
     "generate-sitemap": "node scripts/generate-sitemap.js",
-    "copy-sitemap": "xcopy /Y sitemap.xml dist\\angular-19-builder-ssr-ssg-starter\\browser\\"
+    "copy-sitemap": "cp sitemap.xml dist/angular-19-builder-ssr-ssg-starter/browser/"
   },
   "private": true,
   "dependencies": {
