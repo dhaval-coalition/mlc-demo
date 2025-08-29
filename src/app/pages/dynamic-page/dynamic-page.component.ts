@@ -1,6 +1,6 @@
 import { Component, Inject, Input, PLATFORM_ID, Optional } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Content } from '@builder.io/sdk-angular';
 import { SeoService } from '../../shared/services/seo.service';
 import { HttpClient } from '@angular/common/http';
@@ -24,9 +24,10 @@ export class DynamicPageComponent extends BuilderPageContentBase {
     http: HttpClient,
     @Optional() router: Router,
     @Inject(PLATFORM_ID) platformId: Object,
-    seo: SeoService
+    seo: SeoService,
+    @Optional() route: ActivatedRoute
   ) {
-    super(http, router, platformId, seo); // Make sure to call the parent constructor
+    super(http, router, platformId, seo, route); // Make sure to call the parent constructor
   }
 
   // Implement ngOnInit, which will call the shared initPage

@@ -1,6 +1,6 @@
 import { Inject, Injectable, Optional, PLATFORM_ID } from '@angular/core';
 import { isPlatformServer } from '@angular/common';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 import { BuilderContent, fetchOneEntry, isPreviewing } from '@builder.io/sdk-angular';
@@ -24,13 +24,31 @@ export abstract class BuilderPageContentBase {
     protected http: HttpClient,
     @Optional() protected router: Router,
     @Inject(PLATFORM_ID) protected platformId: Object,
-    protected seoService: SeoService
+    protected seoService: SeoService,
+    @Optional() protected route?: ActivatedRoute
   ) {}
 
   protected getUrlPath(): string {
     if (isPlatformServer(this.platformId)) {
       try {
-        if (this.router?.url) return this.router.url.split('?')[0];
+        // First try to get URL from route parameters if available
+        if (this.route) {
+          const slug = this.route.snapshot.paramMap.get('slug');
+          if (slug) {
+            // Determine the correct path based on the current route
+            const routerUrl = this.router?.url || '';
+            if (routerUrl.includes('/blog/')) {
+              return `/blog/${slug}`;
+            } else if (routerUrl.includes('/locations/')) {
+              return `/locations/${slug}`;
+            }
+          }
+        }
+        
+        // Fallback to router URL if available
+        if (this.router?.url) {
+          return this.router.url.split('?')[0];
+        }
         return '/';
       } catch {
         return '/';

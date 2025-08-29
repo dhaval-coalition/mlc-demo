@@ -71,7 +71,7 @@ export class BlogDetailsComponent {
         await new Promise(resolve => setTimeout(resolve, 100));
       }
       
-      // Use SSR-safe URL detection
+      // Use improved URL detection that includes the slug parameter
       this.currentUrlPath = this.getUrlPath();
 
       // Create a fetch function that works with or without HttpClient
@@ -136,16 +136,22 @@ export class BlogDetailsComponent {
       this.isLoading = false;
     }
 	}
-  // SSR-safe URL detection with multiple fallbacks
+  // Improved SSR-safe URL detection that properly handles route parameters
   private getUrlPath(): string {
     if (isPlatformServer(this.platformId)) {
-      // On server, try Router service with fallback
+      // On server, try to get the URL from the route parameters first
       try {
+        const slug = this.route.snapshot.paramMap.get('slug');
+        if (slug) {
+          return `/blog/${slug}`;
+        }
+        
+        // Fallback to router URL if available
         if (this.router?.url) {
           return this.router.url.split('?')[0];
         }
         
-        // Fallback: default to root for SSR
+        // Last fallback: default to root for SSR
         return "/";
       } catch (error) {
         return "/";
